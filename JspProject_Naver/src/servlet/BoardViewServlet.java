@@ -24,6 +24,7 @@ public class BoardViewServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//conn 객체 생성
 		Connection conn = null;
 		
 		try {
