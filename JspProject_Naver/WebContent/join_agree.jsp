@@ -15,11 +15,60 @@
 		    border-radius: 6px;
 		    border: 1px solid #d6d6d6;
 		}
+		.required {
+    		color: #09AA5C;
+		}
+		.optional {
+			color: #929294;
+		}
+		.arrow {
+			width: 12px;
+			height: 16px;
+		}
 		
 	</style>
 	
 	<script type="text/javascript">
+	
+	window.onload = function(){
 		
+	    var termList = document.getElementsByTagName('input');
+	    var selectAllObj = termList[0];
+	    var nextButtonObj = document.getElementById('nextButton');
+	    
+	    // 약관 1, 2 동의 시 다음 버튼 활성화(2->1 순 체크)
+	    termList[1].addEventListener('change', function() {
+	        if (termList[1].checked && termList[2].checked) {
+	            nextButtonObj.disabled = false;
+	            nextButtonObj.style.backgroundColor = "#09AA5C"; // 활성화 시 배경색 초록색
+	        } else {
+	            nextButtonObj.disabled = true;
+	            nextButtonObj.style.backgroundColor = "#8990a0"; // 비활성화 시 배경색 흰색
+	        }
+	    });	// end of termList[1].addEventListener
+	 	// 약관 1, 2 동의 시 다음 버튼 활성화(1->2 순 체크)
+	    termList[2].addEventListener('change', function() {
+	        if (termList[1].checked && termList[2].checked) {
+	            nextButtonObj.disabled = false;
+	            nextButtonObj.style.backgroundColor = "#09AA5C"; // 활성화 시 배경색 초록색
+	        } else {
+	            nextButtonObj.disabled = true;
+	            nextButtonObj.style.backgroundColor = "#8990a0"; // 비활성화 시 배경색 흰색
+	        }
+	    }); // end of termList[2].addEventListener
+	    
+		 // 전체 동의기능
+	    selectAllObj.addEventListener('change', function () {
+	        for (var i = 1; i < termList.length; i++) {
+	            termList[i].checked = selectAllObj.checked;
+	        }
+	    });
+	    
+	    
+	}	// end of window.onload
+	
+	
+	    
 	</script>
 
 </head>
@@ -30,7 +79,7 @@
 
 		<div class="header">
 			<a href="http://www.naver.com">
-				<img src="./img/logo_naver.jpg">
+				<img src="./images/naverLogo.PNG">
 			</a>
 			<div class="langSelect" style="float: right">
 				<select>
@@ -42,8 +91,10 @@
 		<!-- header 종료 -->
 
 		<div id="check1">
-			<input type="checkbox" id="checkAll" name="" value="">
-			<label for="checkAll">전체 동의하기</label>
+			<input type="checkbox" id="checkAll" onclick="selectAllFnc()">
+			<label for="checkAll">
+				전체 동의하기
+			</label>
 			<p>
 				실명 인증된 아이디로 가입, 위치기반서비스 이용약관(선택), 
 				이벤트・혜택 정보 수신(선택) 동의를 포함합니다.
@@ -51,8 +102,12 @@
 		</div>
 
 		<div id="check2">
-			<input type="checkbox" id="term2" name="" value=""> <label
-				for="term2">네이버 이용약관</label>
+			<input type="checkbox" id="term1" name="" value="">
+			<label for="term2">
+				<span class="required">[필수]</span>
+				네이버 이용약관
+			</label>
+			<a href="" ><img src="./images/arrowRight.JPG" class="arrow"></a>
 			<div class="termBox">
 				여러분을 환영합니다.
 				네이버 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.
@@ -67,8 +122,13 @@
 		</div>
 		
 		<div id="check3">
-			<input type="checkbox" id="term3" name="" value=""> <label
-				for="term3">개인정보 수집 및 이용 </label>
+			<input type="checkbox" id="term2" name="" value="">
+			<label for="term3">
+				<span class="required">[필수]</span>
+				개인정보 수집 및 이용
+			</label>
+			<a href="http://www.naver.com"><img src="./images/arrowRight.JPG" class="arrow"></a>
+			<a href="http://www.naver.com" style="margin-left: 100px;">어린이용 안내</a>
 			<div class="termBox">
 				개인정보보호법에 따라 네이버에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 
 				개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 
@@ -82,8 +142,11 @@
 		</div>
 		
 		<div id="check4">
-			<input type="checkbox" id="term4" name="" value=""> <label
-				for="term4">실명 인증된 아이디로 가입</label>
+			<input type="checkbox" id="term3" name="" value="">
+			<label for="term4">
+				<span class="optional">[선택]</span>
+				실명 인증된 아이디로 가입
+			</label>
 			<div class="termBox">
 				실명 인증된 아이디로 가입하시면 본인인증이 필요한 서비스
 				(네이버 페이, 쇼핑, 멤버십 등)를 가입 후 바로 이용하실 수 있어요.
@@ -91,8 +154,11 @@
 		</div>
 		
 		<div id="check5">
-			<input type="checkbox" id="term5" name="" value=""> <label
-				for="term5">위치기반서비스 이용약관</label>
+			<input type="checkbox" id="term4" name="" value="">
+			<label for="term5">
+				<span class="optional">[선택]</span>위치기반서비스 이용약관
+			</label>
+			<a href="" ><img src="./images/arrowRight.JPG" class="arrow"></a>
 			<div class="termBox">
 				위치기반서비스 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 
 				등을 포함하는 네이버 위치기반 서비스를 이용할 수 있습니다.
@@ -112,8 +178,10 @@
 		</div>
 		
 		<div id="check6">
-			<input type="checkbox" id="term6" name="" value=""> <label
-				for="term6">이벤트・혜택 정보 수신</label>
+			<input type="checkbox" id="term5" name="" value="">
+			<label for="term6">
+				<span class="optional">[선택]</span>이벤트・혜택 정보 수신
+			</label>
 			<div class="termBox">
 				네이버 서비스 및 제휴 이벤트・혜택 등의 정보를 휴대전화(네이버앱 알림 또는 문자), 
 				이메일로 받을 수 있습니다. 일부 서비스(별개의 회원 체계 운영, 네이버 가입 후 
@@ -126,9 +194,10 @@
 		</div>
 		
 		<div style="clear: right">
-			<input type="button" value="다음" 
-			style="width: 450px; height: 50px; 
-			background-color: #09AA5C; color: white;">
+			<input type="button" value="다음" id="nextButton"
+				style="width: 450px; height: 50px; 
+	 				background-color: #09AA5C; color: white;
+	 				border: none; border-radius: 6px;">
 		</div>
 
 	</div>

@@ -17,6 +17,15 @@
 			margin: 5px 0px;
 			border: none;
 		}
+		input[type=radio] {
+			width: 1px;
+			height: 1px;
+		}
+		
+		input[type="radio"]:checked + label {
+			border: 1px solid green;
+		}
+		
 		.boxList {
 			width: 400px;
 			margin: 10px;
@@ -29,9 +38,13 @@
 		.radioBtn {
 			opacity: 0;
 		}
-		.smallLabel{
+		#smallLabel{
 			width: 100px;
 			height: 20px;
+		}
+		#naverDomain {
+			float: right;
+			color: #767678;
 		}
 		#accountInfo {
 			
@@ -59,7 +72,8 @@
 	</style>
 	
    	<script type="text/javascript">
-		
+
+   	
 	</script>	
 </head>
 
@@ -68,14 +82,15 @@
 	<div class="inner" style="width: 500px; margin: 0px auto">
 		<div class="header">
 				<a href="http://www.naver.com">
-					<img src="./img/logo_naver.jpg">
+					<img src="./images/naverLogo.PNG">
 				</a>
 		</div>
 		<!-- header 종료 -->
 		
 		<div id="accountInfo" class="boxList">
 			<div id="idInput" class="infoRaw">
-				<input type="text" placeholder="아이디">@naver.com
+				<input type="text" placeholder="아이디">
+				<div id="naverDomain">@naver.com</div>
 			</div>
 			<hr>
 			<div id="pwdInput" class="infoRaw">
@@ -97,36 +112,29 @@
 			</div>
 			<hr>
 			<div id="telecomInput" class="infoRaw">
-<!-- 				<button type="button" id="btn_telecom" class="btn_telecom" aria-expanded="" placeholder="통신사 선택"> -->
-					
-					
-					
-					
-					
-<!-- 				aria-expanded: 아코디언메뉴 https://weblin.tistory.com/80-->
-
-<!-- 				<select> -->
-<!-- 					<option>SKT</option> -->
-<!-- 					<option>KT</option> -->
-<!-- 					<option>LGT</option> -->
-<!-- 					<option>SKT 알뜰폰</option> -->
-<!-- 					<option>KT 알뜰폰</option> -->
-<!-- 					<option>LGT 알뜰폰</option> -->
-<!-- 				</select> -->
+				<select>
+					<option value="" selected disabled hidden>통신사 선택</option>
+					<option>SKT</option>
+					<option>KT</option>
+					<option>LG U+</option>
+					<option>SKT 알뜰폰</option>
+					<option>KT 알뜰폰</option>
+					<option>LG U+ 알뜰폰</option>
+				</select>
 			</div>
 			<hr>
-			<div id="gendernationalitySelect" class="infoRaw">
-				<div id="genderSelect">
-					<input type="radio" id="male" class="radioBtn">
-					<label for="male" class="smallLabel">남자</label>
-					<input type="radio" id="male" class="radioBtn">
-					<label for="female" class="smallLabel">여자</label>
+			<div id="genderNationalitySelect" class="infoRaw">
+				<div id="genderSelect" style="width: 40%; border: 1px solid #c6c6c6;">
+					<input type="radio" id="male" class="radioBtn" name="gender">
+					<label for="male" style="width: 49%; border-right: 1px solid #c6c6c6;">남자</label>
+					<input type="radio" id="female" class="radioBtn" name="gender">
+					<label for="female" style="width: 49%; border-right: 1px solid #c6c6c6;">여자</label>
 				</div>
-				<div id="nationalitySelect">
-					<input type="radio" id="korean" class="radioBtn">
-					<label for="korean">내국인</label>
-					<input type="radio" id="foreigner" class="radioBtn">
-					<label for="foreigner">외국인</label>
+				<div id="nationalitySelect" style="width: 40%; border: 1px solid #c6c6c6;">
+					<input type="radio" id="korean" class="radioBtn" name="nationality">
+					<label for="korean" style="width: 49%; border-right: 1px solid #c6c6c6;">내국인</label>
+					<input type="radio" id="foreigner" class="radioBtn" name="nationality">
+					<label for="foreigner" style="width: 49%;">외국인</label>
 				</div>
 			</div>
 			<hr>
@@ -136,13 +144,15 @@
 		</div>
 		
 		<div id="agreement" class="boxList" style="height: 50px;">
-			<input type="radio" id="agreeAll" class="radioBtn">
+			<input type="checkbox" id="agreeAll">
 			<label for="agreeAll">[필수] 인증 약관 전체동의</label>
 		</div>
 		
 		<div id="button">
 			<input type="button" value="인증요청"
-				style="width: 400px; height: 70px;">
+				style="width: 400px; height: 70px;
+						background-color: #09AA5C; color: #FFFFFF;
+				 		border: none; border-radius: 6px;">
 		</div>
 		
 	</div>
