@@ -17,6 +17,14 @@
 	#aTag_div{
 		border: 1px solid black;
 	}
+	input{
+		
+	}
+	textarea{
+		 width: 750px;
+		 height: 600px;
+		 resize: none;
+	}
 </style>
 <script type="text/javascript">
 	
@@ -32,19 +40,19 @@
 			<table>
 				<tr>
 					<td style="width: 100px;">이름</td>
-					<td style="width: 870px;"><input></td>
+					<td style="width: 870px;"><input  readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>제목</td>
-					<td ><input style="width: 700px;"></td>
+					<td ><input style="width: 700px;" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td ><input style="width: 700px;"></td>
+					<td ><input style="width: 700px;"  readonly="readonly"></td>
 				</tr>
 				<tr style="height: 600px;">
 					<td>내용</td>
-					<td ><input style="width: 750px;height: 600px;"></td>
+					<td ><textarea readonly="readonly"></textarea>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
