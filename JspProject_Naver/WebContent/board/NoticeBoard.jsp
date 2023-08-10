@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 		margin-left: 490px;
 		margin-right: 490px;
 	}
-	#title_td{
+	#contents_td{
 		width: 480px;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -58,15 +59,17 @@
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
-				<tr>
-					<td style="width: 50px;">1</td>
-					<td style="width: 150px;">나는 집에 가고 싶다 진짜</td>
-					<td id="title_td">나는 집에 가고 싶은 이유는 
-					이러하다아	ㅡㅏㅘ하아다다사ㅛㅏㅕ</td>
-					<td style="width: 50px;">임찬우</td>
-					<td style="width: 90px;">2023-08-09</td>
-					<td style="width: 90px;">2023-08-09</td>
-				</tr>
+				<c:forEach var="boardList" items="${boardList}">
+					<tr>
+						<td style="width: 50px;">${boardDto.no}</td>
+						<td style="width: 150px;">${boardDto.title}</td>
+						<td id="contents_td">${boardDto.contents}</td>
+						<td style="width: 50px;">${boardDto.user_name}</td>
+						<td style="width: 90px;">${boardDto.modDate}</td>
+						<td style="width: 90px;">${boardDto.creDate}</td>
+					</tr>
+				<br>
+				</c:forEach>
 			</table>
 			<a href="" style="margin-left: 450px;">1</a>
 		</div>

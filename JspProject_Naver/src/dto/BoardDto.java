@@ -21,11 +21,12 @@ public class BoardDto {
 	
 
 	public BoardDto(int bno, String title
-			, String contents, Date cre_date, Date mod_date) {
+			, String contents, String name, Date cre_date, Date mod_date) {
 		super();
 		this.bno = bno;
 		this.title = title;
 		this.contents = contents;
+		this.user_name = name;
 		this.cre_date = cre_date;
 		this.mod_date = mod_date;
 	}
