@@ -24,7 +24,7 @@ public class BoardViewServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-Connection conn = null;
+		Connection conn = null;
 		
 		try {
 			ServletContext sc = this.getServletContext();
