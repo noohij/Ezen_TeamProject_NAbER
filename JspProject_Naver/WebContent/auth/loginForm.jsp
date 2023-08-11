@@ -176,7 +176,7 @@
 	 	<span class="onf_btn"></span>
  	</label>
  	<br>
- 	<button>로그인</button>
+ 	<input type="submit" value="로그인">
  	<br>
  	<button>비밀번호 찾기</button>
  	<button>아이디 찾기</button>
