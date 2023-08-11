@@ -25,13 +25,9 @@ public class BoardDao {
 		ResultSet rs = null;
 		
 		try {
-<<<<<<< HEAD
+
 			String sql = "SELECT BNO, TITLE, BOARD_CONTENTS,"
 					+ " USER_NAME, MOD_DATE, CRE_DATE";
-=======
-			String sql = "SELECT BNO, TITLE, CONTENTS"
-					+ " , USER_NAME, MOD_DATE, CRE_DATE";
->>>>>>> branch 'main' of https://github.com/imchanu96/Middle_TeamProject.git
 			sql += " FROM BOARD";
 			
 			pstmt = connection.prepareStatement(sql);
