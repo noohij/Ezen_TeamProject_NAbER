@@ -60,7 +60,7 @@
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
-				<c:forEach var="boardList" items="${boardDto}">
+				<c:forEach var="boardDto" items="${boardDto}">
 					<tr>
 						<td style="width: 50px;">${boardDto.no}</td>
 						<td style="width: 150px;">${boardDto.title}</td>

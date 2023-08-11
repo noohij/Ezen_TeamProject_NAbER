@@ -153,18 +153,15 @@
 <br>
 	<div class="panel">
 		<div id="id">
-			<label>
-			<input type="text" class="idput" placeholder="아이디"
-			 
-			style="background-image:url('../images/id.PNG'); background-repeat: no-repeat;">
-			</label>
+			<form action="/LoginServlet">
+				<input type="text" class="idput" placeholder="아이디"
+				style="background-image:url('../images/id.PNG'); background-repeat: no-repeat;">
+		<div id="pwd">
+				<input type="text" class="pwdput" placeholder="비밀번호"
+				style="background-image:url('../images/lock.PNG');
+				background-repeat: no-repeat;">
 		</div>
-		<div pwd="pwd">
-			<label>
-			<input type="text" class="pwdput" placeholder="비밀번호"
-			style="background-image:url('../images/lock.PNG');
-			background-repeat: no-repeat;">
-			</label>
+			</form>
 		</div>
 	</div>
 	<br>
