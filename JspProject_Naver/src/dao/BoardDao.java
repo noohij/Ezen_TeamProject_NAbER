@@ -25,7 +25,7 @@ public class BoardDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "SELECT BNO, TITLE, CONTENTS"
+			String sql = "SELECT BNO, TITLE, BOARD_CONTENTS"
 					+ " , USER_NAME, MOD_DATE, CRE_DATE";
 			sql += " FROM BOARD";
 			sql += " ORDER BY BNO DESC";
@@ -46,7 +46,7 @@ public class BoardDao {
 			while (rs.next()) {
 				no = rs.getInt("BNO");
 				title = rs.getString("TITLE");
-				contents = rs.getString("CONTENTS");
+				contents = rs.getString("BOARD_CONTENTS");
 				name = rs.getString("USER_NAME");
 				modDate = rs.getDate("MOD_DATE");
 				creDate = rs.getDate("CRE_DATE");

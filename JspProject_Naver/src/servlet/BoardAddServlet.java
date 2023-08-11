@@ -16,7 +16,7 @@ import dao.BoardDao;
 import dto.BoardDto;
 
 
-@WebServlet("board/add")
+@WebServlet("/board/add")
 public class BoardAddServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, 
@@ -61,7 +61,7 @@ public class BoardAddServlet extends HttpServlet {
 			
 			resultNum = boardDao.boardInsert(boardDto);
 				
-//			res.sendRedirect("./list");
+			res.sendRedirect("./list");
 			
 		} catch (Exception e) {
 			// TODO: handle exception

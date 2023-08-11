@@ -34,7 +34,7 @@
 	<div id="parent_div">
 		<h3 style="text-align: center;">글 쓰기</h3>
 		<div id="aTag_div">
-			<a href="" style="margin-left: 850px;">글 목록</a>
+			<a href="./list" style="margin-left: 850px;">글 목록</a>
 		</div>
 		<form action="add" method = "post">
 			<div id="table_div">

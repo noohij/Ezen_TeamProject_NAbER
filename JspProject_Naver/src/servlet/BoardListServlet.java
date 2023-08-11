@@ -16,7 +16,7 @@ import dao.BoardDao;
 import dto.BoardDto;
 
 
-@WebServlet("/board/List")
+@WebServlet("/board/list")
 public class BoardListServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;

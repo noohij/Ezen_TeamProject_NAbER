@@ -33,7 +33,6 @@
 </style>
 <script type="text/javascript">
 	
-	
 </script>
 </head>
 
@@ -78,7 +77,8 @@
 			<a href="" style="margin-left: 450px;">1</a>
 		</div>
 		<div>
-			<button>글 쓰기</button>
+			<button id="BoardAdd_Button" 
+				onclick="location ='./add'">글 쓰기</button>
 		</div>
 	</div>
 
