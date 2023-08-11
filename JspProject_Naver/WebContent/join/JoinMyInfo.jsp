@@ -89,29 +89,29 @@
 		
 		<div id="accountInfo" class="boxList">
 			<div id="idInput" class="infoRaw">
-				<input type="text" placeholder="아이디">
+				<input type="text" placeholder="아이디" name="id">
 				<div id="naverDomain">@naver.com</div>
 			</div>
 			<hr>
 			<div id="pwdInput" class="infoRaw">
-				<input type="text" placeholder="비밀번호">
+				<input type="text" placeholder="비밀번호" name="pwd">
 			</div>
 			<hr>
-			<div id="emailInput" class="infoRaw">
+			<div id="emailInput" class="infoRaw" name="email">
 				<input type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일">
 			</div>
 		</div>
 		
 		<div id="personalInfo" class="boxList">
 			<div id="nameInput" class="infoRaw">
-				<input type="text" placeholder="이름">
+				<input type="text" placeholder="이름" name="name">
 			</div>
 			<hr>
 			<div id="birthDayInput" class="infoRaw">
-				<input type="text" placeholder="생년월일 8자리">
+				<input type="text" placeholder="생년월일 8자리" name="birthday">
 			</div>
 			<hr>
-			<div id="telecomInput" class="infoRaw">
+			<div id="telecomInput" class="infoRaw" name="telecom">
 				<select>
 					<option value="" selected disabled hidden>통신사 선택</option>
 					<option>SKT</option>
@@ -139,7 +139,7 @@
 			</div>
 			<hr>
 			<div id="phoneNumInput" class="infoRaw">
-				<input type="text" placeholder="휴대전화번호">
+				<input type="text" placeholder="휴대전화번호" name="phoneNum">
 			</div>
 		</div>
 		

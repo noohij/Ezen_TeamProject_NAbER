@@ -95,15 +95,27 @@
  			margin-left: 16px;
  			margin-right: 204px;
  		}
- 		footer{
+ 		footer>ul>li{
  			float:left;
+ 			list-style-type: none;
+ 			margin-right: 5px;
+ 		}
+ 		.copyright{
+ 			clear: both;
  		}
 	</style>	
 	<script type="text/javascript">
 		
+			
+		function reset() {
+			
+			
+		}	
+	
+		
 	</script>
 <header>
-	<a href="#" class="inheader">
+	<a class="inheader" onclick="reset()">
 		<img src="../images/naverLogo.PNG"
 	 	width="168" height="50" alt="로고" class="logo">
 	 	<select class="language">
@@ -183,14 +195,21 @@
 	<br>
 	<br>
 	<footer>
-		<div>이용약관</div><div>개인정보처리방침</div>
-		<div>책임의 한계와 법적고지</div>
-		<div>회원정보 고객센터</div>
-		<div>NAVER Copyright <&copy;> NAVER Corp. All Rights Reserved.
-		</div>
-	
+		<ul>
+			<li>이용약관</li>
+			<li>|</li>
+			<li>개인정보처리방침</li>
+			<li>|</li>
+			<li>책임의 한계와 법적고지</li>
+			<li>|</li>
+			<li>회원정보 고객센터</li>
+			<li>|</li>
+		</ul>
+		<div class="copyright">
+			NAVER Copyright &copy; NAVER Corp. All Rights Reserved.
+		</div>	
 	</footer>
-	
+
 	
 	
 	
