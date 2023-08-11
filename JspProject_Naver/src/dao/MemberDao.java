@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Date;
 
 import dto.MemberDto;
 
@@ -27,7 +27,7 @@ public class MemberDao {
 			String pwd = memberDto.getPwd();
 			String email = memberDto.getEmail();
 			String name = memberDto.getName();
-			Date birthday = memberDto.getBirthday();
+			Date birthday = (Date)memberDto.getBirthday();
 			String telecom = memberDto.getTelecom();
 			String gender = memberDto.getGender();
 			String nationality = memberDto.getNationality();
@@ -37,8 +37,12 @@ public class MemberDao {
 			sql += "INSERT INTO MEMBERS";
 			sql += " (MNO, ID, PWD, EMAIL, NAME, BIRTHDAY, TELECOM, GENDER,";
 			sql += " NATIONALITY, PHONENUMBER, CERTNAME, CRE_DATE, MOD_DATE)";
-			sql += " VALUES(MEMBERS_MNO_SEQ.NEXTVAL, ?, ?, ?, ?,";
-			sql += " TO_DATE('?', 'YYYYMMDD'), ?, ?, ?, ?, TRUE, SYSDATE, SYSDATE)";
+			sql += " VALUES(MEMBERS_NO_SEQ.NEXTVAL, ?, ?, ?, ?,";
+			
+//			sql += " TO_DATE('20230811', 'YYYYMMDD'), ?, ?, ?, ?, 'TRUE', SYSDATE, SYSDATE)";
+			sql += " TO_DATE('?', 'YYYY-MM-DD'), ?, ?, ?, ?, TRUE, SYSDATE, SYSDATE)";
+			
+			
 
 			pstmt = connection.prepareStatement(sql);
 
@@ -46,16 +50,22 @@ public class MemberDao {
 			pstmt.setString(2, pwd);
 			pstmt.setString(3, email);
 			pstmt.setString(4, name);
-			pstmt.setDate(5, (java.sql.Date) birthday);
+			
+			pstmt.setDate(5, birthday);
 			pstmt.setString(6, telecom);
 			pstmt.setString(7, gender);
 			pstmt.setString(8, nationality);
 			pstmt.setString(9, phoneNum);
-
+			
+//			pstmt.setString(5, telecom);
+//			pstmt.setString(6, gender);
+//			pstmt.setString(7, nationality);
+//			pstmt.setString(8, phoneNum);
+			
 			resultNum = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		} finally {
 			if (pstmt != null) {
 				try {
@@ -64,10 +74,10 @@ public class MemberDao {
 					e.printStackTrace();
 				}
 			}
-
 		} // end of finally
 		return resultNum;
-	}
+		
+	} // end of memberInsert
 
 	public MemberDto memberExist(String id, String pwd) throws SQLException {
 		PreparedStatement pstmt = null;

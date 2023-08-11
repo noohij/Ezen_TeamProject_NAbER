@@ -3,7 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -43,7 +43,7 @@ public class JoinMyInfoServlet extends HttpServlet {
 		String pwd = req.getParameter("pwd");
 		String email = req.getParameter("email");
 		String name = req.getParameter("name");
-		String birthday = req.getParameter("birthday");
+		String birthdayStr = req.getParameter("birthday");
 		String telecom = req.getParameter("telecom");
 		String gender = req.getParameter("gender");
 		String nationality = req.getParameter("nationality");
@@ -57,23 +57,11 @@ public class JoinMyInfoServlet extends HttpServlet {
 			memberDto.setEmail(email);
 			memberDto.setName(name);
 			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+			String birthdayStr2 = dateFormat.format(birthdayStr);
+			java.sql.Date birthday = java.sql.Date.valueOf(birthdayStr2);
 			
-			String yearStr = birthday.substring(0, 4);
-			String monthStr = birthday.substring(4, 6);
-			String dayStr = birthday.substring(6, 8);
-			
-			int year = Integer.parseInt(yearStr);
-	        int month = Integer.parseInt(monthStr) - 1;
-	        int day = Integer.parseInt(dayStr);
-			
-	        Calendar calendar = Calendar.getInstance();
-	        calendar.set(Calendar.YEAR, year);
-	        calendar.set(Calendar.MONTH, month);
-	        calendar.set(Calendar.DAY_OF_MONTH, day);
-	        
-	        java.util.Date birthdayDate = calendar.getTime();
-	        
-			memberDto.setBirthday(birthdayDate);
+			memberDto.setBirthday(birthday);
 			memberDto.setTelecom(telecom);
 			memberDto.setGender(gender);
 			memberDto.setNationality(nationality);
@@ -93,7 +81,7 @@ public class JoinMyInfoServlet extends HttpServlet {
 			
 			resultNum = memberDao.memberInsert(memberDto);
 			
-			res.sendRedirect("./list");
+			res.sendRedirect("../LoginServlet");
 	
 			
 		} catch (Exception e) {

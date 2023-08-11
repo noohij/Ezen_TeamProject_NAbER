@@ -33,7 +33,7 @@
 			border-radius: 6px;
 	    	border: 1px solid #d6d6d6;
 		}
-		.infoRaw {
+		.infoRow {
 			height: 50px;
 		}
 		.radioBtn {
@@ -89,31 +89,31 @@
 		
 		<form method="post">
 			<div id="accountInfo" class="boxList">
-				<div id="idInput" class="infoRaw">
+				<div id="idInput" class="infoRow">
 					<input type="text" placeholder="아이디" name="id">
 					<div id="naverDomain">@naver.com</div>
 				</div>
 				<hr>
-				<div id="pwdInput" class="infoRaw">
+				<div id="pwdInput" class="infoRow">
 					<input type="text" placeholder="비밀번호" name="pwd">
 				</div>
 				<hr>
-				<div id="emailInput" class="infoRaw" name="email">
-					<input type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일">
+				<div id="emailInput" class="infoRow">
+					<input type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일" name="email">
 				</div>
 			</div>
 			
 			<div id="personalInfo" class="boxList">
-				<div id="nameInput" class="infoRaw">
+				<div id="nameInput" class="infoRow">
 					<input type="text" placeholder="이름" name="name">
 				</div>
 				<hr>
-				<div id="birthDayInput" class="infoRaw">
+				<div id="birthDayInput" class="infoRow">
 					<input type="text" placeholder="생년월일 8자리" name="birthday">
 				</div>
 				<hr>
-				<div id="telecomInput" class="infoRaw" name="telecom">
-					<select>
+				<div id="telecomInput" class="infoRow">
+					<select name="telecom">
 						<option value="" selected disabled hidden>통신사 선택</option>
 						<option>SKT</option>
 						<option>KT</option>
@@ -124,22 +124,34 @@
 					</select>
 				</div>
 				<hr>
-				<div id="genderNationalitySelect" class="infoRaw">
+				<div id="genderNationalitySelect" class="infoRow">
 					<div id="genderSelect" style="width: 40%; border: 1px solid #c6c6c6;">
-						<input type="radio" id="male" class="radioBtn" name="gender">
-						<label for="male" style="width: 49%; border-right: 1px solid #c6c6c6;">남자</label>
-						<input type="radio" id="female" class="radioBtn" name="gender">
-						<label for="female" style="width: 49%; border-right: 1px solid #c6c6c6;">여자</label>
+						<input type="radio" id="male" class="radioBtn" 
+							name="gender" value='남성'>
+						<label for="male" style="width: 49%; border-right: 1px solid #c6c6c6;">
+							남자
+						</label>
+						<input type="radio" id="female" class="radioBtn" 
+							name="gender" value='여성'>
+						<label for="female" style="width: 49%; border-right: 1px solid #c6c6c6;">
+							여자
+						</label>
 					</div>
 					<div id="nationalitySelect" style="width: 40%; border: 1px solid #c6c6c6;">
-						<input type="radio" id="korean" class="radioBtn" name="nationality">
-						<label for="korean" style="width: 49%; border-right: 1px solid #c6c6c6;">내국인</label>
-						<input type="radio" id="foreigner" class="radioBtn" name="nationality">
-						<label for="foreigner" style="width: 49%;">외국인</label>
+						<input type="radio" id="korean" class="radioBtn" 
+							name="nationality" value="내국인">
+						<label for="korean" style="width: 49%; border-right: 1px solid #c6c6c6;">
+							내국인
+						</label>
+						<input type="radio" id="foreigner" class="radioBtn" 
+							name="nationality" value="외국인">
+						<label for="foreigner" style="width: 49%;">
+							외국인
+						</label>
 					</div>
 				</div>
 				<hr>
-				<div id="phoneNumInput" class="infoRaw">
+				<div id="phoneNumInput" class="infoRow">
 					<input type="text" placeholder="휴대전화번호" name="phoneNum">
 				</div>
 			</div>
