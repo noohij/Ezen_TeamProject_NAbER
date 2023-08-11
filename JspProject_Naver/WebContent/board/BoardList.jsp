@@ -60,8 +60,7 @@
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
-
-				<c:forEach var="boardDto" items="${boardList}">
+				<c:forEach var="boardDto" items="${boardList}" end="5">
 					<tr>
 						<td style="width: 50px;">${boardDto.bno}</td>
 						<td style="width: 150px;">${boardDto.title}</td>
@@ -74,7 +73,11 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="" style="margin-left: 450px;">1</a>
+
+				<c:forEach var="pagesNum" begin="1" end="5">
+					<a href="" style="margin: auto;">${pagesNum}</a>
+				</c:forEach>
+
 		</div>
 		<div>
 			<button id="BoardAdd_Button" 
