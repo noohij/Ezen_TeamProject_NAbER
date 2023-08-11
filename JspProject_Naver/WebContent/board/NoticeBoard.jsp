@@ -60,11 +60,8 @@
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
-<<<<<<< HEAD
+
 				<c:forEach var="boardDto" items="${boardList}">
-=======
-				<c:forEach var="boardList" items="${boardDto}">
->>>>>>> branch 'main' of https://github.com/imchanu96/Middle_TeamProject.git
 					<tr>
 						<td style="width: 50px;">${boardDto.bno}</td>
 						<td style="width: 150px;">${boardDto.title}</td>
