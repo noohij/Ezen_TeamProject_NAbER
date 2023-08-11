@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2023-08-09 10:44:57</creation_date>
-			<updated_date>2023-08-10 13:14:52</updated_date>
+			<updated_date>2023-08-10 18:20:24</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -202,6 +202,22 @@
 		</word>
 		<word>
 			<id>2</id>
+			<length>4000</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<zerofill>false</zerofill>
+			<binary>false</binary>
+			<args></args>
+			<char_semantics>false</char_semantics>
+			<description></description>
+			<logical_name>게시글 내용</logical_name>
+			<physical_name>BOARD_CONTENTS</physical_name>
+			<type>varchar(n)</type>
+		</word>
+		<word>
+			<id>3</id>
 			<length>5</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -214,22 +230,6 @@
 			<description></description>
 			<logical_name>실명인증 여부</logical_name>
 			<physical_name>CERTNAME</physical_name>
-			<type>varchar(n)</type>
-		</word>
-		<word>
-			<id>3</id>
-			<length>4000</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
-			<logical_name>게시글 내용</logical_name>
-			<physical_name>CONTENTS</physical_name>
 			<type>varchar(n)</type>
 		</word>
 		<word>
@@ -861,7 +861,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>2</word_id>
+					<word_id>3</word_id>
 					<id>10</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -1145,7 +1145,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>3</word_id>
+					<word_id>2</word_id>
 					<id>17</id>
 					<description></description>
 					<unique_key_name></unique_key_name>

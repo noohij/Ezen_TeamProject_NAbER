@@ -25,10 +25,9 @@ public class BoardDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "SELECT BNO, TITLE, CONTENTS"
-					+ ", USER_NAME, MOD_DATE, CRE_DATE";
+			String sql = "SELECT BNO, TITLE, BOARD_CONTENTS,"
+					+ " USER_NAME, MOD_DATE, CRE_DATE";
 			sql += " FROM BOARD";
-			sql += " ORDER BY BNO DESC";
 			
 			pstmt = connection.prepareStatement(sql);
 			
@@ -42,23 +41,23 @@ public class BoardDao {
 			String name = "";
 			Date modDate = null;
 			Date creDate = null;
-			
+
 			while (rs.next()) {
 				no = rs.getInt("BNO");
 				title = rs.getString("TITLE");
-				contents = rs.getString("CONTENTS");
+				contents = rs.getString("BOARD_CONTENTS");
 				name = rs.getString("USER_NAME");
 				modDate = rs.getDate("MOD_DATE");
 				creDate = rs.getDate("CRE_DATE");
 				
-				BoardDto boardDto = new BoardDto(no
-						, title, contents, name, modDate, creDate);
+				BoardDto boardDto = new BoardDto(no, title, contents, name, modDate, creDate);
 				
 				boardList.add(boardDto);
 				
 			}
 			
 			return boardList;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -80,5 +79,5 @@ public class BoardDao {
 			}
 		}
 		
-	} // 회원목록 끝
+	} // 게시글목록 끝
 }

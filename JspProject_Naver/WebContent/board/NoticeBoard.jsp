@@ -59,16 +59,15 @@
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
-				<c:forEach var="boardList" items="${boardList}">
+				<c:forEach var="boardDto" items="${boardList}">
 					<tr>
-						<td style="width: 50px;">${boardDto.no}</td>
+						<td style="width: 50px;">${boardDto.bno}</td>
 						<td style="width: 150px;">${boardDto.title}</td>
 						<td id="contents_td">${boardDto.contents}</td>
 						<td style="width: 50px;">${boardDto.user_name}</td>
-						<td style="width: 90px;">${boardDto.modDate}</td>
-						<td style="width: 90px;">${boardDto.creDate}</td>
+						<td style="width: 90px;">${boardDto.mod_date}</td>
+						<td style="width: 90px;">${boardDto.cre_date}</td>
 					</tr>
-				<br>
 				</c:forEach>
 			</table>
 			<a href="" style="margin-left: 450px;">1</a>

@@ -18,7 +18,6 @@ public class BoardDto {
 		super();
 	}
 	
-	
 
 	public BoardDto(int bno, String title
 			, String contents, String name, Date cre_date, Date mod_date) {
@@ -48,6 +47,96 @@ public class BoardDto {
 		this.mno = mno;
 	}
 
+	
+
+	public int getBno() {
+		return bno;
+	}
+
+
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
+
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public String getUser_email() {
+		return user_email;
+	}
+
+
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+
+
+	public String getContents() {
+		return contents;
+	}
+
+
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+
+	public String getMod_pwd() {
+		return mod_pwd;
+	}
+
+
+	public void setMod_pwd(String mod_pwd) {
+		this.mod_pwd = mod_pwd;
+	}
+
+
+	public Date getCre_date() {
+		return cre_date;
+	}
+
+
+	public void setCre_date(Date cre_date) {
+		this.cre_date = cre_date;
+	}
+
+
+	public Date getMod_date() {
+		return mod_date;
+	}
+
+
+	public void setMod_date(Date mod_date) {
+		this.mod_date = mod_date;
+	}
+
+
+	public int getMno() {
+		return mno;
+	}
+
+
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
 
 
 	@Override
