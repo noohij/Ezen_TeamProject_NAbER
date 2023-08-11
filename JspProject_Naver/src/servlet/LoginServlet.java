@@ -6,16 +6,20 @@ import java.sql.Connection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.connector.Request;
+import org.apache.catalina.ha.backend.Sender;
+
 import dao.MemberDao;
 import dto.MemberDto;
 
-@WebServlet("/LoginServlet")
+@WebServlet(value = "/loginForm")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -28,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		rd.forward(req, res); // 객체에 요청, 반응 수신
 	}
 
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) 
+	protected void doPost(HttpServletRequest req, HttpServletResponse res, ServletResponse response) 
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Connection conn = null; // ??db연결
@@ -47,20 +51,19 @@ public class LoginServlet extends HttpServlet {
 			
 			MemberDto memberDto = memberDao.memberExist(id, pwd);//id,pwd매개 변수로 가져가서 exist 돌린 애들을 리턴값 반환해주는 dto에 담기
 			
-		//회원이 없다면 로그인 실패 페이지로 이동
-//		if (memberDto == null) {
-//			RequestDispatcher rd = 
-//					req.getRequestDispatcher("./LoginFail.jsp");
-//			
-//			rd.forward(req, res);
-//		}
+		//회원이 없다면 로그인 페이지로 이동해서 메세지 띄우기
+		if (memberDto == null) {
+
+			
+			
+		}
 		
-			//회원이 존재한다면 세션에 담고 회원 전체 페이지로 이동
+			//회원이 존재한다면 세션에 담고 게시판 페이지로 이동
 			HttpSession session = req.getSession();
 			
 			session.setAttribute("member", memberDto);
 			
-			res.sendRedirect("./board/list");
+			res.sendRedirect("./board/view");
 	
 					
 			} catch (Exception e) {

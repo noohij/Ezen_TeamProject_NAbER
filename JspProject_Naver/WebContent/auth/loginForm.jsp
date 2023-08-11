@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <head>
 	<meta charset="UTF-8">
@@ -109,15 +110,22 @@
 			
 		function reset() {
 			
+			var idPutObj = document.getElementById("id");
+			var pwdPutObj = document.getElementById("pwd");
 			
+			idPutObj.value = "";
+			pwdPutObj.value = "";
 		}	
-	
 		
 	</script>
+	<%
+		String msg = (String)request.getAttribute("error");
+	%>
 <header>
-	<a class="inheader" onclick="reset()">
+	<div id="logo">
 		<img src="../images/naverLogo.PNG"
-	 	width="168" height="50" alt="로고" class="logo">
+	 	width="168" height="50" alt="로고" class="logo" onclick="reset()">
+	</div>
 	 	<select class="language">
 		<option>한국어</option>
 		<option>English</option>
@@ -125,13 +133,12 @@
 		<option>中文(台灣)</option>
 		
 		</select>
-	</a>
 		
 </header>
 </head>
 <body>
 	
-<div class="container">
+<div class="container" style="border: 1px solid black;">
 
 	
 	<div class="menuwrapper">
@@ -152,32 +159,37 @@
 	</div>
 <br>
 	<div class="panel">
-		<div id="id">
-			<form action="/LoginServlet">
-				<input type="text" class="idput" placeholder="아이디"
+		<div>
+			<form action="../loginForm" method="post">
+				<input type="text" class="idput" id="id" placeholder="아이디" name="id"
 				style="background-image:url('../images/id.PNG'); background-repeat: no-repeat;">
-		<div id="pwd">
-				<input type="text" class="pwdput" placeholder="비밀번호"
+		<div>
+				<input type="text" class="pwdput" id="pwd" placeholder="비밀번호" name="pwd"
 				style="background-image:url('../images/lock.PNG');
 				background-repeat: no-repeat;">
 		</div>
+			<label class="keepcheck">
+				<input type="checkbox" id="keeping" name="keep" value="off">
+					로그인 상태 유지
+				</label>
+				<label class="keepcheck2"> IP보안
+					<input type="checkbox" id="switch">
+				 	<span class="onf_btn"></span>
+			 	</label>
+			 	<br>
+			 	<br>
+			 	<input type="submit" value="로그인">
 			</form>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<label class="keepcheck">
-	<input type="checkbox" id="keeping" name="keep" value="off">
-		로그인 상태 유지
-	</label>
-	<label class="keepcheck2"> IP보안
-		<input type="checkbox" id="switch">
-	 	<span class="onf_btn"></span>
- 	</label>
+	
  	<br>
- 	<input type="submit" value="로그인">
  	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	
  	<button>비밀번호 찾기</button>
  	<button>아이디 찾기</button>
  	<button>회원가입</button>
