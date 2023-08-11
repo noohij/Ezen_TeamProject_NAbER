@@ -28,7 +28,7 @@ public class BoardDao {
 			String sql = "SELECT BNO, TITLE, BOARD_CONTENTS"
 					+ " , USER_NAME, MOD_DATE, CRE_DATE";
 			sql += " FROM BOARD";
-			sql += " ORDER BY BNO DESC";
+			sql += " ORDER BY BNO";
 			
 			pstmt = connection.prepareStatement(sql);
 			
@@ -179,10 +179,10 @@ public class BoardDao {
 			int colIndex = 1;
 			
 //			pstmt.setString(colIndex++, name);
-			pstmt.setString(1, title);
+			pstmt.setString(colIndex++, title);
 //			pstmt.setString(colIndex++, email);
-			pstmt.setString(2, contents);
-			pstmt.setString(3, mod_pwd);
+			pstmt.setString(colIndex++, contents);
+			pstmt.setString(colIndex, mod_pwd);
 			
 			resultNum = pstmt.executeUpdate();
 

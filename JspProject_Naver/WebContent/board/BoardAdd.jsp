@@ -42,23 +42,23 @@
 			<table>
 				<tr>
 					<td style="width: 100px;">이름</td>
-					<td style="width: 870px;"><input ></td>
+					<td style="width: 870px;"><input name="name" ></td>
 				</tr>
 				<tr>
 					<td>제목</td>
-					<td ><input style="width: 700px;" ></td>
+					<td ><input style="width: 700px;" name="title" ></td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td ><input style="width: 700px;"  ></td>
+					<td ><input style="width: 700px;" name="email" ></td>
 				</tr>
 				<tr style="height: 600px;">
 					<td>내용</td>
-					<td ><textarea ></textarea>
+					<td ><textarea name="contents"></textarea>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td ><input style="width: 100px;"></td>
+					<td ><input style="width: 100px;" name="mod_pwd"></td>
 				</tr>
 				
 			</table>
