@@ -41,11 +41,12 @@
 		<h3>List Sample</h3>
 		<div id="form_div">
 			<form action="post" style="text-align: right">
-			<select >
+			<select name="searchType">
 				<option value="title">제목</option>
 				<option value="contents">내용</option>
 				<option value="writer">글쓴이</option>
-			</select> <input type="text"> <input type="button"
+			</select> <input type="text" name="searchType"> 
+			<input type="button"
 				 onclick="switchText();" value="검색">
 			</form>
 		</div>
@@ -59,7 +60,7 @@
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
-				<c:forEach var="boardList" items="${boardList}">
+				<c:forEach var="boardList" items="${boardDto}">
 					<tr>
 						<td style="width: 50px;">${boardDto.no}</td>
 						<td style="width: 150px;">${boardDto.title}</td>

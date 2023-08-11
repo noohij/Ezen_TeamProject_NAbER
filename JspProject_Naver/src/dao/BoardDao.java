@@ -26,7 +26,7 @@ public class BoardDao {
 		
 		try {
 			String sql = "SELECT BNO, TITLE, CONTENTS"
-					+ ", USER_NAME, MOD_DATE, CRE_DATE";
+					+ " , USER_NAME, MOD_DATE, CRE_DATE";
 			sql += " FROM BOARD";
 			sql += " ORDER BY BNO DESC";
 			
