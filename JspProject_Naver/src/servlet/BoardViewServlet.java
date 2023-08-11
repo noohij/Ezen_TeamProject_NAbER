@@ -2,7 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -15,48 +17,68 @@ import javax.servlet.http.HttpServletResponse;
 import dao.BoardDao;
 import dto.BoardDto;
 
-
 @WebServlet("/board/view")
 public class BoardViewServlet extends HttpServlet{
-
-	private static final long serialVersionUID = 1L;
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//conn 객체 생성
+	protected void doGet(HttpServletRequest req
+			, HttpServletResponse res)
+					throws ServletException, IOException {
 		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String bNo = "";
+
+		RequestDispatcher rd = null;
 		
 		try {
-			ServletContext sc = this.getServletContext();
+			bNo = req.getParameter("bno");
+			int no = Integer.parseInt(bNo);
 			
+			ServletContext sc = this.getServletContext();
+						
 			conn = (Connection)sc.getAttribute("conn");
 			
 			BoardDao boardDao = new BoardDao();
 			boardDao.setConnection(conn);
 			
-			ArrayList<BoardDto> boardList = null;
+			BoardDto boardDto = boardDao.boardView(no);
 			
-			boardList = (ArrayList<BoardDto>)boardDao.selectList();
-			
-			req.setAttribute("boardList", boardList);
+			req.setAttribute("boardDto", boardDto);
 			
 			res.setContentType("text/html");
 			res.setCharacterEncoding("UTF-8");
 			
-			RequestDispatcher dispatcher = 
-					req.getRequestDispatcher("/board/NoticeBoard.jsp");
-			
-			dispatcher.include(req, res);
-
+			rd = req.getRequestDispatcher("./BoardView.jsp");
+			rd.forward(req, res);
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			req.setAttribute("error", e);
-			req.setAttribute("msg", "my sorry");
-			RequestDispatcher dispatcher = 
-					req.getRequestDispatcher("/Error.jsp");
+			e.printStackTrace();
 			
-			dispatcher.forward(req, res);
-		} 
-	}
+			req.setAttribute("error", e);
+			rd = req.getRequestDispatcher("./Error.jsp");
+			
+			rd.forward(req, res);
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		} // finally end
+
+	} // doGet end
 }

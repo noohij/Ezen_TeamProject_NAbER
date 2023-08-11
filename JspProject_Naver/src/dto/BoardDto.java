@@ -30,6 +30,17 @@ public class BoardDto {
 		this.mod_date = mod_date;
 	}
 
+	
+
+	public BoardDto(String user_name, String title
+			, String user_email, String contents, String mod_pwd) {
+		super();
+		this.user_name = user_name;
+		this.title = title;
+		this.user_email = user_email;
+		this.contents = contents;
+		this.mod_pwd = mod_pwd;
+	}
 
 
 	public BoardDto(int bno, String user_name

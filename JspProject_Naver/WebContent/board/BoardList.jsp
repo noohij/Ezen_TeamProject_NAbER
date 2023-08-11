@@ -37,6 +37,7 @@
 </script>
 </head>
 
+	
 	<div id="parent_div">
 		<h3>List Sample</h3>
 		<div id="form_div">
@@ -65,7 +66,9 @@
 					<tr>
 						<td style="width: 50px;">${boardDto.bno}</td>
 						<td style="width: 150px;">${boardDto.title}</td>
-						<td id="contents_td">${boardDto.contents}</td>
+						<td id="contents_td">
+							<a href="./view?bno=${boardDto.bno}">
+						${boardDto.contents}</a></td>
 						<td style="width: 50px;">${boardDto.user_name}</td>
 						<td style="width: 90px;">${boardDto.mod_date}</td>
 						<td style="width: 90px;">${boardDto.cre_date}</td>
