@@ -4,71 +4,71 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>네이버 : 회원가입</title>
-<style type="text/css">
-.termBox {
-	width: 400px;
-	height: 70px;
-	padding: 15px;
-	margin: 9px 0 0 32px;
-	overflow: scroll;
-	overflow-x: hidden;
-	padding: 15px;
-	border-radius: 6px;
-	border: 1px solid #d6d6d6;
-}
-
-.required {
-	color: #09AA5C;
-}
-
-.optional {
-	color: #929294;
-}
-
-.arrow {
-	width: 12px;
-	height: 16px;
-}
-</style>
-
-<script type="text/javascript">
-	window.onload = function() {
-
-		var termList = document.getElementsByTagName('input');
-		var selectAllObj = termList[0];
-		var nextButtonObj = document.getElementById('nextButton');
-
-		// 약관 1, 2 동의 시 다음 버튼 활성화(2->1 순 체크)
-		termList[1].addEventListener('change', function() {
-			if (termList[1].checked && termList[2].checked) {
-				nextButtonObj.disabled = false;
-				nextButtonObj.style.backgroundColor = "#09AA5C"; // 활성화 시 배경색 초록색
-			} else {
-				nextButtonObj.disabled = true;
-				nextButtonObj.style.backgroundColor = "#8990a0"; // 비활성화 시 배경색 흰색
-			}
-		}); // end of termList[1].addEventListener
-		// 약관 1, 2 동의 시 다음 버튼 활성화(1->2 순 체크)
-		termList[2].addEventListener('change', function() {
-			if (termList[1].checked && termList[2].checked) {
-				nextButtonObj.disabled = false;
-				nextButtonObj.style.backgroundColor = "#09AA5C"; // 활성화 시 배경색 초록색
-			} else {
-				nextButtonObj.disabled = true;
-				nextButtonObj.style.backgroundColor = "#8990a0"; // 비활성화 시 배경색 흰색
-			}
-		}); // end of termList[2].addEventListener
-
-		// 전체 동의기능
-		selectAllObj.addEventListener('change', function() {
-			for (var i = 1; i < termList.length; i++) {
-				termList[i].checked = selectAllObj.checked;
-			}
-		});
-
-	} // end of window.onload
-</script>
+	<title>네이버 : 회원가입</title>
+	<style type="text/css">
+		.termBox {
+			width: 400px;
+			height: 70px;
+			padding: 15px;
+			margin: 9px 0 0 32px;
+			overflow: scroll;
+			overflow-x: hidden;
+			padding: 15px;
+			border-radius: 6px;
+			border: 1px solid #d6d6d6;
+		}
+		
+		.required {
+			color: #09AA5C;
+		}
+		
+		.optional {
+			color: #929294;
+		}
+		
+		.arrow {
+			width: 12px;
+			height: 16px;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		window.onload = function() {
+	
+			var termList = document.getElementsByTagName('input');
+			var selectAllObj = termList[0];
+			var nextButtonObj = document.getElementById('nextButton');
+	
+			// 약관 1, 2 동의 시 다음 버튼 활성화(2->1 순 체크)
+			termList[1].addEventListener('change', function() {
+				if (termList[1].checked && termList[2].checked) {
+					nextButtonObj.disabled = false;
+					nextButtonObj.style.backgroundColor = "#09AA5C"; // 활성화 시 배경색 초록색
+				} else {
+					nextButtonObj.disabled = true;
+					nextButtonObj.style.backgroundColor = "#8990A0"; // 비활성화 시 배경색 회색
+				}
+			}); // end of termList[1].addEventListener
+			// 약관 1, 2 동의 시 다음 버튼 활성화(1->2 순 체크)
+			termList[2].addEventListener('change', function() {
+				if (termList[1].checked && termList[2].checked) {
+					nextButtonObj.disabled = false;
+					nextButtonObj.style.backgroundColor = "#09AA5C"; // 활성화 시 배경색 초록색
+				} else {
+					nextButtonObj.disabled = true;
+					nextButtonObj.style.backgroundColor = "#8990A0"; // 비활성화 시 배경색 회색
+				}
+			}); // end of termList[2].addEventListener
+	
+			// 전체 동의기능
+			selectAllObj.addEventListener('change', function() {
+				for (var i = 1; i < termList.length; i++) {
+					termList[i].checked = selectAllObj.checked;
+				}
+			});
+	
+		} // end of window.onload
+	</script>
 
 </head>
 
@@ -77,7 +77,7 @@
 	<div class="inner" style="width: 500px; margin: 0px auto">
 
 		<div class="header">
-			<a href="http://www.naver.com"> <img src="./images/naverLogo.PNG">
+			<a href="http://www.naver.com"> <img src="../images/naverLogo.PNG">
 			</a>
 			<div class="langSelect" style="float: right">
 				<select>
@@ -99,7 +99,7 @@
 			<div id="check2">
 				<input type="checkbox" id="term1" name="" value=""> <label
 					for="term2"> <span class="required">[필수]</span> 네이버 이용약관
-				</label> <a href=""><img src="./images/arrowRight.JPG" class="arrow"></a>
+				</label> <a href=""><img src="../images/arrowRight.JPG" class="arrow"></a>
 				<div class="termBox">여러분을 환영합니다. 네이버 서비스 및 제품(이하 ‘서비스’)을 이용해
 					주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하
 					‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버
@@ -113,7 +113,7 @@
 					for="term3"> <span class="required">[필수]</span> 개인정보 수집 및
 					이용
 				</label> <a href="http://www.naver.com"><img
-					src="./images/arrowRight.JPG" class="arrow"></a> <a
+					src="../images/arrowRight.JPG" class="arrow"></a> <a
 					href="http://www.naver.com" style="margin-left: 100px;">어린이용 안내</a>
 				<div class="termBox">개인정보보호법에 따라 네이버에 회원가입 신청하시는 분께 수집하는 개인정보의
 					항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을
@@ -135,7 +135,7 @@
 			<div id="check5">
 				<input type="checkbox" id="term4" name="" value=""> <label
 					for="term5"> <span class="optional">[선택]</span>위치기반서비스 이용약관
-				</label> <a href=""><img src="./images/arrowRight.JPG" class="arrow"></a>
+				</label> <a href=""><img src="../images/arrowRight.JPG" class="arrow"></a>
 				<div class="termBox">위치기반서비스 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을
 					포함하는 네이버 위치기반 서비스를 이용할 수 있습니다. 제 1 조 (목적) 이 약관은 네이버 주식회사 (이하 “회사”)가
 					제공하는 위치기반서비스와 관련하여 회사와 개인위치정보주체와의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을
@@ -160,7 +160,8 @@
 
 			<div style="clear: right">
 				<input type="submit" value="다음" id="nextButton"
-					style="width: 450px; height: 50px; background-color: #09AA5C; color: white; border: none; border-radius: 6px;">
+					style="width: 450px; height: 50px; background-color: #8990A0;
+					 color: white; border: none; border-radius: 6px;">
 			</div>
 		</form>
 	</div>
