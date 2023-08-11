@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class MemberAddServlet
  */
 @WebServlet("/join/agree")
-public class JoinServlet extends HttpServlet {
+public class JoinAgreeServlet extends HttpServlet {
     
 	// 약관 동의 화면
 	@Override
@@ -30,8 +30,8 @@ public class JoinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req
 			, HttpServletResponse res) throws ServletException, IOException {
 		
-		res.sendRedirect("./JoinMyInfo.jsp");
-			
+		res.sendRedirect("./myInfo");
+		
 	}
 
 }
