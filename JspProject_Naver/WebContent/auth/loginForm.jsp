@@ -31,12 +31,12 @@
 		.logo{
 			margin-left: 135px;
 		}
-		#id:focus{
+		#id input:focus{
 			border-color: rgb(3, 199, 90);			
 			outline: none;
 		}
 		
-		#pwd:focus{
+		#password input:focus{
 			border-color: #2DB400;			
 			outline: none;
 		}
