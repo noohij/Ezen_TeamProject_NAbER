@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -57,9 +58,9 @@ public class JoinMyInfoServlet extends HttpServlet {
 			memberDto.setEmail(email);
 			memberDto.setName(name);
 			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
-			String birthdayStr2 = dateFormat.format(birthdayStr);
-			java.sql.Date birthday = java.sql.Date.valueOf(birthdayStr2);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			java.util.Date parsedDate = sdf.parse(birthdayStr);
+			java.util.Date birthday = new java.sql.Date(parsedDate.getTime());
 			
 			memberDto.setBirthday(birthday);
 			memberDto.setTelecom(telecom);
@@ -81,7 +82,7 @@ public class JoinMyInfoServlet extends HttpServlet {
 			
 			resultNum = memberDao.memberInsert(memberDto);
 			
-			res.sendRedirect("../LoginServlet");
+			res.sendRedirect("../loginForm");
 	
 			
 		} catch (Exception e) {

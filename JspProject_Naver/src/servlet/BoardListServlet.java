@@ -27,10 +27,13 @@ public class BoardListServlet extends HttpServlet{
 		//conn 객체 생성
 		Connection conn = null;
 		
+		
 		try {
 			ServletContext sc = this.getServletContext();
 			
 			conn = (Connection)sc.getAttribute("conn");
+			
+			
 			
 			BoardDao boardDao = new BoardDao();
 			boardDao.setConnection(conn);
