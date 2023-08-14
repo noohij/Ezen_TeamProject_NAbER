@@ -32,15 +32,20 @@
 	
 </style>
 <script type="text/javascript">
-	
+	var num = 0;
+	function pagingFnc(x) {
+// 		alert(x.innerHTML);
+		num = x;
+
+	}
 </script>
 </head>
-
-	
+	<c:set var="num" value="num" scope="page"></c:set>
+<body>
 	<div id="parent_div">
 		<h3>List Sample</h3>
 		<div id="form_div">
-			<form action="post" style="text-align: right">
+			<form action="./list" method="post" style="text-align: right">
 			<select name="searchType">
 				<option value="title">제목</option>
 				<option value="contents">내용</option>
@@ -60,7 +65,11 @@
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
-				<c:forEach var="boardDto" items="${boardList}" end="5">
+				<c:set var="pagesSet" value="9" scope="request"/>
+				
+				<c:forEach var="boardDto"
+					items="${boardList}" 
+						begin="${pagesSet - 9}" end="${pagesSet}">
 					<tr>
 						<td style="width: 50px;">${boardDto.bno}</td>
 						<td style="width: 150px;">${boardDto.title}</td>
@@ -73,19 +82,20 @@
 					</tr>
 				</c:forEach>
 			</table>
-
-				<c:forEach var="pagesNum" begin="1" end="5">
-					<a href="" style="margin: auto;">${pagesNum}</a>
-				</c:forEach>
-
+			<div style="margin-left: 400px;">
+				<form action=".list" method="post">
+					<c:forEach var="pagesNum" begin="1" end="${pages}">
+					<input>
+					<a onclick="pagingFnc(this);">${pagesNum}</a>
+				
+					</c:forEach>
+				</form>
+			</div>
 		</div>
 		<div>
 			<button id="BoardAdd_Button" 
 				onclick="location ='./add'">글 쓰기</button>
 		</div>
 	</div>
-
-<body>
-
 </body>
 </html>

@@ -41,6 +41,21 @@ public class BoardListServlet extends HttpServlet{
 			
 			req.setAttribute("boardList", boardList);
 			
+			// 페이지 수 저장하기
+			// 소수점으로 나눠지기 때문에 + 1
+			
+//			if (req.getParameter("num") == null) {
+//				System.out.println("안됨");
+//			}else {
+//				int num = Integer.parseInt(req.getParameter("num"));
+//				System.out.println(num);
+//			}
+			
+			
+			int pages = (boardList.size() / 10) + 1;
+//			System.out.println(pages);
+			req.setAttribute("pages", pages);
+			
 			res.setContentType("text/html");
 			res.setCharacterEncoding("UTF-8");
 			
