@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BoardDao;
 import dto.BoardDto;
@@ -26,7 +27,6 @@ public class BoardListServlet extends HttpServlet{
 		// TODO Auto-generated method stub
 		//conn 객체 생성
 		Connection conn = null;
-		
 		
 		try {
 			ServletContext sc = this.getServletContext();
@@ -44,20 +44,24 @@ public class BoardListServlet extends HttpServlet{
 			
 			req.setAttribute("boardList", boardList);
 			
+			int pages = 1;
+			if (req.getParameter("pages") == null) {
+				pages = 5;
+				int pagesSet = 5;
+				
+				req.setAttribute("pagesSet", pagesSet);
+			}else {
+				pages = Integer.parseInt(req.getParameter("pages"));
+				int pagesSet = 5 * pages;
+				
+				req.setAttribute("pagesSet", pagesSet);
+			}
+			
+			
 			// 페이지 수 저장하기
 			// 소수점으로 나눠지기 때문에 + 1
-			
-//			if (req.getParameter("num") == null) {
-//				System.out.println("안됨");
-//			}else {
-//				int num = Integer.parseInt(req.getParameter("num"));
-//				System.out.println(num);
-//			}
-			
-			
-			int pages = (boardList.size() / 10) + 1;
-//			System.out.println(pages);
-			req.setAttribute("pages", pages);
+			int totalPages = (boardList.size() / 5) + 1;
+			req.setAttribute("totalPages", totalPages);
 			
 			res.setContentType("text/html");
 			res.setCharacterEncoding("UTF-8");

@@ -170,7 +170,7 @@
 				<input type="checkbox" id="keeping" name="keep" value="off">
 					로그인 상태 유지
 				<%
-// 					session.getAttribute("errormsg");
+					session.getAttribute("errormsg");
 				%>
 				
 				</label>

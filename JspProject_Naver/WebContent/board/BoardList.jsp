@@ -32,15 +32,14 @@
 	
 </style>
 <script type="text/javascript">
-	var num = 0;
 	function pagingFnc(x) {
-// 		alert(x.innerHTML);
-		num = x;
+		var num = x.innerHTML; 
+		location.href = "./list?pages="+ num;
 
-	}
+		}
 </script>
 </head>
-	<c:set var="num" value="num" scope="page"></c:set>
+
 <body>
 	<div id="parent_div">
 		<h3>List Sample</h3>
@@ -65,11 +64,11 @@
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
-				<c:set var="pagesSet" value="9" scope="request"/>
+<%-- 				<c:set var="pagesSet" value="9" scope="request"/> --%>
 				
 				<c:forEach var="boardDto"
 					items="${boardList}" 
-						begin="${pagesSet - 9}" end="${pagesSet}">
+						begin="${pagesSet-5}" end="${pagesSet}">
 					<tr>
 						<td style="width: 50px;">${boardDto.bno}</td>
 						<td style="width: 150px;">${boardDto.title}</td>
@@ -84,10 +83,10 @@
 			</table>
 			<div style="margin-left: 400px;">
 				<form action=".list" method="post">
-					<c:forEach var="pagesNum" begin="1" end="${pages}">
-					<input>
+					<c:forEach var="pagesNum" begin="1" end="${totalPages}">
+					
 					<a onclick="pagingFnc(this);">${pagesNum}</a>
-				
+					
 					</c:forEach>
 				</form>
 			</div>
