@@ -13,14 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
+import javax.xml.ws.Dispatch;
 
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.ha.backend.Sender;
 
 import dao.MemberDao;
 import dto.MemberDto;
+import sun.rmi.server.Dispatcher;
 
-@WebServlet(value = "/loginForm")
+@WebServlet("/auth/loginForm")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -29,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//jsp에서 정보 받을 객체 만들기
-		RequestDispatcher rd = req.getRequestDispatcher("./auth/loginForm.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/auth/loginForm.jsp");
 		rd.forward(req, res); // 객체에 요청, 반응 수신
 	}
 
@@ -52,30 +54,31 @@ public class LoginServlet extends HttpServlet {
 			
 			MemberDto memberDto = memberDao.memberExist(id, pwd);//id,pwd매개 변수로 가져가서 exist 돌린 애들을 리턴값 반환해주는 dto에 담기
 		
+			HttpSession session = req.getSession();
+			
+			String error = "왜 안됨";
 			
 		//회원이 존재한다면 세션에 담고 게시판 페이지로 이동
-		if (memberDto == null) {
-			HttpSession session = req.getSession();
+		if (memberDto != null) {
+
+//			memberDto = res.getParameter("memberDto");
 			
 			session.setAttribute("member", memberDto);
-			
-			res.sendRedirect("./board/list");
+			res.sendRedirect("../board/list");
 		}
 			
-		//회원이 없다면 로그인 페이지로 이동해서 메세지 띄우기
-		else if (memberDto != null) {
-			HttpSession session = req.getSession();
+			//회원이 없다면 로그인 페이지로 이동해서 메세지 띄우기
+		else{
 			
-			session.setAttribute("errormsg", 
-					"아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.\r\n" + 
-					"입력하신 내용을 다시 확인해주세요.");
-			res.sendRedirect("./auth/loginForm.jsp");//./auth/
+//			res.sendRedirect("../auth/loginForm");
+//			req.setAttribute(error, "dsdsdsasdsada");
 			
-		}
-		
+//			req.
+//			res.sendRedirect("../auth/loginForm");
+//			res.sendRedirect("../auth/loginForm");
 			
-	
-					
+		}			
+
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

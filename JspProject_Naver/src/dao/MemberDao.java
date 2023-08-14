@@ -97,6 +97,8 @@ public class MemberDao {
 
 			MemberDto memberDto = new MemberDto();
 
+			
+			
 			if (rs.next()) {
 				pwd = rs.getString("pwd");
 				id = rs.getString("id");
