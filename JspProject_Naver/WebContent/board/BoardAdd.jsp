@@ -82,7 +82,8 @@
 				<td colspan="2" style="padding-left: 350px;">
 					<input type='submit' value='글쓰기'>
 					<input type='reset' value='다시작성'>
-					<input type="button" value="목록보기">
+					<input type="button"
+						onclick="location ='./list'" value="목록보기">
 				</td>
 				</tr>
 			</table>

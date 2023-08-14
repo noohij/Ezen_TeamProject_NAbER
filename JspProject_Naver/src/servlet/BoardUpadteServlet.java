@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.BoardDao;
 import dto.BoardDto;
 
+@WebServlet("/board/update")
 public class BoardUpadteServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req
@@ -47,7 +49,7 @@ public class BoardUpadteServlet extends HttpServlet{
 			res.setContentType("text/html");
 			res.setCharacterEncoding("UTF-8");
 			
-			rd = req.getRequestDispatcher("./BoardView.jsp");
+			rd = req.getRequestDispatcher("./BoardUpdate.jsp");
 			rd.forward(req, res);
 		
 		} catch (Exception e) {

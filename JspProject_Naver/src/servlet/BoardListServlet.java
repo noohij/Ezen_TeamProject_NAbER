@@ -34,7 +34,6 @@ public class BoardListServlet extends HttpServlet{
 			conn = (Connection)sc.getAttribute("conn");
 			
 			
-			
 			BoardDao boardDao = new BoardDao();
 			boardDao.setConnection(conn);
 			
@@ -55,6 +54,7 @@ public class BoardListServlet extends HttpServlet{
 				int pagesSet = 5 * pages;
 				
 				req.setAttribute("pagesSet", pagesSet);
+				
 			}
 			
 			

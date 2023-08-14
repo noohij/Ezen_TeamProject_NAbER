@@ -11,6 +11,7 @@
 		border: 1px solid gray;
  		border-collapse: collapse;
  		text-align: center;
+ 		
 	}
 	th{
 		border: 1px solid gray;
@@ -20,6 +21,7 @@
 	tr td{
 		border: 1px solid gray;
  		border-collapse: collapse;
+ 		
 	}
 	#parent_div{
 		margin-left: 490px;
@@ -27,9 +29,7 @@
 	}
 	#contents_td{
 		width: 480px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		
 	}
 	.ButtonClass{
 		background-image: linear-gradient(#dae6ec , #c2d0db);
@@ -37,8 +37,13 @@
 		border-radius: 3px;
 	}
 	a{
+		width: 480px;
 		text-decoration: none;
 		color: black;
+		overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        
 	}
 	
 </style>
@@ -83,7 +88,7 @@
 				
 				<c:forEach var="boardDto"
 					items="${boardList}" 
-						begin="${pagesSet-5}" end="${pagesSet}">
+						begin="${pagesSet-4}" end="${pagesSet}">
 					<tr>
 						<td style="width: 50px;">${boardDto.bno}</td>
 						<td style="width: 150px;">${boardDto.title}</td>

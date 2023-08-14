@@ -75,7 +75,7 @@
 				</tr>
 				<tr style="height: 600px;">
 					<td class="subjectClass">내용</td>
-					<td class="textClass">
+					<td>
 						<textarea >${boardDto.contents}
 						</textarea>
 					</td>
@@ -89,10 +89,10 @@
 				</tr>
 				<tr>
 					<td colspan="2" style="padding-left: 350px;">
-					<input type="button" 
-						onclick="location ='./add'" value="글쓰기">
+					<input type="button" value="글쓰기">
 					<input type="button" value="다시작성">
-					<input type="button" value="목록보기">
+					<input type="button"
+						onclick="location ='./list'" value="목록보기">
 					</td>
 				</tr>
 			</table>
