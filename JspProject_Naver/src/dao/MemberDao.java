@@ -98,11 +98,11 @@ public class MemberDao {
 			MemberDto memberDto = new MemberDto();
 
 			if (rs.next()) {
-//				email = rs.getString("email");
-				name = rs.getString("mname");
+				pwd = rs.getString("pwd");
+				id = rs.getString("id");
 
-//				memberDto.setEmail(email);
-				memberDto.setName(name);
+				memberDto.setEmail(pwd);
+				memberDto.setName(id);
 
 				return memberDto;
 			}
