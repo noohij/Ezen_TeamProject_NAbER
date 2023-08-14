@@ -81,4 +81,7 @@ public class BoardViewServlet extends HttpServlet{
 		} // finally end
 
 	} // doGet end
+	
+
 }
+
