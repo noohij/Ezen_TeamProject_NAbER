@@ -71,13 +71,13 @@
 		}
 
 		div::-webkit-scrollbar-thumb {
-		    height: 30%; /* 스크롤바의 길이 */
-		    background: #217af4; /* 스크롤바의 색상 */
+		    height: 30px; /* 스크롤바의 길이 */
+		    background: #8990a0; /* 스크롤바의 색상 */
 		    border-radius: 10px;
 		}		
 
 		div::-webkit-scrollbar-track {
-    		background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+    		background: #ffffff;  /*스크롤바 뒷 배경 색상*/
 /*     		https://gurtn.tistory.com/120 */
 		}
 		
@@ -90,6 +90,8 @@
 	        var termList = document.getElementsByTagName('input');
 	        var selectAllObj = termList[0];
 	        var nextButtonObj = document.getElementById('nextButton');
+	        
+	        nextButtonObj.disabled = true;
 		        
 	        // 전체 선택 기능
 	        selectAllObj.addEventListener('click', function() {
@@ -162,7 +164,7 @@
 	<div class="inner" style="width: 500px; margin: 0px auto">
 
 		<div class="header">
-			<a href="http://www.naver.com"> <img src="../images/naverLogo.PNG">
+			<a href="http://www.naver.com"> <img src="../images/naverLogo.PNG" style="width: 20%; height: 20%;">
 			</a>
 			<div class="langSelect" style="float: right;">
 				<select style="margin-right: 32px; border: none;">
@@ -211,9 +213,9 @@
 					<a href="http://www.naver.com">
 						<img src="../images/arrowRight.JPG" class="arrow">
 					</a>
-					<a href="http://www.naver.com" style="margin-left: 100px;">
-						어린이용 안내
-					</a>
+<!-- 					<a href="http://www.naver.com" style="margin-left: 100px;"> -->
+<!-- 						어린이용 안내 -->
+<!-- 					</a> -->
 					<div class="termBox"><span>개인정보보호법에 따라 네이버에 회원가입 
 					신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인
 					정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 
