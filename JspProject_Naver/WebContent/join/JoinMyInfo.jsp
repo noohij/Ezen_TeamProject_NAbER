@@ -14,8 +14,21 @@
 		    border: 0;
 		}
 		input {
+			width: 400px;
 			height: 40px;
-			margin: 5px 0px;
+			margin: 5px 0px 5px 40px;
+			border: none;
+		}
+		#idBlank {
+			width: 300px;
+		}
+		#naverDomain {
+			margin: 15px 0px;
+		}
+		#telecomBlank {
+			width: 400px;
+			height: 30px;
+			margin: 11px 0px 11px 40px;
 			border: none;
 		}
 		input[type=radio] {
@@ -28,7 +41,7 @@
 		}
 		
 		.boxList {
-			width: 400px;
+			width: 460px;
 			margin: 10px;
 			border-radius: 6px;
 	    	border: 1px solid #d6d6d6;
@@ -68,12 +81,19 @@
 			float: right;
 		}
 		#button {
-			margin-left: 10px; 
+			margin: 0px 0px 20px 10px;
+			position: fixed; bottom: 0;
+			width: 460px; height: 52px;
+			background-color: #09AA5C; color: #FFFFFF;
+		    border: 1px solid rgba(0,0,0,.05);
+		    border-radius: 6px;
+		    font-size: 18px;
+		    font-weight: 500;
+		    line-height: 22px;
 		}
 	</style>
 	
    	<script type="text/javascript">
-   	
 	</script>	
 </head>
 
@@ -90,7 +110,7 @@
 		<form method="post">
 			<div id="accountInfo" class="boxList">
 				<div id="idInput" class="infoRow">
-					<input type="text" placeholder="아이디" name="id">
+					<input type="text" placeholder="아이디" name="id" id="idBlank">
 					<div id="naverDomain">@naver.com</div>
 				</div>
 				<hr>
@@ -113,7 +133,7 @@
 				</div>
 				<hr>
 				<div id="telecomInput" class="infoRow">
-					<select name="telecom">
+					<select name="telecom" id="telecomBlank">
 						<option value="" selected disabled hidden>통신사 선택</option>
 						<option>SKT</option>
 						<option>KT</option>
@@ -133,7 +153,8 @@
 						</label>
 						<input type="radio" id="female" class="radioBtn" 
 							name="gender" value='여성'>
-						<label for="female" style="width: 49%; border-right: 1px solid #c6c6c6;">
+<!-- 						<label for="female" style="width: 49%; border-right: 1px solid #c6c6c6;"> -->
+						<label for="female" style="width: 49%;">
 							여자
 						</label>
 					</div>
@@ -161,11 +182,9 @@
 				<label for="agreeAll">[필수] 인증 약관 전체동의</label>
 			</div>
 			
-			<div id="button">
+			<div>
 				<input type="submit" value="인증요청"
-					style="width: 400px; height: 70px;
-							background-color: #09AA5C; color: #FFFFFF;
-					 		border: none; border-radius: 6px;">
+					id="button">
 			</div>
 		</form>
 		

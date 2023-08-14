@@ -121,8 +121,8 @@ public class MemberDto {
 
 
 
-	public void setBirthday(Date birthdayDate) {
-		this.birthday = birthdayDate;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 
