@@ -118,9 +118,7 @@
 		}	
 		
 	</script>
-<%-- 	<% --%>
-<!-- // 		String msg = (String)request.getAttribute("error"); -->
-<%-- 	%> --%>
+
 <header>
 	<div id="logo">
 		<img src="../images/naverLogo.PNG"
@@ -171,6 +169,10 @@
 			<label class="keepcheck">
 				<input type="checkbox" id="keeping" name="keep" value="off">
 					로그인 상태 유지
+				<%
+// 					session.getAttribute("errormsg");
+				%>
+				
 				</label>
 				<label class="keepcheck2"> IP보안
 					<input type="checkbox" id="switch">
