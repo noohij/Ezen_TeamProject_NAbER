@@ -118,9 +118,9 @@
 		}	
 		
 	</script>
-	<%
-		String msg = (String)request.getAttribute("error");
-	%>
+<%-- 	<% --%>
+<!-- // 		String msg = (String)request.getAttribute("error"); -->
+<%-- 	%> --%>
 <header>
 	<div id="logo">
 		<img src="../images/naverLogo.PNG"
