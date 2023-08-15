@@ -104,6 +104,9 @@
  		.copyright{
  			clear: both;
  		}
+ 		.findpwd{
+ 			float: right;
+ 		}
 	</style>	
 	<script type="text/javascript">
 		
@@ -117,10 +120,24 @@
 			pwdPutObj.value = "";
 		}	
 		
+// 		function fnc() {
+// 			var obj = document.getElementById("p");
+// 			obj.innerHTML = ${error}
+// 		}
+
+	 document.getElementById("loginButton").addEventListener("click", function(event) {
+        var id = document.getElementById("id").value;
+        var pwd = document.getElementById("pwd").value;
+
+        if (id === "" || pwd === "") {
+            document.getElementById("errorDiv").style.display = "none";
+            event.preventDefault();
+        }
+    });
+	
+	
 	</script>
-	<%
-		String msg = (String)request.getAttribute("error");
-	%>
+
 <header>
 	<div id="logo">
 		<img src="../images/naverLogo.PNG"
@@ -160,7 +177,7 @@
 <br>
 	<div class="panel">
 		<div>
-			<form action="../loginForm" method="post">
+			<form action="./loginForm" method="post">
 				<input type="text" class="idput" id="id" placeholder="아이디" name="id"
 				style="background-image:url('../images/id.PNG'); background-repeat: no-repeat;">
 		<div>
@@ -171,15 +188,33 @@
 			<label class="keepcheck">
 				<input type="checkbox" id="keeping" name="keep" value="off">
 					로그인 상태 유지
-				</label>
+			</label>
 				<label class="keepcheck2"> IP보안
 					<input type="checkbox" id="switch">
 				 	<span class="onf_btn"></span>
 			 	</label>
 			 	<br>
 			 	<br>
-			 	<input type="submit" value="로그인">
+			 	<br>
+			 	<br>
+			 	<input type="submit" value="로그인" id="loginButton">
 			</form>
+			<div id="errorDiv" class="error-message" style="display: block;">
+           		 로그인 실패 시 아이디 또는 비밀번호를 확인해주세요.
+        	</div>
+			
+			
+<%-- 			  <p>${sessionScope.message}</p> --%>
+			
+<%-- 				<%=request.getAttribute("error") %> --%>
+			
+<%-- 			<% String error = (String) request.getAttribute("error"); %> --%>
+<%-- 			<% if (error == null) { %> --%>
+<!-- 			<div class="error-message"> -->
+<%-- 			    ${error} --%>
+<!-- 			</div> -->
+<%-- 			<% } %> --%>
+			
 		</div>
 	</div>
 	
@@ -189,8 +224,11 @@
  	<br>
  	<br>
  	<br>
+ 	<br>
+ 	<br>
+ 	<br>
  	
- 	<button>비밀번호 찾기</button>
+ 	<button id="findpwd">비밀번호 찾기</button>
  	<button>아이디 찾기</button>
  	<button>회원가입</button>
 	<br>
