@@ -6,16 +6,26 @@
 <meta charset="UTF-8">
 <title>게시판 상세</title>
 <style type="text/css">
+	body{
+		background-color: #e1ffff;
+	}
 	table tr td{
 		border: 1px solid black;
 		border-collapse: collapse;
+		background-color: #b0dfe7;
+	}
+	.subjectClass{
+		text-align: center;
+	}
+	.textClass{
+		background-color: #e1ffff;
 	}
 	#parent_div{
 		margin-left: 490px;
 		margin-right: 490px;
 	}
-	#aTag_div{
-		border: 1px solid black;
+	#boardListViewLink{
+		text-align: right;
 	}
 	input{
 		
@@ -24,6 +34,9 @@
 		 width: 750px;
 		 height: 600px;
 		 resize: none;
+	}
+	a{
+		text-decoration: none;
 	}
 </style>
 <script type="text/javascript">
@@ -34,39 +47,47 @@
 	<div id="parent_div">
 		<h3 style="text-align: center;">글 쓰기</h3>
 		<div id="aTag_div">
-			<a href="./list" style="margin-left: 850px;">글 목록</a>
+			
 		</div>
 		<form action="add" method = "post">
 			<div id="table_div">
 		
 			<table>
 				<tr>
-					<td style="width: 100px;">이름</td>
-					<td style="width: 870px;"><input name="name" ></td>
+					<td  id="boardListViewLink" colspan="2">
+						<a href="./list" style="margin-left: 850px;">글 목록</a>
+					</td>
 				</tr>
 				<tr>
-					<td>제목</td>
-					<td ><input style="width: 700px;" name="title" ></td>
+					<td class="subjectClass" style="width: 100px;">이름</td>
+					<td class="textClass" style="width: 870px;"><input name="name" ></td>
 				</tr>
 				<tr>
-					<td>Email</td>
-					<td ><input style="width: 700px;" name="email" ></td>
-				</tr>
-				<tr style="height: 600px;">
-					<td>내용</td>
-					<td ><textarea name="contents"></textarea>
+					<td class="subjectClass">제목</td>
+					<td class="textClass"><input style="width: 700px;" name="title" ></td>
 				</tr>
 				<tr>
-					<td>비밀번호</td>
-					<td ><input style="width: 100px;" name="mod_pwd"></td>
+					<td class="subjectClass">Email</td>
+					<td class="textClass"><input style="width: 700px;" name="email" ></td>
 				</tr>
-				
+				<tr  style="height: 600px;">
+					<td class="subjectClass">내용</td>
+					<td class="textClass"><textarea name="contents"></textarea>
+				</tr>
+				<tr>
+					<td class="subjectClass">비밀번호</td>
+					<td class="textClass"><input style="width: 100px;" name="mod_pwd"></td>
+				</tr>
+				<tr>
+				<td colspan="2" style="padding-left: 350px;">
+					<input type='submit' value='글쓰기'>
+					<input type='reset' value='다시작성'>
+					<input type="button"
+						onclick="location ='./list'" value="목록보기">
+				</td>
+				</tr>
 			</table>
-			<div>
-				<input type='submit' value='글쓰기'>
-				<input type='reset' value='다시작성'>
-				<input type="button" value="목록보기">
-			</div>
+			
 		</div>
 		</form>
 	</div>

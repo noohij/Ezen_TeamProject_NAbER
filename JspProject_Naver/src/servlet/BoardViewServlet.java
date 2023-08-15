@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BoardDao;
 import dto.BoardDto;
@@ -30,7 +31,6 @@ public class BoardViewServlet extends HttpServlet{
 		String bNo = "";
 
 		RequestDispatcher rd = null;
-		
 		try {
 			bNo = req.getParameter("bno");
 			int no = Integer.parseInt(bNo);
@@ -81,4 +81,7 @@ public class BoardViewServlet extends HttpServlet{
 		} // finally end
 
 	} // doGet end
+	
+
 }
+
