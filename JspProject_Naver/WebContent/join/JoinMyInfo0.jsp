@@ -14,11 +14,6 @@
 			margin: 5px 0px 5px 40px;
 			border: none;
 		}
-		#agreeAll {
-			width: 30px;
-			height: 30px;
-			margin: 10px;
-		}
 		#idBlank {
 			width: 300px;
 		}
@@ -38,13 +33,8 @@
 		}
 		
 		input[type="radio"]:checked + label {
-			border: 1px solid #09aa5c;
+			border: 1px solid green;
 		}
-		
-		textarea:focus, input:focus{
-		    outline: none;
-		}
-		
 		.genderNationalitySelect label {
 			width: 100px;
 		}
@@ -79,12 +69,6 @@
 			font-size: 13px;
 		    line-height: 18px;
 		    color: #ff3f3f;
-		}
-		#under14ErrorMsg {
-			margin-left: 20px;
-			font-size: 13px;
-		    line-height: 18px;
-			color: #09AA5C;
 		}
 		#smallLabel{
 			width: 100px;
@@ -132,16 +116,7 @@
 	   	window.onload = function() {
 	   	}
 	   	
-	   	function idFocusFnc() {
-	   		
-	   		var idInputObj = document.getElementById("idBlank");
-	   		var idDivObj = document.getElementById("idInput");
-	   		
-	   		if (idDivObj.value != "" &&
-	   			idDivObj.getAttribute("style") != "border: 2px solid red") {
-	   			idDivObj.setAttribute("style", "border: 2px solid #09aa5c");
-			}
-		}
+	   	
 	   	
 	   	function idCheckFnc() {
 	   		
@@ -158,17 +133,6 @@
 			}
 		} 
 	   	
-		function pwdFocusFnc() {
-	   		
-	   		var pwdInputObj = document.getElementById("pwdBlank");
-	   		var pwdDivObj = document.getElementById("pwdInput");
-	   		
-	   		if (pwdDivObj.value != "" &&
-	   			pwdDivObj.getAttribute("style") != "border: 2px solid red") {
-	   			pwdDivObj.setAttribute("style", "border: 2px solid #09aa5c");
-			}
-		}
-	   	
 		function pwdCheckFnc() {
 	   		
 	   		var pwdInputObj = document.getElementById("pwdBlank");
@@ -181,43 +145,6 @@
 			} else {
 				noPwdErrorObj.setAttribute("style", "display: none");
 				pwdDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			}
-		}
-		
-		function emailFocusFnc() {
-	   		
-	   		var emailInputObj = document.getElementById("emailBlank");
-	   		var emailDivObj = document.getElementById("emailInput");
-	   		
-	   		if (emailDivObj.value != "" &&
-	   			emailDivObj.getAttribute("style") != "border: 2px solid red") {
-	   			emailDivObj.setAttribute("style", "border: 2px solid #09aa5c");
-			}
-		}
-		
-		function emailCheckFnc() {
-	   		
-	   		var emailInputObj = document.getElementById("emailBlank");
-	   		var noEmailErrorObj = document.getElementById("invalidEmailError");
-	   		var emailDivObj = document.getElementById("emailInput");
-	   		
-	   		if (emailInputObj.value == "") {
-				noEmailErrorObj.setAttribute("style", "display: block");
-				emailDivObj.setAttribute("style", "border: 2px solid red");
-			} else {
-				noEmailErrorObj.setAttribute("style", "display: none");
-				emailDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			}
-		}
-		
-		function nameFocusFnc() {
-	   		
-	   		var nameInputObj = document.getElementById("nameBlank");
-	   		var nameDivObj = document.getElementById("nameInput");
-	   		
-	   		if (nameDivObj.value != "" &&
-	   			nameDivObj.getAttribute("style") != "border: 2px solid red") {
-	   			nameDivObj.setAttribute("style", "border: 2px solid #09aa5c");
 			}
 		}
 		
@@ -235,32 +162,13 @@
 				nameDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
 			}
 		}
-		
-		function birthdayFocusFnc() {
-	   		
-	   		var birthdayInputObj = document.getElementById("birthdayBlank");
-	   		var birthdayDivObj = document.getElementById("birthdayInput");
-	   		
-	   		if (birthdayDivObj.value != "" &&
-	   			birthdayDivObj.getAttribute("style") != "border: 2px solid red") {
-	   			birthdayDivObj.setAttribute("style", "border: 2px solid #09aa5c");
-			}
-		}
 				
 		function birthdayCheckFnc() {
 				
 			var birthdayInputObj = document.getElementById("birthdayBlank");
 			var noBirthdayErrorObj = document.getElementById("noBirthdayError");
 			var birthdayDivObj = document.getElementById("birthdayInput");
-			var invalidBirthdayErrorObj = document.getElementById("invalidBirthdayError");
-			var under14BirthdayErrorObj = document.getElementById("under14BirthdayError");
-			
-			var date = new Date();
-		    var year = date.getFullYear();
-		    var month = ("0" + (1 + date.getMonth())).slice(-2);
-		    var day = ("0" + date.getDate()).slice(-2);
-		    var today = (year + month + day);
-			
+				
 			if (birthdayInputObj.value == "") {
 				noBirthdayErrorObj.setAttribute("style", "display: block");
 				birthdayDivObj.setAttribute("style", "border: 2px solid red");
@@ -268,42 +176,15 @@
 				noBirthdayErrorObj.setAttribute("style", "display: none");
 				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
 			}
-		
-			// 유효성 검사 1. 유효한 날짜
 			if (
 				parseInt(birthdayInputObj.value) < 19000000 ||
-				parseInt(birthdayInputObj.value) > today ||
 				parseInt((birthdayInputObj.value).substring(4, 6)) > 12 ||
 				parseInt((birthdayInputObj.value).substring(4, 6)) < 01 ||
 				parseInt((birthdayInputObj.value).substring((birthdayInputObj.value).length-2)) > 31 ||
 				parseInt((birthdayInputObj.value).substring((birthdayInputObj.value).length-2)) < 01
 			){
-				invalidBirthdayErrorObj.setAttribute("style", "display: block"); //색깔, 출력문 수정해야됨. 출력문 밑에 새로 쓰고 감췄다 열었다 하는거로
-				birthdayDivObj.setAttribute("style", "border: 2px solid red");
-			} else {
-				invalidBirthdayErrorObj.setAttribute("style", "display: none");
-				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			}
-			
-			// 유효성 검사 2. 14세 
-			if (today-(140000) < parseInt(birthdayInputObj.value)) {
-				under14BirthdayErrorObj.setAttribute("style", "display: block");
-				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			} else {
-				under14BirthdayErrorObj.setAttribute("style", "display: none");
-				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			}
-			//20500505 하면 정확한 날짜, 14세 미만 모두 출력됨
-		}
-		
-		function phoneNumFocusFnc() {
-	   		
-	   		var phoneNumInputObj = document.getElementById("phoneNumBlank");
-	   		var phoneNumDivObj = document.getElementById("phoneNumInput");
-	   		
-	   		if (phoneNumDivObj.value != "" &&
-	   			phoneNumDivObj.getAttribute("style") != "border: 2px solid red") {
-	   			phoneNumDivObj.setAttribute("style", "border: 2px solid #09aa5c");
+				noBirthdayErrorObj.setAttribute("style", "display: block"); //색깔, 출력문 수정해야됨. 출력문 밑에 새로 쓰고 감췄다 열었다 하는거로
+				birthdayDivObj.setAttribute("style", "border: 2px solid blue");
 			}
 		}
 		
@@ -340,36 +221,33 @@
 		<form method="post">
 			<div id="accountInfo" class="boxList">
 				<div id="idInput" class="infoRow">
-					<input type="text" placeholder="아이디" name="id" id="idBlank" onblur="idCheckFnc();" onfocus="idFocusFnc();">
+					<input type="text" placeholder="아이디" name="id" id="idBlank" onblur="idCheckFnc();">
 					<div id="naverDomain">@naver.com</div>
 				</div>
 				
 				<div id="pwdInput" class="infoRow">
-					<input type="text" placeholder="비밀번호" name="pwd" id="pwdBlank" onblur="pwdCheckFnc();" onfocus="pwdFocusFnc();">
+					<input type="text" placeholder="비밀번호" name="pwd" id="pwdBlank" onblur="pwdCheckFnc();">
 				</div>
 				
 				<div id="emailInput" class="infoRow">
-					<input type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일" name="email" id="emailBlank" onblur="emailCheckFnc();" onfocus="emailFocusFnc();">
+					<input type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일" name="email">
 				</div>
 			</div>
 			
 			<div id="noIdError" class="error" style="display:none">· 아이디: 필수 정보입니다.</div>
-			<div id="invalidIdError" class="error" style="display:none">· 아이디: 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</div>
 			<div id="noPwdError" class="error" style="display:none">· 비밀번호: 필수 정보입니다.</div>
-			<div id="invalidPwdError" class="error" style="display:none">· 비밀번호: 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.</div>
-			<div id="invalidEmailError" class="error" style="display:none">· 이메일: 이메일 주소가 정확한지 확인해 주세요.</div>
 			
 			<div id="personalInfo" class="boxList">
 				<div id="nameInput" class="infoRow">
-					<input type="text" placeholder="이름" name="name" id="nameBlank" onblur="nameCheckFnc();" onfocus="nameFocusFnc();">
+					<input type="text" placeholder="이름" name="name" id="nameBlank" onblur="nameCheckFnc();">
 				</div>
 				
 				<div id="birthdayInput" class="infoRow">
-					<input type="text" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();">
+					<input type="text" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" onblur="birthdayCheckFnc();">
 				</div>
 				
 				<div id="telecomInput" class="infoRow">
-					<select name="telecom" id="telecomBlank" onfocus="telecomFocusFnc();">
+					<select name="telecom" id="telecomBlank">
 						<option value="" selected disabled hidden>통신사 선택</option>
 						<option>SKT</option>
 						<option>KT</option>
@@ -409,16 +287,13 @@
 				</div>
 				
 				<div id="phoneNumInput" class="infoRow">
-					<input type="text" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();">
+					<input type="text" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" onblur="phoneNumCheckFnc();">
 				</div>
 			</div>
 			
 			<div id="noNameError" class="error" style="display:none">· 이름: 필수 정보입니다.</div>
 			<div id="noBirthdayError" class="error" style="display:none">· 생년월일: 필수 정보입니다.</div>
-			<div id="invalidBirthdayError" class="error" style="display:none">· 생년월일: 생년월일이 정확한지 확인해 주세요.</div>
-			<div id="under14BirthdayError" class="error" id="under14ErrorMsg" style="display:none;">생년월일: 만 14세 미만의 어린이는 보호자의 동의가 필요합니다.</div>
 			<div id="noPhoneNumError" class="error" style="display:none">· 휴대전화번호: 필수 정보입니다.</div>
-			<div id="invalidPhoneNumError" class="error" style="display:none">· 휴대전화번호: 휴대전화번호가 정확한지 확인해 주세요.</div>
 			
 			<div id="agreement" class="boxList" style="height: 50px;">
 				<input type="checkbox" id="agreeAll">
