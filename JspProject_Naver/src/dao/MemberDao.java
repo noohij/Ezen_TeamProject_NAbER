@@ -78,33 +78,38 @@ public class MemberDao {
 		ResultSet rs = null;
 
 		String sql = "";
-		sql += "SELECT ID, PWD";
+		sql += "SELECT ID, PWD, MNO, NAME, EMAIL";
 		sql += " FROM MEMBERS";
 		sql += " WHERE ID = ?";
 		sql += "AND PWD = ?";
 
-		String name = "";
 
 		try {
 			pstmt = connection.prepareStatement(sql);
 
-			int colIndex = 1;
-
-			pstmt.setString(colIndex++, id);
-			pstmt.setString(colIndex, pwd);
-
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			
+			
 			rs = pstmt.executeQuery();
 
 			MemberDto memberDto = new MemberDto();
-
 			
+			int mno = 0;	
+			String email = "";	
+			String name = "";	
 			
 			if (rs.next()) {
-				pwd = rs.getString("pwd");
+				mno = Integer.parseInt(rs.getString("MNO")) ;
+				name = rs.getString("NAME");
 				id = rs.getString("id");
-
-				memberDto.setEmail(pwd);
-				memberDto.setName(id);
+				email = rs.getString("EMAIL");
+				// 사용자 번호, 사용자 이름, 사용자 아이디, 사용자 이메일 
+				memberDto.setMno(mno);
+				memberDto.setName(name);
+				memberDto.setId(id);
+				memberDto.setEmail(email);
+				
 
 				return memberDto;
 			}
@@ -132,4 +137,65 @@ public class MemberDao {
 		return null;
 	}
 
+//	public int login(String id, String pwd) throws SQLException {
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//
+//		String sql = "";
+//		sql += "SELECT PWD";
+//		sql += " FROM MEMBERS";
+//		sql += " WHERE ID = ?";
+////		sql += "AND PWD = ?";
+//
+//
+//		try {
+//			pstmt = connection.prepareStatement(sql);
+//
+////			int colIndex = 1;
+//
+//			pstmt.setString(1, id);
+////			pstmt.setString(colIndex, pwd);
+//
+//			rs = pstmt.executeQuery();
+//			
+//			if (rs.next()) {
+//				if(rs.getString(1).contentEquals(pwd)) {
+//					return 1;
+//				}else {
+//					return 0;
+//				}
+////				pwd = rs.getString("pwd");
+////				id = rs.getString("id");
+////
+////				memberDto.setEmail(pwd);
+////				memberDto.setName(id);
+////
+////				return memberDto;
+//			}
+//			return -1;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			try {
+//				if (rs != null) {
+//					rs.close();
+//				}
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			try {
+//				if (pstmt != null) {
+//					pstmt.close();
+//				}
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} // finally 종료
+//		return -2;
+//
+////		return null;
+//	}
+//	
 }

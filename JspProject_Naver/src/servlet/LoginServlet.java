@@ -45,9 +45,9 @@ public class LoginServlet extends HttpServlet {
 			String id = req.getParameter("id"); 
 			String pwd = req.getParameter("pwd");
 			
-			ServletContext sc = this.getServletContext();// 서블릿과 연결로 추정됨
+			ServletContext sc = this.getServletContext();// 서블릿과 연결
 			
-			conn = (Connection)sc.getAttribute("conn");//데이터베이스와 서블릿의 연결로 추정
+			conn = (Connection)sc.getAttribute("conn");//데이터베이스와 서블릿의 연결
 			
 			MemberDao memberDao = new MemberDao();//dao에서 sql 실행한 결과 가져와서 담기
 			memberDao.setConnection(conn);//dao와 db연결
@@ -70,12 +70,8 @@ public class LoginServlet extends HttpServlet {
 			//회원이 없다면 로그인 페이지로 이동해서 메세지 띄우기
 		else{
 			
-//			res.sendRedirect("../auth/loginForm");
+			res.sendRedirect("../auth/loginForm");
 //			req.setAttribute(error, "dsdsdsasdsada");
-			
-//			req.
-//			res.sendRedirect("../auth/loginForm");
-//			res.sendRedirect("../auth/loginForm");
 			
 		}			
 
