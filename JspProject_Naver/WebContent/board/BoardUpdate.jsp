@@ -45,58 +45,58 @@
 </head>
 
 	<div id="parent_div">
-		<h3 style="text-align: center;">글 쓰기</h3>
+		<h3 style="text-align: center;">내용 수정</h3>
 		<div id="table_div">
-			<table>
-				<tr>
-					<td id="boardListViewLink" colspan="2">
-						<a href="./list">글 목록</a>
-					</td>
-				</tr>
-				<tr>
-					<td class="subjectClass" style="width: 100px;">이름</td>
-					<td class="textClass" style="width: 870px;">
-						<input value="${boardDto.user_name}">
-					</td>
-				</tr>
-				<tr>
-					<td class="subjectClass">제목</td>
-					<td class="textClass">
-						<input style="width: 700px;"
-							  value="${boardDto.title}">
-					</td>
-				</tr>
-				<tr>
-					<td class="subjectClass">Email</td>
-					<td class="textClass">
-						<input style="width: 700px;"
-							value="${boardDto.user_email}">
-					</td>
-				</tr>
-				<tr style="height: 600px;">
-					<td class="subjectClass">내용</td>
-					<td>
-						<textarea >${boardDto.contents}
-						</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td class="subjectClass">비밀번호</td>
-					<td class="textClass">
-						<input type="password" 
-							maxlength="4" style="width: 100px;">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" style="padding-left: 350px;">
-					<input type="button" value="글쓰기">
-					<input type="button" value="다시작성">
-					<input type="button"
-						onclick="location ='./list'" value="목록보기">
-					</td>
-				</tr>
-			</table>
-			
+			<form action="./update?bno=${boardDto.bno}" method="post">
+				<table>
+					<tr>
+						<td id="boardListViewLink" colspan="2">
+							<a href="./list">글 목록</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="subjectClass" style="width: 100px;">이름</td>
+						<td class="textClass" style="width: 870px;">
+							<input value="${boardDto.user_name}">
+						</td>
+					</tr>
+					<tr>
+						<td class="subjectClass">제목</td>
+						<td class="textClass">
+							<input style="width: 700px;" name="title"
+								  value="${boardDto.title}">
+						</td>
+					</tr>
+					<tr>
+						<td class="subjectClass">Email</td>
+						<td class="textClass">
+							<input style="width: 700px;"
+								value="${boardDto.user_email}">
+						</td>
+					</tr>
+					<tr style="height: 600px;">
+						<td class="subjectClass">내용</td>
+						<td class="textClass">
+							<textarea name="contents">${boardDto.contents}</textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class="subjectClass">비밀번호</td>
+						<td class="textClass">
+							<input type="password" 
+								maxlength="4" style="width: 100px;">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="padding-left: 350px;">
+						<input type="submit" value="완료">
+						<input type="button" value="다시작성">
+						<input type="button"
+							onclick="location ='./list'" value="목록보기">
+						</td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 

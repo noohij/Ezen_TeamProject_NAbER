@@ -32,8 +32,9 @@ public class BoardUpadteServlet extends HttpServlet{
 		RequestDispatcher rd = null;
 		
 		try {
-			bNo = req.getParameter("bno");
+			bNo = req.getParameter("updateBoardBno");
 			int no = Integer.parseInt(bNo);
+			
 			
 			ServletContext sc = this.getServletContext();
 						
@@ -42,7 +43,7 @@ public class BoardUpadteServlet extends HttpServlet{
 			BoardDao boardDao = new BoardDao();
 			boardDao.setConnection(conn);
 			
-			BoardDto boardDto = boardDao.boardView(no);
+			BoardDto boardDto = boardDao.boardUpdate(no);
 			
 			req.setAttribute("boardDto", boardDto);
 			
@@ -81,4 +82,57 @@ public class BoardUpadteServlet extends HttpServlet{
 		} // finally end
 
 	} // doGet end
+	
+	@Override
+	protected void doPost(HttpServletRequest req
+			, HttpServletResponse res)
+					throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		BoardDto boardDto = null;
+		
+		Connection conn = null;
+
+		try {
+			String title = req.getParameter("title");
+			String contents = req.getParameter("contents");
+			String bno = req.getParameter("bno");
+
+			int no = Integer.parseInt(bno);
+			
+			System.out.println(no);
+			System.out.println(title);
+			System.out.println(contents);
+			boardDto = new BoardDto();
+			
+			boardDto.setBno(no);
+			boardDto.setTitle(title);
+			boardDto.setContents(contents);
+			
+			ServletContext sc = this.getServletContext();
+			
+			conn = (Connection)sc.getAttribute("conn");
+			
+			BoardDao memberDao = new BoardDao();
+			memberDao.setConnection(conn);
+			
+			int result = memberDao.boardUpdate(boardDto);
+			
+			if (result == 0) {
+				System.out.println("회원 정보 조회가 실패하였습니다.");
+			}
+			
+			res.sendRedirect("./list");
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			req.setAttribute("error", e);
+			RequestDispatcher dispatcher = 
+					req.getRequestDispatcher("./Error.jsp");
+			
+			dispatcher.forward(req, res);
+		}
+		
+	}
 }

@@ -91,8 +91,8 @@ public class BoardDao {
 		
 		BoardDto boardDto = null;
 		
-		String sql = "SELECT USER_NAME, TITLE, USER_EMAIL,";
-		sql += "BOARD_CONTENTS, MOD_PWD";
+		String sql = "SELECT BNO, USER_NAME, TITLE, USER_EMAIL,";
+		sql += "BOARD_CONTENTS, MOD_PWD, MNO";
 		sql += " FROM BOARD";
 		sql += " WHERE BNO = ?";
 		
@@ -104,22 +104,25 @@ public class BoardDao {
 			
 			rs = pstmt.executeQuery();
 			
-			
+			int bno = 0;
 			String name = "";
 			String title = "";
 			String email = "";
 			String contents = "";
 			String mod_pwd = "";
+			int mno = 0;
 
 			if (rs.next()) {
+				bno = rs.getInt("BNO");
 				name = rs.getString("USER_NAME");
 				title = rs.getString("TITLE");
 				email = rs.getString("USER_EMAIL");
 				contents = rs.getString("BOARD_CONTENTS");
 				mod_pwd = rs.getString("MOD_PWD");
+				mno = rs.getInt("MNO");
 				
-				boardDto = new BoardDto(name
-						, title, email, contents, mod_pwd);
+				boardDto = new BoardDto(bno, name
+						, title, email, contents, mod_pwd, mno);
 
 				
 			}
@@ -202,4 +205,110 @@ public class BoardDao {
 		return resultNum;
 
 	} // 회원목록 끝
+	
+	public BoardDto boardUpdate(int no) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		BoardDto boardDto = null;
+		
+		String sql = "SELECT BNO, USER_NAME, TITLE, USER_EMAIL,";
+		sql += "BOARD_CONTENTS, MOD_PWD, MNO";
+		sql += " FROM BOARD";
+		sql += " WHERE BNO = ?";
+		
+		
+		try {
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			int bNo = 0;
+			String name = "";
+			String title = "";
+			String email = "";
+			String contents = "";
+			String mod_pwd = "";
+			int mno = 0;
+
+			if (rs.next()) {
+				
+				bNo = rs.getInt("BNO");
+				name = rs.getString("USER_NAME");
+				title = rs.getString("TITLE");
+				email = rs.getString("USER_EMAIL");
+				contents = rs.getString("BOARD_CONTENTS");
+				mod_pwd = rs.getString("MOD_PWD");
+				mno = rs.getInt("MNO");
+				
+				boardDto = new BoardDto(bNo, name, title
+						, email, contents, mod_pwd, mno);
+			
+				
+			}
+			
+			return boardDto;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		} //finally end
+		
+		return boardDto;
+	}// 게시판 수정 끝
+	
+	
+	public int boardUpdate(BoardDto boardDto) throws Exception {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "";
+		sql = "UPDATE BOARD";
+		sql += " SET TITLE = ?, BOARD_CONTENTS = ?, MOD_DATE = SYSDATE";
+		sql += " WHERE BNO = ?";
+		
+		try {
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setString(1, boardDto.getTitle());
+			pstmt.setString(2, boardDto.getContents());
+			pstmt.setInt(3, boardDto.getBno());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw e;
+		}finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		} // finally 종료
+		
+		return result;
+	}
 }
