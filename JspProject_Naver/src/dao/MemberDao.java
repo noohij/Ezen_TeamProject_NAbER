@@ -136,46 +136,97 @@ public class MemberDao {
 
 		return null;
 	}
+	public String memberIdCert(String name, String phonenumber) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-//	public int login(String id, String pwd) throws SQLException {
+		String sql = "";
+		sql += "SELECT ID";
+		sql += " FROM MEMBERS";
+		sql += " WHERE name = ?";
+		sql += " AND phonenumber = ?";
+
+
+		try {
+			pstmt = connection.prepareStatement(sql);
+
+			pstmt.setString(1, name);
+			pstmt.setString(2, phonenumber);
+			
+			
+			rs = pstmt.executeQuery();
+
+//			MemberDto memberDto = new MemberDto();
+			
+			String id = "";	
+			if (rs.next()) {
+				id = rs.getString("ID");
+				// 사용자 번호, 사용자 이름, 사용자 아이디, 사용자 이메일 
+//				memberDto.setId(id);
+				
+				return id;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} // finally 종료
+		return null;
+
+		
+	}
+//	public String memberPwdCert(String name, String phonenumber) throws SQLException {
 //		PreparedStatement pstmt = null;
 //		ResultSet rs = null;
 //
 //		String sql = "";
-//		sql += "SELECT PWD";
+//		sql += "SELECT ID";
 //		sql += " FROM MEMBERS";
-//		sql += " WHERE ID = ?";
-////		sql += "AND PWD = ?";
+//		sql += " WHERE name = ?";
+//		sql += " AND phonenumber = ?";
 //
 //
 //		try {
 //			pstmt = connection.prepareStatement(sql);
 //
-////			int colIndex = 1;
-//
-//			pstmt.setString(1, id);
-////			pstmt.setString(colIndex, pwd);
-//
-//			rs = pstmt.executeQuery();
+//			pstmt.setString(1, name);
+//			pstmt.setString(2, phonenumber);
 //			
+//			
+//			rs = pstmt.executeQuery();
+//
+////			MemberDto memberDto = new MemberDto();
+//			
+//			String id = "";	
 //			if (rs.next()) {
-//				if(rs.getString(1).contentEquals(pwd)) {
-//					return 1;
-//				}else {
-//					return 0;
-//				}
-////				pwd = rs.getString("pwd");
-////				id = rs.getString("id");
-////
-////				memberDto.setEmail(pwd);
-////				memberDto.setName(id);
-////
-////				return memberDto;
+//				id = rs.getString("ID");
+//				// 사용자 번호, 사용자 이름, 사용자 아이디, 사용자 이메일 
+////				memberDto.setId(id);
+//				
+//				return id;
 //			}
-//			return -1;
+//			
 //		} catch (Exception e) {
 //			e.printStackTrace();
-//		} finally {
+//		} 
+//		finally {
 //			try {
 //				if (rs != null) {
 //					rs.close();
@@ -193,9 +244,10 @@ public class MemberDao {
 //				e.printStackTrace();
 //			}
 //		} // finally 종료
-//		return -2;
+//		return null;
 //
-////		return null;
+//		
 //	}
-//	
+
+
 }

@@ -8,26 +8,37 @@
 		Insert title here
 	</title>
 	<style type="text/css">
-		.objects{
-			float: right;
-			margin-left: none;
-			margin-right: 270px;
+		input:focus {
+			outline-color: rgb(3, 199, 90);			
 		}
-		#btn1{
-			padding:none;
-			width: 600px;
+		#naverId {
+			margin-top: 4px; 
+ 			margin-right: 18px;
+			padding-left: 50px;
+			width: 400px;
+			height: 50px;
+			background-image: url('../images/loginById.PNG');
+			background-repeat: no-repeat;
+			background-size: 20px;
+			background-position: left;
+			border-style: 1px solid;
+			border-color: gray;		
+			}
+		#next{
+			font-size:20px;
+			
+			text-align:center;
+			margin-top: 4px; 
+ 			margin-right: 18px;
+			width: 400px;
+			height: 50px;
+			border:none;
+			background-color: rgb(3, 199, 90);		
 		}
-		#btn2{
-			padding:none;
-			width: 600px;
+		#remember{
+			padding-right: 10px;
 		}
-		#btn3{
-			padding:none;
-			width: 600px;
-		}
-		.naveridimg{
-			margin: none;
-		}
+		
 	</style>
 	
 	<script type="text/javascript">
@@ -36,25 +47,27 @@
 	<a class="inheader">
 		<img src="../images/naverLogo.PNG"
 	 	width="168" height="50" alt="로고" class="logo">
+	 </a>
+	 <br>
+	 <br>
+	 <br>
 	 <div>비밀번호를 찾고자하는 아이디를 입력해주세요.</div>
 </head>
 <body>
+	<br>
+	<br>
+	<br>
 	<div class="panel">
-		<div>
-			<button id="btn1">
-				<img src="../images/loginById.PNG" width="20" class="naveridimg">
-				<div class="objects">네이버 아이디 또는 단체 아이디</div>
-			</button>
-		</div>
-		<div>
-			<button id="btn2">
-				<img src="../images/loginById.PNG" width="20" class="naveridimg">
-				<div class="objects">다음</div>
+		<input placeholder="네이버 아이디 또는 단체 아이디" id="naverId" name="naverId">
+	<div>
+			<input type="button" value="다음" id="next" name="next">
 			
-			</button>
 		</div>
-		<div>아이디가 기억나지 않는다면?</div>
-		<button>아이디 찾기</button>
+		<div id="atag">
+			<div style="float: left;" id="remember">아이디가 기억나지 않는다면?
+			</div>
+			<a>아이디 찾기</a>
+		</div>
 	</div>
 	
 	<div>NAVER | 회원정보 고객센터</div>

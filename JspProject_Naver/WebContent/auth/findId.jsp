@@ -37,11 +37,12 @@
 		<img src="../images/naverLogo.PNG"
 	 	width="168" height="50" alt="로고" class="logo">
 	 <div>찾으려는 아이디를 선택해주세요.</div>
+	 </a>
 </head>
 <body>
 	<div class="panel">
 		<div>
-			<button id="btn1">
+			<button type="button" id="btn1" onclick="location.href='./findNaverId.jsp'">
 				<img src="../images/loginById.PNG" width="20" class="naveridimg">
 				<div class="objects">네이버 아이디</div>
 			

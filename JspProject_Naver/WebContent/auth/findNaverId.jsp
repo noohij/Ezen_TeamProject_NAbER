@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -42,11 +43,14 @@
 	
 	<script type="text/javascript">
 	
+		
 	</script>
 		<div id="header">
 			<div id="header_findid">아이디 찾기</div>
 			<div id="header_findpwd">비밀번호 찾기</div>
 		</div>
+	<br>	
+	<br>	
 	
 </head>
 <body>
@@ -54,21 +58,51 @@
 		<div>아이디 찾기</div>
 		<div style="border: 1px solid black;"></div>
 		<div>아이디 찾는 방법을 선택해 주세요.</div>
-	
+	</div>
+	<br>
 	<div id="firstPannel">
 		<input type="radio">회원정보에 등록한 휴대전화로 인증
 		<div>회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받을 수 있습니다.</div>
-		이름<input type="text" id="inputName">
+		<br>
+<!-- 		<div id="nameWrapper"> -->
+			
+<!-- 		</div> -->
+		<div id="phonNumWrapper">
+			<form method="post" action="../FindNaverId">
+			이름<input type="text" id="inputName" name="user_name">
+			휴대전화<select name="identifyPhoneNuM">
+			<option value="">+82 대한민국</option>
+			</select>
+			<input placeholder="휴대전화번호" id="phoneNum" name="phoneNum">
+			<input type="submit" id="authSub" value="인증번호 받기" name="id">
+<%-- 			<%=request.getAttribute("id")%> --%>
+				${id}
+			</form>
+		</div>
+		<div>
+			<input value="인증번호 6자리 숫자 입력">
+		</div>
+		<div>인증번호가 오지 않나요?</div>
+		<br>
+		<br>
+		<input type= "radio">본인확인 이메일로 인증
+		
 	</div>
-	
+	<br>
+	<br>
+	<br>
 	<div id="secondPannel">
-	
+		<div>등록한 회원정보로 찾기 어려우시면, 본인 확인 후 아이디를 찾아드립니다.</div>
+		<br>
+		<input type="radio"> 본인 명의 휴대전화로 인증(본인 주민등록번호로 가입된 휴대전화)
+		<br>
+		<div>아이핀 인증</div>
+		<br>
 	</div>
-	
-	
-	
-	</div>
-	
+	<button type="button" style="background-color: white; border: 1px solid gray;">다음</button>
+	<br>
+	<br>
+	<br>
 	<div id="footer">
 		<div>아이디 찾기에 어려움이 있으신가요? 도움말 펼치기</div>
 		<div>아이디 찾기 시 문제가 있나요? 바로가기</div>

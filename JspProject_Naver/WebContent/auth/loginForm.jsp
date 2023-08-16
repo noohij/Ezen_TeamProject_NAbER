@@ -10,13 +10,15 @@
 	<style>
 		
 		.container{
-			width: 1365px;
-			height: 529px;
-			
+			width: 465px;
+			height: 300px;
+			margin-top: 100px;
+			margin-left: 700px;
+			border-radius: 5px;
 		}
 		header{
 			width: 1365px;
-			height: 60px;
+			height: 180px;
 			padding-bottom: none;
 		}
 		.inheader{
@@ -27,12 +29,14 @@
 		}
 		.language{
 			float: right;
-			margin-right: 800px; 
+			margin-right: 100px;
+			margin-top: 20px; 
 		}
 		.logo{
-			margin-left: 135px;
+ 			margin-top:100px; 
+  			margin-left: 850px;
 		}
-		#id input:focus{
+		input:focus{
 			border-color: rgb(3, 199, 90);			
 			outline: none;
 		}
@@ -108,6 +112,15 @@
  		.findpwd{
  			float: right;
  		}
+ 		.banner{
+ 			margin: auto;
+ 		}
+ 		.overBanner{
+ 			margin-left: 95px;
+ 		}
+ 		body {
+			height: 1000px;
+		}
 	</style>	
 	<script type="text/javascript">
 		
@@ -228,10 +241,16 @@
  	<br>
  	<br>
  	<br>
- 	
- 	<button id="findpwd">비밀번호 찾기</button>
- 	<button>아이디 찾기</button>
- 	<button>회원가입</button>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<div class="overBanner">
+	 	<a id="findpwd" onclick="location.href='./findPwd.jsp'" style="color: gray;">비밀번호 찾기 |</a>
+	 	<a type="button" id="findId" onclick="location.href='./findId.jsp'" style="color: gray;">아이디 찾기 |</a>
+	 	<a type="button" class="joinBtn" onclick="location.href='../join/agree'" style="color: gray;">회원가입</a>
+	</div>
+	<br>
+	<br>
 	<br>
 	<img alt="배너" src="../images/loginBanner.PNG" class="banner">
 	<br>
@@ -244,7 +263,7 @@
 	<br>
 	<footer>
 		<ul>
-			<li>이용약관</li>
+			<li >이용약관</li>
 			<li>|</li>
 			<li>개인정보처리방침</li>
 			<li>|</li>
