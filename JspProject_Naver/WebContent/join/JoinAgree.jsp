@@ -279,7 +279,7 @@
 
 			<div id="buttonDiv" style="clear: right; width: 500px; margin: 0px auto;">
 				<input type="submit" value="다음" id="nextButton"
-					style="width: 460px; height: 50px; margin: 20px 20px 20px 5px;/*버튼위치 미세조정*/
+					style="width: 460px; height: 50px; margin: 20px 20px 20px 5px;
 					background-color: #8990A0; color: white; border: none; border-radius: 6px;">
 			</div>
 		</form>

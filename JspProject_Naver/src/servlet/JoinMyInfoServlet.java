@@ -79,7 +79,7 @@ public class JoinMyInfoServlet extends HttpServlet {
 			
 			resultNum = memberDao.memberInsert(memberDto);
 			
-			res.sendRedirect("../loginForm");
+			res.sendRedirect("../auth/loginForm");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

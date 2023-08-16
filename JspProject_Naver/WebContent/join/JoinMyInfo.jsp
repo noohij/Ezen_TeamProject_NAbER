@@ -140,7 +140,7 @@
 		    font-weight: 500;
 		    line-height: 22px;
 		}
-		#agreeLabelId {
+		#agreeLabel {
 			font-size: 15px;
 		    font-weight: 600;
 		    line-height: 22px;
@@ -166,7 +166,16 @@
    	
 	   	window.onload = function() {
 	   		
-	   		
+			var agreeCheckObj = document.getElementById("agreeAll");
+			var nextButtonObj = document.getElementById("button");
+
+			agreeCheckObj.addEventListener('change', function() {
+				if (agreeCheckObj.checked) {
+					nextButtonObj.disabled = false;
+	         	} else {
+					nextButtonObj.disabled = true;
+				}
+	   		});
 	   	}
 	   	
 	   	function idFocusFnc() {
@@ -342,7 +351,7 @@
 				birthdayDivObj.setAttribute("style", "border: 2px solid red");
 			} else if (
 				today-(140000) < parseInt(birthdayInputObj.value) &&
-				parseInt(birthdayInputObj.value) < today
+				parseInt(birthdayInputObj.value) <= today
 			) {
 				noBirthdayErrorObj.setAttribute("style", "display: none");
 				invalidBirthdayErrorObj.setAttribute("style", "display: none");
@@ -508,7 +517,7 @@
 			
 			<div id="agreement" class="boxList" style="height: 50px;">
 				<input type="checkbox" id="agreeAll">
-				<label for="agreeAll" id="agreeLabelId"><span class="required">[필수]</span> 인증 약관 전체동의</label>
+				<label for="agreeAll" id="agreeLabel"><span class="required">[필수]</span> 인증 약관 전체동의</label>
 			</div>
 			
 			<div>
