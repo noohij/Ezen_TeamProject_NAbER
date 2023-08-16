@@ -40,7 +40,18 @@
 	}
 </style>
 <script type="text/javascript">
-	
+	function updateBoardFnc(bno) {
+		var pwdInputObj = document.getElementById("pwdInput");
+		if (pwdInputObj.value == ${boardDto.mod_pwd}) { // 비밀번호 비교
+			if (${boardDto.mno} == ${sessionScope.member.mno}) { // 작성자 번호 비교
+				location.href = "./update?updateBoardBno=" + bno;
+			}else{
+				alert("해당 게시판의 작성자가 아닙니다.");
+			}
+		}else{
+			alert("비밀 번호가 다릅니다.");
+		}
+	}
 </script>
 </head>
 
@@ -84,7 +95,8 @@
 				<tr>
 					<td class="subjectClass">비밀번호</td>
 					<td class="textClass">
-						<input type="password" maxlength="4" style="width: 100px;">
+						<input id="pwdInput" type="password" maxlength="4"
+						style="width: 100px;">
 					</td>
 				</tr>
 				<tr>
@@ -92,8 +104,8 @@
 					<input type="button" 
 						onclick="location ='./add'"  value="글쓰기">
 					<input type="button" 
-						onclick="location ='./update?pages=bno'${boardDto.bno}"
-						 value="다시작성">
+						onclick="updateBoardFnc(${boardDto.bno});"
+						value="다시작성">
 					<input type="button"
 						onclick="location ='./list'" value="목록보기">
 					</td>

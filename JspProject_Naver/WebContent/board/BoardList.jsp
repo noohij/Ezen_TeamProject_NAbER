@@ -21,9 +21,18 @@
 	tr td{
 		border: 1px solid gray;
  		border-collapse: collapse;
- 		
-	}
-	#parent_div{
+ 	}
+	#icon_div{
+		float:left;
+		border-radius:20px;
+		background:#6fcdc5;
+		width:4px;
+		height:20px;
+ 		border-bottom:2px solid #4a9392;
+ 		border-right:2px solid #4a9392; 
+		box-shadow:1px 1px 1px 1px #75d9cf inset, 1px 1px 1px 1px #dce4f1;
+ 	}
+	#BoardListParent_div{
 		margin-left: 490px;
 		margin-right: 490px;
 	}
@@ -51,6 +60,7 @@
 	function pagingFnc(x) {
 		var num = x.innerHTML; 
 		location.href = "./list?pages="+ num;
+// 							
 
 		}
 </script>
@@ -58,13 +68,12 @@
 
 <body>
 	<jsp:include page="/Header.jsp"/>
-	<div id="parent_div">
-		<div style="float:left; border-radius:20px; background:#6fcdc5;
-			width:4px; height:20px; border:1px solid #4a9392"> &nbsp;&nbsp;
+	<div id="BoardListParent_div">
+		<div id="icon_div"> &nbsp;&nbsp;
 		</div>
-		<h3>List Sample</h3>
+		<h3 style="padding-left: 10px;">List Sample</h3>
 		<hr>
-		<div id="form_div">
+		<div id="form_div" style="float: right; padding-bottom: 10px;">
 			<form action="./list" method="post" style="text-align: right">
 			<select name="searchType">
 				<option value="title">제목</option>
@@ -81,7 +90,7 @@
 					<th style="width: 50px;">번호</th>
 					<th style="width: 150px;">제목</th>
 					<th style="width: 480px;">내용</th>
-					<th style="width: 50px;">글쓴이</th>
+					<th style="width: 70px;">글쓴이</th>
 					<th style="width: 90px;">작성일</th>
 					<th style="width: 90px;">수정일</th>
 				</tr>
