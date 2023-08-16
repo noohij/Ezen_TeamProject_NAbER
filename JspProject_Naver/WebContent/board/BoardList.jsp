@@ -23,7 +23,7 @@
  		border-collapse: collapse;
  		
 	}
-	#parent_div{
+	#BoardListParent_div{
 		margin-left: 490px;
 		margin-right: 490px;
 	}
@@ -58,7 +58,7 @@
 
 <body>
 	<jsp:include page="/Header.jsp"/>
-	<div id="parent_div">
+	<div id="BoardListParent_div">
 		<div style="float:left; border-radius:20px; background:#6fcdc5;
 			width:4px; height:20px; border:1px solid #4a9392"> &nbsp;&nbsp;
 		</div>

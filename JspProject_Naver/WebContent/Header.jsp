@@ -7,25 +7,56 @@
 	<title>Header.jsp</title>
 	
 	<style type="text/css">
+		#HeaderParent_div{
+		margin-left: 490px;
+		margin-right: 490px;
+		}
 		div div{
 			display : inline-block;
 		}
 	</style>
 	<script type="text/javascript">
+ 		function checkLogoutFnc() {
+			var logoutChecked_trueObj
+				= document.getElementById("logoutChecked_true");
+			var logoutChecked_falseObj
+			= document.getElementById("logoutChecked_false");
+			
+			logoutChecked_trueObj.setAttribute("style", "display:inline");
+			logoutChecked_falseObj.setAttribute("style", "display:inline");
+		}
  		
+ 		function disappearFnc() {
+ 			var logoutChecked_trueObj
+			= document.getElementById("logoutChecked_true");
+			var logoutChecked_falseObj
+			= document.getElementById("logoutChecked_false");
+			
+			logoutChecked_trueObj.setAttribute("style", "display:none");
+			logoutChecked_falseObj.setAttribute("style", "display:none");
+		}
 	</script>
 </head>
 
 <body>
-	<div id="parent_div">
+	<div id="HeaderParent_div">
 		<div style="width: 400px;">
 			<img src="../images/naverLogo.PNG" alt="네이버 로고"
-				style="width: 150px; height: 50px;" onclick="location ='./board/list'">
+				style="width: 150px; height: 50px;" onclick="location ='./list'">
 		</div>
 		<div style="width: 400px; text-align: right; float: right;">
-			${sessionScope.member.name}님
 			
-			<button>로그아웃</button>
+			<form>
+			${sessionScope.member.name}님
+			<input id="logoutButton" type="button"
+				value="로그아웃" onclick="checkLogoutFnc();">
+			</form>
+			<label for="logoutButton">
+				<button id="logoutChecked_true" style="display: none;"
+					onclick="location ='../auth/logout'">예</button>
+				<button id="logoutChecked_false" style="display: none;"
+					onclick="disappearFnc();">아니오</button>
+			</label>
 		</div>
 	</div>
 </body>

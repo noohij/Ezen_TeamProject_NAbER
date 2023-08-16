@@ -170,17 +170,17 @@ public class BoardDao {
 			sql += "INSERT INTO BOARD";
 			sql += " (BNO, USER_NAME, TITLE, USER_EMAIL";
 			sql += ", BOARD_CONTENTS , MOD_PWD, CRE_DATE, MOD_DATE, MNO)";
-			sql += " VALUES(BOARD_NO_SEQ.NEXTVAL, '임찬우', ?";
-			sql += ", 'chanu@test.com', ?, ?, SYSDATE, SYSDATE, 3";
+			sql += " VALUES(BOARD_NO_SEQ.NEXTVAL, ?, ?";
+			sql += ", ?, ?, ?, SYSDATE, SYSDATE, 3";
 			sql += ")";
 			
 			pstmt = connection.prepareStatement(sql);
 			
 			int colIndex = 1;
 			
-//			pstmt.setString(colIndex++, name);
+			pstmt.setString(colIndex++, name);
 			pstmt.setString(colIndex++, title);
-//			pstmt.setString(colIndex++, email);
+			pstmt.setString(colIndex++, email);
 			pstmt.setString(colIndex++, contents);
 			pstmt.setString(colIndex, mod_pwd);
 			

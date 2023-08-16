@@ -60,23 +60,36 @@
 				</tr>
 				<tr>
 					<td class="subjectClass" style="width: 100px;">이름</td>
-					<td class="textClass" style="width: 870px;"><input name="name" ></td>
+					<td class="textClass" style="width: 870px;">
+						<input name="name" readonly="readonly" 
+							value="${sessionScope.member.name}">
+					</td>
 				</tr>
 				<tr>
 					<td class="subjectClass">제목</td>
-					<td class="textClass"><input style="width: 700px;" name="title" ></td>
+					<td class="textClass">
+						<input style="width: 700px;" name="title" >
+					</td>
 				</tr>
 				<tr>
 					<td class="subjectClass">Email</td>
-					<td class="textClass"><input style="width: 700px;" name="email" ></td>
+					<td class="textClass">
+						<input style="width: 700px;" name="email" 
+							readonly="readonly" 
+							value="${sessionScope.member.email}">
+						</td>
 				</tr>
 				<tr  style="height: 600px;">
 					<td class="subjectClass">내용</td>
-					<td class="textClass"><textarea name="contents"></textarea>
+					<td class="textClass">
+					<textarea name="contents"></textarea>
 				</tr>
 				<tr>
 					<td class="subjectClass">비밀번호</td>
-					<td class="textClass"><input style="width: 100px;" name="mod_pwd"></td>
+					<td class="textClass">
+						<input type="password" maxlength="4"
+							style="width: 100px;" name="mod_pwd">
+					</td>
 				</tr>
 				<tr>
 				<td colspan="2" style="padding-left: 350px;">
