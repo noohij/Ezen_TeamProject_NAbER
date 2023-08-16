@@ -57,6 +57,7 @@
 </head>
 
 <body>
+	<jsp:include page="/Header.jsp"/>
 	<div id="parent_div">
 		<div style="float:left; border-radius:20px; background:#6fcdc5;
 			width:4px; height:20px; border:1px solid #4a9392"> &nbsp;&nbsp;
@@ -115,6 +116,8 @@
 			<button id="BoardAdd_Button" class="ButtonClass"
 				onclick="location ='./add'">등록</button>
 		</div>
+		<jsp:include page="/Footer.jsp"></jsp:include>
 	</div>
+	
 </body>
 </html>
