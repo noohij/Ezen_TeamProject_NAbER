@@ -46,7 +46,7 @@ VALUES(BOARD_NO_SEQ.NEXTVAL, '임찬우', '오늘 태풍', 'chanu@test.com'
 );
 INSERT INTO BOARD
 VALUE(BNO, USER_NAME, TITLE, USER_EMAIL, BOARD_CONTENTS, MOD_PWD, CRE_DATE, MOD_DATE, MNO)
-VALUES(BOARD_NO_SEQ.NEXTVAL, '테스트', '오늘 태풍오늘 태풍오늘 태풍오늘 태풍오늘 태풍오늘 태풍오늘 태풍오늘 태풍오늘 태풍', 'test@test.com'
+VALUES(BOARD_NO_SEQ.NEXTVAL, '테스트', '오늘 태풍오늘 태풍오늘 태풍오늘 태풍', 'test@test.com'
 , '이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?이거는 어디까지 노출이 될까?', '1234', SYSDATE, SYSDATE, 4
 );
 INSERT INTO BOARD
