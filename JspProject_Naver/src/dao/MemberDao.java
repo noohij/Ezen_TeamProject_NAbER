@@ -192,35 +192,83 @@ public class MemberDao {
 
 		
 	}
-//	public String memberPwdCert(String name, String phonenumber) throws SQLException {
+	public String memberPwdCert(String name, String phonenumber) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "";
+		sql += "SELECT PWD";
+		sql += " FROM MEMBERS";
+		sql += " WHERE name = ?";
+		sql += " AND phonenumber = ?";
+
+
+		try {
+			pstmt = connection.prepareStatement(sql);
+
+			pstmt.setString(1, name);
+			pstmt.setString(2, phonenumber);
+			
+			
+			rs = pstmt.executeQuery();
+
+//			MemberDto memberDto = new MemberDto();
+			
+			String pwd = "";	
+			if (rs.next()) {
+				pwd = rs.getString("PWD");
+				// 사용자 번호, 사용자 이름, 사용자 아이디, 사용자 이메일 
+//				memberDto.setId(id);
+				
+				return pwd;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} // finally 종료
+		return null;
+	}
+//	public String memberPwdCertId(String id) throws SQLException {
 //		PreparedStatement pstmt = null;
 //		ResultSet rs = null;
 //
 //		String sql = "";
-//		sql += "SELECT ID";
+//		sql += "SELECT PWD";
 //		sql += " FROM MEMBERS";
-//		sql += " WHERE name = ?";
-//		sql += " AND phonenumber = ?";
+//		sql += " WHERE ID = ?";
 //
 //
 //		try {
 //			pstmt = connection.prepareStatement(sql);
 //
-//			pstmt.setString(1, name);
-//			pstmt.setString(2, phonenumber);
-//			
+//			pstmt.setString(1,id);
 //			
 //			rs = pstmt.executeQuery();
 //
-////			MemberDto memberDto = new MemberDto();
+//			String pwd = "";
 //			
-//			String id = "";	
 //			if (rs.next()) {
-//				id = rs.getString("ID");
-//				// 사용자 번호, 사용자 이름, 사용자 아이디, 사용자 이메일 
-////				memberDto.setId(id);
+//				pwd = rs.getString("PWD");
 //				
-//				return id;
+//				return pwd;
 //			}
 //			
 //		} catch (Exception e) {
@@ -248,6 +296,6 @@ public class MemberDao {
 //
 //		
 //	}
-
+	
 
 }

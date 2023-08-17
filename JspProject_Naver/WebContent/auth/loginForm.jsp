@@ -193,11 +193,12 @@
 		<div>
 			<form action="./loginForm" method="post">
 				<input type="text" class="idput" id="id" placeholder="아이디" name="id"
-				style="background-image:url('../images/id.PNG'); background-repeat: no-repeat;">
+				style="background-image:url('../images/id.PNG'); background-repeat: no-repeat;"
+				maxlength="41">
 		<div>
 				<input type="text" class="pwdput" id="pwd" placeholder="비밀번호" name="pwd"
 				style="background-image:url('../images/lock.PNG');
-				background-repeat: no-repeat;">
+				background-repeat: no-repeat;" maxlength="16">
 		</div>
 			<label class="keepcheck">
 				<input type="checkbox" id="keeping" name="keep" value="off">
