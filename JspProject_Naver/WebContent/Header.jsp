@@ -14,6 +14,31 @@
 		div div{
 			display : inline-block;
 		}
+		#logoutButton{
+			background-image: linear-gradient(#dae6ec , #c2d0db);
+			border: 0.1px solid black;
+			border-radius: 3px;
+			
+		}
+		#logoutChecked_true{
+			color: green;
+			font-size: 20px;
+			width: 150px;
+			height: 80px;
+			text-align: left;
+			background-image: url("../images/logoutTrue.PNG");
+			background-size: cover;
+		}
+		
+		#logoutChecked_false{
+			color: green;
+			font-size: 20px;
+			width: 150px;
+			height: 80px;
+			text-align: left;
+			background-image: url("../images/logoutFalse.PNG");
+ 			background-size: cover;
+		}
 	</style>
 	<script type="text/javascript">
  		function checkLogoutFnc() {

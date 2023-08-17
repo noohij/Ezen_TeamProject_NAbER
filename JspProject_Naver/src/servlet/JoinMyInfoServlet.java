@@ -38,7 +38,7 @@ public class JoinMyInfoServlet extends HttpServlet {
 			, HttpServletResponse res) throws ServletException, IOException {
 		
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+//		PreparedStatement pstmt = null;
 		
 		String id = req.getParameter("id");
 		String pwd = req.getParameter("pwd");
@@ -73,17 +73,13 @@ public class JoinMyInfoServlet extends HttpServlet {
 			conn = (Connection)sc.getAttribute("conn");
 			
 			MemberDao memberDao = new MemberDao();
-			
 			memberDao.setConnection(conn);
-			
 			
 			int resultNum = 0;
 			
-			
 			resultNum = memberDao.memberInsert(memberDto);
 			
-			res.sendRedirect("../loginForm");
-	
+			res.sendRedirect("../auth/loginForm");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

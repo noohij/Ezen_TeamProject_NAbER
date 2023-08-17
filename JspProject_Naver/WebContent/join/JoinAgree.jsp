@@ -67,19 +67,14 @@
 		    letter-spacing: -.43px;
 		}
 		div::-webkit-scrollbar {
-    		width: 8px;  /* 스크롤바의 너비 */
+    		width: 8px; 				 /* 스크롤바의 너비 */
 		}
 
 		div::-webkit-scrollbar-thumb {
-		    height: 30px; /* 스크롤바의 길이 */
-		    background: #8990a0; /* 스크롤바의 색상 */
+		    height: 30px; 				/* 스크롤바의 길이 */
+		    background: #8990a0; 		/* 스크롤바의 색상 */
 		    border-radius: 10px;
 		}		
-
-		div::-webkit-scrollbar-track {
-    		background: #ffffff;  /*스크롤바 뒷 배경 색상*/
-/*     		https://gurtn.tistory.com/120 */
-		}
 		
 	</style>
 	
@@ -279,7 +274,7 @@
 
 			<div id="buttonDiv" style="clear: right; width: 500px; margin: 0px auto;">
 				<input type="submit" value="다음" id="nextButton"
-					style="width: 460px; height: 50px; margin: 20px 20px 20px 5px;/*버튼위치 미세조정*/
+					style="width: 460px; height: 50px; margin: 20px 20px 20px 5px;
 					background-color: #8990A0; color: white; border: none; border-radius: 6px;">
 			</div>
 		</form>

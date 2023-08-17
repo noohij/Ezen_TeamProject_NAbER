@@ -8,11 +8,25 @@
 	
 	<style type="text/css">
 	
+		.radioDiv:has(.radioBtn:checked){
+/*    			background-color: #47C83E; */
+				border: 2px solid red;
+		}	
+	
 		input {
 			width: 400px;
 			height: 40px;
-			margin: 5px 0px 5px 40px;
+			margin: 5px 0px 5px 0px;
 			border: none;
+		}
+		form {
+			margin-top: 50px;
+		}
+		label {
+			font-size: 13px;
+		    line-height: 18px;
+		    color: #929294;
+		    text-align: center;
 		}
 		#agreeAll {
 			width: 30px;
@@ -28,7 +42,7 @@
 		#telecomBlank {
 			width: 400px;
 			height: 30px;
-			margin: 11px 0px 11px 40px;
+			margin: 11px 0px 11px 0px;
 			border: none;
 		}
 		input[type=radio] {
@@ -36,12 +50,17 @@
 			width: 1px;
 			height: 1px;
 		}
-		
-		input[type="radio"]:checked + label {
-			border: 1px solid #09aa5c;
+		input[type="number"]::-webkit-outer-spin-button,
+		input[type="number"]::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
 		}
 		
-		textarea:focus, input:focus{
+/* 		input[type="radio"]:checked + label { */
+/* 			border: 2px solid #09aa5c; */
+/* 		} */
+		
+		textarea:focus, input:focus, select:focus {
 		    outline: none;
 		}
 		
@@ -92,6 +111,7 @@
 		}
 		#naverDomain {
 			float: right;
+			padding: 0px 10px;
 			color: #767678;
 		}
 		#accountInfo {
@@ -105,6 +125,7 @@
 		}
 		#genderSelect, #nationalitySelect {
 			width: 100px;
+			border-radius: 6px;
 		}
 		#genderSelect {
 			width: 180px;
@@ -125,11 +146,42 @@
 		    font-weight: 500;
 		    line-height: 22px;
 		}
+		#agreeLabel {
+			font-size: 15px;
+		    font-weight: 600;
+		    line-height: 22px;
+		    letter-spacing: -.8px;
+		    color: #222;
+		    vertical-align: middle;
+		}
+		label>span {
+			color: #09AA5C;
+		}
+		img {
+			margin-left: 10px;
+			margin-top: 6px;
+		}
+		
+		#agreement {
+			height: 200px;
+		}
+		
 	</style>
 	
    	<script type="text/javascript">
    	
 	   	window.onload = function() {
+	   		
+			var agreeCheckObj = document.getElementById("agreeAll");
+			var nextButtonObj = document.getElementById("button");
+
+			agreeCheckObj.addEventListener('change', function() {
+				if (agreeCheckObj.checked) {
+					nextButtonObj.disabled = false;
+	         	} else {
+					nextButtonObj.disabled = true;
+				}
+	   		});
 	   	}
 	   	
 	   	function idFocusFnc() {
@@ -137,7 +189,7 @@
 	   		var idInputObj = document.getElementById("idBlank");
 	   		var idDivObj = document.getElementById("idInput");
 	   		
-	   		if (idDivObj.value != "" &&
+	   		if (idDivObj.value != "" &&			// 문제가 생긴 후 수정할 땐 초록으로 바뀌지 않음
 	   			idDivObj.getAttribute("style") != "border: 2px solid red") {
 	   			idDivObj.setAttribute("style", "border: 2px solid #09aa5c");
 			}
@@ -148,12 +200,27 @@
 	   		var idInputObj = document.getElementById("idBlank");
 	   		var noIdErrorObj = document.getElementById("noIdError");
 	   		var idDivObj = document.getElementById("idInput");
+	   		var invalidIdErrorObj = document.getElementById("invalidIdError");
+	   		var idPattern = /^[a-z0-9_-]{5,20}$/;
+// 	   		^: 문자열의 시작을 나타냅니다.
+// 	   		[a-z0-9_-]: 소문자 알파벳, 숫자, 밑줄(_), 또는 대시(-) 중 하나와 일치해야 합니다.
+// 				이 부분은 입력된 문자열이 이 문자들 중 하나와 일치하는지를 검사합니다.
+// 	   		{5,20}: 이전 패턴 [a-z0-9_-]가 최소 5번부터 최대 20번까지 연속으로 나타나야 합니다.
+// 				즉, 문자열의 길이는 5에서 20 사이여야 합니다.
+// 	   		$: 문자열의 끝을 나타냅니다.
 	
+			
 			if (idInputObj.value == "") {
 				noIdErrorObj.setAttribute("style", "display: block");
+				invalidIdErrorObj.setAttribute("style", "display: none");
+				idDivObj.setAttribute("style", "border: 2px solid red");
+			} else if (!idPattern.test(idInputObj.value)) {
+				noIdErrorObj.setAttribute("style", "display: none");
+				invalidIdErrorObj.setAttribute("style", "display: block");
 				idDivObj.setAttribute("style", "border: 2px solid red");
 			} else {
 				noIdErrorObj.setAttribute("style", "display: none");
+				invalidIdErrorObj.setAttribute("style", "display: none");
 				idDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
 			}
 		} 
@@ -173,39 +240,47 @@
 	   		
 	   		var pwdInputObj = document.getElementById("pwdBlank");
 	   		var noPwdErrorObj = document.getElementById("noPwdError");
+	   		var invalidPwdErrorObj = document.getElementById("invalidPwdError");
 	   		var pwdDivObj = document.getElementById("pwdInput");
+	   		
+	   		var checkNum = pwdInputObj.value.search(/[0-9]/g);
+	     	var checkUpperEng = pwdInputObj.value.search(/[A-Z]/g);
+	     	var checkLowerEng = pwdInputObj.value.search(/[a-z]/g);
 	   		
 	   		if (pwdInputObj.value == "") {
 				noPwdErrorObj.setAttribute("style", "display: block");
+				invalidPwdErrorObj.setAttribute("style", "display: none");
 				pwdDivObj.setAttribute("style", "border: 2px solid red");
-			} else {
+			} else if (pwdInputObj.value.length < 8 || pwdInputObj.value.length > 20) {
+	   			noPwdErrorObj.setAttribute("style", "display: none");
+				invalidPwdErrorObj.setAttribute("style", "display: block");
+				pwdDivObj.setAttribute("style", "border: 2px solid red");
+	   		} else if ((checkNum < 0 && checkUpperEng < 0) ||
+	   			(checkUpperEng < 0 && checkLowerEng < 0) ||
+	   			(checkLowerEng < 0 && checkNum < 0)) {
+	   			noPwdErrorObj.setAttribute("style", "display: none");
+				invalidPwdErrorObj.setAttribute("style", "display: block");
+				pwdDivObj.setAttribute("style", "border: 2px solid red");
+	   		} else {
 				noPwdErrorObj.setAttribute("style", "display: none");
+				invalidPwdErrorObj.setAttribute("style", "display: none");
 				pwdDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			}
-		}
-		
-		function emailFocusFnc() {
-	   		
-	   		var emailInputObj = document.getElementById("emailBlank");
-	   		var emailDivObj = document.getElementById("emailInput");
-	   		
-	   		if (emailDivObj.value != "" &&
-	   			emailDivObj.getAttribute("style") != "border: 2px solid red") {
-	   			emailDivObj.setAttribute("style", "border: 2px solid #09aa5c");
 			}
 		}
 		
 		function emailCheckFnc() {
 	   		
 	   		var emailInputObj = document.getElementById("emailBlank");
-	   		var noEmailErrorObj = document.getElementById("invalidEmailError");
+	   		var invalidEmailErrorObj = document.getElementById("invalidEmailError");
 	   		var emailDivObj = document.getElementById("emailInput");
 	   		
-	   		if (emailInputObj.value == "") {
-				noEmailErrorObj.setAttribute("style", "display: block");
+	   		var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣.-]+\.[a-zA-Z]{2,}$/;
+	   		
+	   		if (!emailPattern.test(emailInputObj.value) && emailInputObj.value != "") {
+				invalidEmailErrorObj.setAttribute("style", "display: block");
 				emailDivObj.setAttribute("style", "border: 2px solid red");
 			} else {
-				noEmailErrorObj.setAttribute("style", "display: none");
+				invalidEmailErrorObj.setAttribute("style", "display: none");
 				emailDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
 			}
 		}
@@ -255,6 +330,8 @@
 			var invalidBirthdayErrorObj = document.getElementById("invalidBirthdayError");
 			var under14BirthdayErrorObj = document.getElementById("under14BirthdayError");
 			
+			var nameDivObj = document.getElementById("nameInput");
+			
 			var date = new Date();
 		    var year = date.getFullYear();
 		    var month = ("0" + (1 + date.getMonth())).slice(-2);
@@ -263,37 +340,38 @@
 			
 			if (birthdayInputObj.value == "") {
 				noBirthdayErrorObj.setAttribute("style", "display: block");
+				invalidBirthdayErrorObj.setAttribute("style", "display: none");
+				under14BirthdayErrorObj.setAttribute("style", "display: none");
+				birthdayDivObj.setAttribute("style", "border: 2px solid red");
+			} else if (
+				parseInt(birthdayInputObj.value) < 19000101 ||
+				parseInt(birthdayInputObj.value) > today ||
+				parseInt((birthdayInputObj.value).substring(4, 6)) < 01 ||
+				parseInt((birthdayInputObj.value).substring(4, 6)) > 12 ||
+				parseInt(birthdayInputObj.value.slice(-2)) < 01 ||
+				parseInt(birthdayInputObj.value.slice(-2)) > 31
+			) {
+				noBirthdayErrorObj.setAttribute("style", "display: none");
+				invalidBirthdayErrorObj.setAttribute("style", "display: block");
+				under14BirthdayErrorObj.setAttribute("style", "display: none");
+				birthdayDivObj.setAttribute("style", "border: 2px solid red");
+			} else if (
+				today-(140000) < parseInt(birthdayInputObj.value) &&
+				parseInt(birthdayInputObj.value) <= today
+			) {
+				noBirthdayErrorObj.setAttribute("style", "display: none");
+				invalidBirthdayErrorObj.setAttribute("style", "display: none");
+				under14BirthdayErrorObj.setAttribute("style", "display: block");
 				birthdayDivObj.setAttribute("style", "border: 2px solid red");
 			} else {
 				noBirthdayErrorObj.setAttribute("style", "display: none");
-				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			}
-		
-			// 유효성 검사 1. 유효한 날짜
-			if (
-				parseInt(birthdayInputObj.value) < 19000000 ||
-				parseInt(birthdayInputObj.value) > today ||
-				parseInt((birthdayInputObj.value).substring(4, 6)) > 12 ||
-				parseInt((birthdayInputObj.value).substring(4, 6)) < 01 ||
-				parseInt((birthdayInputObj.value).substring((birthdayInputObj.value).length-2)) > 31 ||
-				parseInt((birthdayInputObj.value).substring((birthdayInputObj.value).length-2)) < 01
-			){
-				invalidBirthdayErrorObj.setAttribute("style", "display: block"); //색깔, 출력문 수정해야됨. 출력문 밑에 새로 쓰고 감췄다 열었다 하는거로
-				birthdayDivObj.setAttribute("style", "border: 2px solid red");
-			} else {
 				invalidBirthdayErrorObj.setAttribute("style", "display: none");
-				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			}
-			
-			// 유효성 검사 2. 14세 
-			if (today-(140000) < parseInt(birthdayInputObj.value)) {
-				under14BirthdayErrorObj.setAttribute("style", "display: block");
-				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-			} else {
 				under14BirthdayErrorObj.setAttribute("style", "display: none");
 				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
+// 				birthdayInputObj.value = birthdayInputObj.value.substring(0, 4) + "." +
+// 										birthdayInputObj.value.substring(4, 6) + "." +
+// 										birthdayInputObj.value.substring(6, 8);
 			}
-			//20500505 하면 정확한 날짜, 14세 미만 모두 출력됨
 		}
 		
 		function phoneNumFocusFnc() {
@@ -311,18 +389,25 @@
 				
 			var phoneNumInputObj = document.getElementById("phoneNumBlank");
 			var noPhoneNumErrorObj = document.getElementById("noPhoneNumError");
+			var invalidPhoneNumErrorObj = document.getElementById("invalidPhoneNumError");
 			var phoneNumDivObj = document.getElementById("phoneNumInput");
+			
+			var phoneNumPattern = /^(01[016789]{1})[0-9]{3,4}[0-9]{4}$/;
 			
 			if (phoneNumInputObj.value == "") {
 				noPhoneNumErrorObj.setAttribute("style", "display: block");
+				invalidPhoneNumErrorObj.setAttribute("style", "display: none");
+				phoneNumDivObj.setAttribute("style", "border: 2px solid red");
+			} else if (!phoneNumPattern.test(phoneNumInputObj.value)) {
+				noPhoneNumErrorObj.setAttribute("style", "display: none");
+				invalidPhoneNumErrorObj.setAttribute("style", "display: block");
 				phoneNumDivObj.setAttribute("style", "border: 2px solid red");
 			} else {
 				noPhoneNumErrorObj.setAttribute("style", "display: none");
+				invalidPhoneNumErrorObj.setAttribute("style", "display: none");
 				phoneNumDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
 			}
 		}
-		
-		
    	
 	</script>	
 </head>
@@ -340,15 +425,18 @@
 		<form method="post">
 			<div id="accountInfo" class="boxList">
 				<div id="idInput" class="infoRow">
+					<img src="../images/joinIcon_id.JPG">
 					<input type="text" placeholder="아이디" name="id" id="idBlank" onblur="idCheckFnc();" onfocus="idFocusFnc();">
 					<div id="naverDomain">@naver.com</div>
 				</div>
 				
 				<div id="pwdInput" class="infoRow">
-					<input type="text" placeholder="비밀번호" name="pwd" id="pwdBlank" onblur="pwdCheckFnc();" onfocus="pwdFocusFnc();">
+					<img src="../images/joinIcon_pwd.JPG">
+					<input type="password" placeholder="비밀번호" name="pwd" id="pwdBlank" onblur="pwdCheckFnc();" onfocus="pwdFocusFnc();">
 				</div>
 				
 				<div id="emailInput" class="infoRow">
+					<img src="../images/joinIcon_email.JPG">
 					<input type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일" name="email" id="emailBlank" onblur="emailCheckFnc();" onfocus="emailFocusFnc();">
 				</div>
 			</div>
@@ -361,14 +449,17 @@
 			
 			<div id="personalInfo" class="boxList">
 				<div id="nameInput" class="infoRow">
+					<img src="../images/joinIcon_id.JPG">
 					<input type="text" placeholder="이름" name="name" id="nameBlank" onblur="nameCheckFnc();" onfocus="nameFocusFnc();">
 				</div>
 				
 				<div id="birthdayInput" class="infoRow">
-					<input type="text" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();">
+					<img src="../images/joinIcon_birthday.JPG">
+					<input type="number" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();">
 				</div>
 				
 				<div id="telecomInput" class="infoRow">
+					<img src="../images/joinIcon_telecom.JPG">
 					<select name="telecom" id="telecomBlank" onfocus="telecomFocusFnc();">
 						<option value="" selected disabled hidden>통신사 선택</option>
 						<option>SKT</option>
@@ -381,35 +472,45 @@
 				</div>
 				
 				<div id="genderNationalitySelect" class="infoRow">
-					<div id="genderSelect" style="width: 40%; height: 60%; border: 1px solid #c6c6c6; margin-top: 10px; margin-left: 10px;">
-						<input type="radio" id="male" class="radioBtn" 
-							name="gender" value='남성'>
-						<label for="male" style="width: 49%; border-right: 1px solid #c6c6c6;">
-							남자
-						</label>
-						<input type="radio" id="female" class="radioBtn" 
-							name="gender" value='여성'>
-<!-- 						<label for="female" style="width: 49%; border-right: 1px solid #c6c6c6;"> -->
-						<label for="female" style="width: 49%;">
-							여자
-						</label>
+					<div id="genderSelect" style="width: 200px; height: 30px; border: 1px solid #c6c6c6; margin-top: 10px; margin-left: 10px;">
+						<div id="maleDiv" class="radioDiv" style="width: 49%; height: 99%; float: left; border-right: 1px solid #c6c6c6;">
+							<input type="radio" id="male" class="radioBtn" 
+								name="gender" value='남성'>
+							<label for="male" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
+								남자
+							</label>
+						</div>
+						
+						<div id="femaleDiv" class="radioDiv" style="width: 49%; height: 99%; float: right;">
+							<input type="radio" id="female" class="radioBtn" 
+								name="gender" value='여성'>
+							<label for="female" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
+								여자
+							</label>
+						</div>	
 					</div>
-					<div id="nationalitySelect" style="width: 40%; height: 60%; border: 1px solid #c6c6c6; margin-top: 10px; margin-left: 10px;">
-						<input type="radio" id="korean" class="radioBtn" 
-							name="nationality" value="내국인">
-						<label for="korean" style="width: 49%; border-right: 1px solid #c6c6c6;">
-							내국인
-						</label>
-						<input type="radio" id="foreigner" class="radioBtn" 
-							name="nationality" value="외국인">
-						<label for="foreigner" style="width: 49%;">
-							외국인
-						</label>
+					
+					<div id="nationalitySelect" style="width: 200px; height: 60%; border: 1px solid #c6c6c6; margin-top: 10px; margin-right: 10px;">
+						<div id="koreanDiv" class="radioDiv" style="width: 49%; height: 99%; float: left; border-right: 1px solid #c6c6c6;">
+							<input type="radio" id="korean" class="radioBtn" 
+								name="nationality" value="내국인">
+							<label for="korean" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
+								내국인
+							</label>
+						</div>	
+						<div id="foreignerDiv" class="radioDiv" style="width: 49%; height: 99%; float: right;">
+							<input type="radio" id="foreigner" class="radioBtn" 
+								name="nationality" value="외국인">
+							<label for="foreigner" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
+								외국인
+							</label>
+						</div>
 					</div>
 				</div>
 				
 				<div id="phoneNumInput" class="infoRow">
-					<input type="text" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();">
+					<img src="../images/joinIcon_phoneNum.JPG">
+					<input type="number" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();">
 				</div>
 			</div>
 			
@@ -422,7 +523,7 @@
 			
 			<div id="agreement" class="boxList" style="height: 50px;">
 				<input type="checkbox" id="agreeAll">
-				<label for="agreeAll">[필수] 인증 약관 전체동의</label>
+				<label for="agreeAll" id="agreeLabel"><span class="required">[필수]</span> 인증 약관 전체동의</label>
 			</div>
 			
 			<div>

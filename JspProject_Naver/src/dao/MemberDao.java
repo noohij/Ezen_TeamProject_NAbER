@@ -42,7 +42,7 @@ public class MemberDao {
 			sql += " (MNO, ID, PWD, EMAIL, NAME, BIRTHDAY, TELECOM, GENDER,";
 			sql += " NATIONALITY, PHONENUMBER, CERTNAME, CRE_DATE, MOD_DATE)";
 			sql += " VALUES(MEMBERS_NO_SEQ.NEXTVAL, ?, ?, ?, ?, ?,";
-			sql += " ?, ?, ?, ?, 'TRUE', SYSDATE, SYSDATE)";
+			sql += " ?, ?, ?, ?, SYSDATE, SYSDATE)";
 			
 			pstmt = connection.prepareStatement(sql);
 
