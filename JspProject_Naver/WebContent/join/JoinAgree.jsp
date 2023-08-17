@@ -67,19 +67,14 @@
 		    letter-spacing: -.43px;
 		}
 		div::-webkit-scrollbar {
-    		width: 8px;  /* 스크롤바의 너비 */
+    		width: 8px; 				 /* 스크롤바의 너비 */
 		}
 
 		div::-webkit-scrollbar-thumb {
-		    height: 30px; /* 스크롤바의 길이 */
-		    background: #8990a0; /* 스크롤바의 색상 */
+		    height: 30px; 				/* 스크롤바의 길이 */
+		    background: #8990a0; 		/* 스크롤바의 색상 */
 		    border-radius: 10px;
 		}		
-
-		div::-webkit-scrollbar-track {
-    		background: #ffffff;  /*스크롤바 뒷 배경 색상*/
-/*     		https://gurtn.tistory.com/120 */
-		}
 		
 	</style>
 	
