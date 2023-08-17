@@ -10,19 +10,75 @@
 	
    	<script type="text/javascript">
    	
-	   	window.onload = function() {
+// 	   	window.onload = function() {
 	   		
-			var agreeCheckObj = document.getElementById("agreeAll");
-			var nextButtonObj = document.getElementById("button");
+// 			var agreeCheckObj = document.getElementById("agreeAll");
+// 			var nextButtonObj = document.getElementById("button");
 
-			agreeCheckObj.addEventListener('change', function() {
-				if (agreeCheckObj.checked) {
-					nextButtonObj.disabled = false;
-	         	} else {
-					nextButtonObj.disabled = true;
-				}
-	   		});
-	   	}
+// 			agreeCheckObj.addEventListener('change', function() {
+// 				if (agreeCheckObj.checked) {
+// 					nextButtonObj.disabled = false;
+// 	         	} else {
+// 					nextButtonObj.disabled = true;
+// 				}
+// 	   		});
+// 	   	}
+		function submitCheckFnc() {
+// 			var idInputObj = document.getElementById("idBlank");
+// 	   		var noIdErrorObj = document.getElementById("noIdError");
+// 	   		var idDivObj = document.getElementById("idInput");
+// 	   		var invalidIdErrorObj = document.getElementById("invalidIdError");
+// 	   		var idPattern = /^[a-z0-9_-]{5,20}$/;
+	   		
+// 	   		var pwdInputObj = document.getElementById("pwdBlank");
+// 	   		var pwdDivObj = document.getElementById("pwdInput");
+	   		
+// 	   		var emailInputObj = document.getElementById("emailBlank");
+// 	   		var invalidEmailErrorObj = document.getElementById("invalidEmailError");
+// 	   		var emailDivObj = document.getElementById("emailInput");
+	   		
+// 	   		var nameInputObj = document.getElementById("nameBlank");
+// 	   		var noNameErrorObj = document.getElementById("noNameError");
+// 	   		var nameDivObj = document.getElementById("nameInput");
+			
+// 	   		var birthdayInputObj = document.getElementById("birthdayBlank");
+// 			var noBirthdayErrorObj = document.getElementById("noBirthdayError");
+// 			var birthdayDivObj = document.getElementById("birthdayInput");
+// 			var invalidBirthdayErrorObj = document.getElementById("invalidBirthdayError");
+// 			var under14BirthdayErrorObj = document.getElementById("under14BirthdayError");
+			
+// 			var nameDivObj = document.getElementById("nameInput");
+			
+// 			var date = new Date();
+// 		    var year = date.getFullYear();
+// 		    var month = ("0" + (1 + date.getMonth())).slice(-2);
+// 		    var day = ("0" + date.getDate()).slice(-2);
+// 		    var today = (year + month + day);
+		    
+// 		    var phoneNumInputObj = document.getElementById("phoneNumBlank");
+// 			var noPhoneNumErrorObj = document.getElementById("noPhoneNumError");
+// 			var invalidPhoneNumErrorObj = document.getElementById("invalidPhoneNumError");
+// 			var phoneNumDivObj = document.getElementById("phoneNumInput");
+			
+// 			var phoneNumPattern = /^(01[016789]{1})[0-9]{3,4}[0-9]{4}$/;
+			
+			var errorDivList = document.getElementsByClassName("error");
+			
+			idCheckFnc();
+			pwdCheckFnc();
+			emailCheckFnc();
+			nameCheckFnc();
+			birthdayCheckFnc();
+			phoneNumCheckFnc();
+			
+			for (var i = 0; i < errorDivList.length; i++) {
+				errorDivList[i].getAttribute("style");
+			}
+			
+			if () {
+				Event.preventDefault();
+			}
+		}
 	   	
 	   	function idFocusFnc() {
 	   		
@@ -30,7 +86,7 @@
 	   		var idDivObj = document.getElementById("idInput");
 	   		
 	   		if (idDivObj.value != "" &&			// 문제가 생긴 후 수정할 땐 초록으로 바뀌지 않음
-	   			idDivObj.getAttribute("style") != "border: 2px solid red") {
+	   			idDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			idDivObj.setAttribute("style", "border: 2px solid #09aa5c");
 			}
 		}
@@ -53,11 +109,11 @@
 			if (idInputObj.value == "") {
 				noIdErrorObj.setAttribute("style", "display: block");
 				invalidIdErrorObj.setAttribute("style", "display: none");
-				idDivObj.setAttribute("style", "border: 2px solid red");
+				idDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else if (!idPattern.test(idInputObj.value)) {
 				noIdErrorObj.setAttribute("style", "display: none");
 				invalidIdErrorObj.setAttribute("style", "display: block");
-				idDivObj.setAttribute("style", "border: 2px solid red");
+				idDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else {
 				noIdErrorObj.setAttribute("style", "display: none");
 				invalidIdErrorObj.setAttribute("style", "display: none");
@@ -71,7 +127,7 @@
 	   		var pwdDivObj = document.getElementById("pwdInput");
 	   		
 	   		if (pwdDivObj.value != "" &&
-	   			pwdDivObj.getAttribute("style") != "border: 2px solid red") {
+	   			pwdDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			pwdDivObj.setAttribute("style", "border: 2px solid #09aa5c");
 			}
 		}
@@ -90,17 +146,17 @@
 	   		if (pwdInputObj.value == "") {
 				noPwdErrorObj.setAttribute("style", "display: block");
 				invalidPwdErrorObj.setAttribute("style", "display: none");
-				pwdDivObj.setAttribute("style", "border: 2px solid red");
+				pwdDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else if (pwdInputObj.value.length < 8 || pwdInputObj.value.length > 20) {
 	   			noPwdErrorObj.setAttribute("style", "display: none");
 				invalidPwdErrorObj.setAttribute("style", "display: block");
-				pwdDivObj.setAttribute("style", "border: 2px solid red");
+				pwdDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 	   		} else if ((checkNum < 0 && checkUpperEng < 0) ||
 	   			(checkUpperEng < 0 && checkLowerEng < 0) ||
 	   			(checkLowerEng < 0 && checkNum < 0)) {
 	   			noPwdErrorObj.setAttribute("style", "display: none");
 				invalidPwdErrorObj.setAttribute("style", "display: block");
-				pwdDivObj.setAttribute("style", "border: 2px solid red");
+				pwdDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 	   		} else {
 				noPwdErrorObj.setAttribute("style", "display: none");
 				invalidPwdErrorObj.setAttribute("style", "display: none");
@@ -118,7 +174,7 @@
 	   		
 	   		if (!emailPattern.test(emailInputObj.value) && emailInputObj.value != "") {
 				invalidEmailErrorObj.setAttribute("style", "display: block");
-				emailDivObj.setAttribute("style", "border: 2px solid red");
+				emailDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else {
 				invalidEmailErrorObj.setAttribute("style", "display: none");
 				emailDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
@@ -131,7 +187,7 @@
 	   		var nameDivObj = document.getElementById("nameInput");
 	   		
 	   		if (nameDivObj.value != "" &&
-	   			nameDivObj.getAttribute("style") != "border: 2px solid red") {
+	   			nameDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			nameDivObj.setAttribute("style", "border: 2px solid #09aa5c");
 			}
 		}
@@ -144,7 +200,7 @@
 	   		
 	   		if (nameInputObj.value == "") {
 				noNameErrorObj.setAttribute("style", "display: block");
-				nameDivObj.setAttribute("style", "border: 2px solid red");
+				nameDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else {
 				noNameErrorObj.setAttribute("style", "display: none");
 				nameDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
@@ -157,7 +213,7 @@
 	   		var birthdayDivObj = document.getElementById("birthdayInput");
 	   		
 	   		if (birthdayDivObj.value != "" &&
-	   			birthdayDivObj.getAttribute("style") != "border: 2px solid red") {
+	   			birthdayDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			birthdayDivObj.setAttribute("style", "border: 2px solid #09aa5c");
 			}
 		}
@@ -182,7 +238,7 @@
 				noBirthdayErrorObj.setAttribute("style", "display: block");
 				invalidBirthdayErrorObj.setAttribute("style", "display: none");
 				under14BirthdayErrorObj.setAttribute("style", "display: none");
-				birthdayDivObj.setAttribute("style", "border: 2px solid red");
+				birthdayDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else if (
 				parseInt(birthdayInputObj.value) < 19000101 ||
 				parseInt(birthdayInputObj.value) > today ||
@@ -194,7 +250,7 @@
 				noBirthdayErrorObj.setAttribute("style", "display: none");
 				invalidBirthdayErrorObj.setAttribute("style", "display: block");
 				under14BirthdayErrorObj.setAttribute("style", "display: none");
-				birthdayDivObj.setAttribute("style", "border: 2px solid red");
+				birthdayDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else if (
 				today-(140000) < parseInt(birthdayInputObj.value) &&
 				parseInt(birthdayInputObj.value) <= today
@@ -202,15 +258,12 @@
 				noBirthdayErrorObj.setAttribute("style", "display: none");
 				invalidBirthdayErrorObj.setAttribute("style", "display: none");
 				under14BirthdayErrorObj.setAttribute("style", "display: block");
-				birthdayDivObj.setAttribute("style", "border: 2px solid red");
+				birthdayDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else {
 				noBirthdayErrorObj.setAttribute("style", "display: none");
 				invalidBirthdayErrorObj.setAttribute("style", "display: none");
 				under14BirthdayErrorObj.setAttribute("style", "display: none");
 				birthdayDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
-// 				birthdayInputObj.value = birthdayInputObj.value.substring(0, 4) + "." +
-// 										birthdayInputObj.value.substring(4, 6) + "." +
-// 										birthdayInputObj.value.substring(6, 8);
 			}
 		}
 		
@@ -220,7 +273,7 @@
 	   		var phoneNumDivObj = document.getElementById("phoneNumInput");
 	   		
 	   		if (phoneNumDivObj.value != "" &&
-	   			phoneNumDivObj.getAttribute("style") != "border: 2px solid red") {
+	   			phoneNumDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			phoneNumDivObj.setAttribute("style", "border: 2px solid #09aa5c");
 			}
 		}
@@ -237,11 +290,11 @@
 			if (phoneNumInputObj.value == "") {
 				noPhoneNumErrorObj.setAttribute("style", "display: block");
 				invalidPhoneNumErrorObj.setAttribute("style", "display: none");
-				phoneNumDivObj.setAttribute("style", "border: 2px solid red");
+				phoneNumDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else if (!phoneNumPattern.test(phoneNumInputObj.value)) {
 				noPhoneNumErrorObj.setAttribute("style", "display: none");
 				invalidPhoneNumErrorObj.setAttribute("style", "display: block");
-				phoneNumDivObj.setAttribute("style", "border: 2px solid red");
+				phoneNumDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else {
 				noPhoneNumErrorObj.setAttribute("style", "display: none");
 				invalidPhoneNumErrorObj.setAttribute("style", "display: none");
@@ -400,7 +453,7 @@
 			</div>
 			
 			<div>
-				<input type="submit" value="인증요청" id="button">
+				<input type="submit" value="인증요청" id="button" onclick="submitCheckFnc()">
 			</div>
 		</form>
 		
