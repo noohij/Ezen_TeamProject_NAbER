@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,37 @@
 	}
 </style>
 <script type="text/javascript">
-	
+	function checkFnc(event) {
+		
+		var titleObj 
+		 = document.getElementsByClassName("textClass")[1].children[0];
+		var contentsObj
+		 = document.getElementsByClassName("textClass")[3].children[0];
+		var passwordObj
+		 = document.getElementsByClassName("textClass")[4].children[0];
+		
+		if (titleObj.value == "") {
+			alert("제목을 입력해주세요");
+			titleObj.setAttribute("style"
+					, "background-color: #f05650;");
+			event.preventDefault();
+		}
+		if (contentsObj.textContent == "") {
+			alert("내용을 입력해주세요");
+			contentsObj.setAttribute("style"
+					, "background-color: #f05650;");
+			event.preventDefault();
+		}
+		if (passwordObj.value == "") {
+			alert("비밀번호를 설정해주세요");
+			passwordObj.setAttribute("style"
+					, "background-color: #f05650;");
+			event.preventDefault();
+		}
+	}
+	function writeFnc(obj) {
+		obj.setAttribute("style", "background: white;");
+	}
 </script>
 </head>
 
@@ -61,14 +92,15 @@
 				<tr>
 					<td class="subjectClass" style="width: 100px;">이름</td>
 					<td class="textClass" style="width: 870px;">
-						<input name="name" readonly="readonly" 
-							value="${sessionScope.member.name}">
+						<input  readonly="readonly" style="width: 200px;"
+						  value="${sessionScope.member.name}" name="name">
 					</td>
 				</tr>
 				<tr>
 					<td class="subjectClass">제목</td>
 					<td class="textClass">
-						<input style="width: 700px;" name="title" >
+						<input style="width: 700px;" name="title"
+							onclick="writeFnc(this);" >
 					</td>
 				</tr>
 				<tr>
@@ -82,18 +114,21 @@
 				<tr  style="height: 600px;">
 					<td class="subjectClass">내용</td>
 					<td class="textClass">
-					<textarea name="contents"></textarea>
+					<textarea name="contents" 
+						onclick="writeFnc(this);"></textarea>
 				</tr>
 				<tr>
 					<td class="subjectClass">비밀번호</td>
 					<td class="textClass">
-						<input type="password" maxlength="4"
-							style="width: 100px;" name="mod_pwd">
+						<input type="password" maxlength="4" 
+							style="width: 100px;" name="mod_pwd"
+								onclick="writeFnc(this);">
 					</td>
 				</tr>
 				<tr>
 				<td colspan="2" style="padding-left: 350px;">
-					<input type='submit' value='글쓰기'>
+					<input type='submit' onclick="checkFnc(event);"
+						value='등록'>
 					<input type='reset' value='다시작성'>
 					<input type="button"
 						onclick="location ='./list'" value="목록보기">

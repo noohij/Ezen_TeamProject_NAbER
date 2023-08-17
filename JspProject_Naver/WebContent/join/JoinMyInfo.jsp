@@ -9,8 +9,15 @@
 	
 	
    	<script type="text/javascript">
+<<<<<<< HEAD
    	
 // 	   	window.onload = function() {
+=======
+   		function fnc(x) {
+			x.setAttribute("style", "border: 1px sikud bkack;")
+		}
+	   	window.onload = function() {
+>>>>>>> branch 'main' of https://github.com/imchanu96/Middle_TeamProject.git
 	   		
 // 			var agreeCheckObj = document.getElementById("agreeAll");
 // 			var nextButtonObj = document.getElementById("button");

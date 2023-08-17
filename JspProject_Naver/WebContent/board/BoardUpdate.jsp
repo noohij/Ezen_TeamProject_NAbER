@@ -40,7 +40,13 @@
 	}
 </style>
 <script type="text/javascript">
-	
+	function checkPwdFnc(password) {
+// 		alert(password);
+		var wrongError_TdObj 
+			= document.getElementById("wrongError_Td");
+		wrongError_TdObj.setAttribute("style", "display: block");
+		event.stopPropagation();
+	}
 </script>
 </head>
 
@@ -86,11 +92,14 @@
 							<input type="password" 
 								maxlength="4" style="width: 100px;">
 						</td>
+						<td id="wrongError_Td" style="display: none;">
+							비밀번호가 틀립니다.</td>
 					</tr>
 					<tr>
 						<td colspan="2" style="padding-left: 350px;">
-						<input type="submit" value="완료">
-						<input type="button" value="다시작성">
+						<input type="submit" 
+							onclick="checkPwdFnc('${boardDto.mod_pwd}');" value="완료">
+						<input type="reset" value="되돌리기">
 						<input type="button"
 							onclick="location ='./list'" value="목록보기">
 						</td>

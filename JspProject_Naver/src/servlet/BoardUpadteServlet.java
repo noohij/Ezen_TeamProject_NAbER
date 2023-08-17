@@ -99,9 +99,6 @@ public class BoardUpadteServlet extends HttpServlet{
 
 			int no = Integer.parseInt(bno);
 			
-			System.out.println(no);
-			System.out.println(title);
-			System.out.println(contents);
 			boardDto = new BoardDto();
 			
 			boardDto.setBno(no);
