@@ -36,9 +36,18 @@
 		margin-left: 490px;
 		margin-right: 490px;
 	}
+	#title_td{
+		overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 150px;
+	}
 	#contents_td{
 		width: 480px;
-		
+		overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 400px;
 	}
 	.ButtonClass{
 		background-image: linear-gradient(#dae6ec , #c2d0db);
@@ -46,13 +55,11 @@
 		border-radius: 3px;
 	}
 	a{
-		width: 480px;
+ 		width: 480px; 
 		text-decoration: none;
 		color: black;
-		overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        
+		
+       
 	}
 	
 </style>
@@ -101,7 +108,8 @@
 						begin="${pagesSet-4}" end="${pagesSet}">
 					<tr>
 						<td style="width: 50px;">${boardDto.bno}</td>
-						<td style="width: 150px;">${boardDto.title}</td>
+						<td id="title_td"
+							style="width: 150px;">${boardDto.title}</td>
 						<td id="contents_td">
 							<a href="./view?bno=${boardDto.bno}">
 						${boardDto.contents}</a></td>
@@ -113,11 +121,13 @@
 			</table>
 			<div style="margin-left: 400px;">
 				<form action=".list" method="post">
+				<a onclick="pagingFnc(this);"><</a>
 					<c:forEach var="pagesNum" begin="1" end="${totalPages}">
 					
 					<a onclick="pagingFnc(this);">${pagesNum}</a>
 					
 					</c:forEach>
+					<a onclick="pagingFnc(this);">></a>
 				</form>
 			</div>
 		</div>

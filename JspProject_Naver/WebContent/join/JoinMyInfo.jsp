@@ -163,7 +163,9 @@
 	</style>
 	
    	<script type="text/javascript">
-   	
+   		function fnc(x) {
+			x.setAttribute("style", "border: 1px sikud bkack;")
+		}
 	   	window.onload = function() {
 	   		
 			var agreeCheckObj = document.getElementById("agreeAll");
@@ -468,7 +470,7 @@
 				<div id="genderNationalitySelect" class="infoRow">
 					<div id="genderSelect" style="width: 200px; height: 30px; border: 1px solid #c6c6c6; margin-top: 10px; margin-left: 10px;">
 						<div id="maleDiv" class="radioDiv" style="width: 49%; height: 99%; float: left; border-right: 1px solid #c6c6c6;">
-							<input type="radio" id="male" class="radioBtn" 
+							<input type="radio" id="male" class="radioBtn"  onclick="fnc(this);"
 								name="gender" value='남성'>
 							<label for="male" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
 								남자

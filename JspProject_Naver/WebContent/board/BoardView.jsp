@@ -27,6 +27,11 @@
 	#boardListViewLink{
 		text-align: right;
 	}
+	#wrongError{
+		color:red;
+		border:0px solid;
+		background-color: #e1ffff;
+	}
 	input{
 		
 	}
@@ -40,17 +45,26 @@
 	}
 </style>
 <script type="text/javascript">
-	function updateBoardFnc(bno) {
+	function updateBoardFnc(bno , mno, loginMno, boardPwd) {
 		var pwdInputObj = document.getElementById("pwdInput");
-		if (pwdInputObj.value == ${boardDto.mod_pwd}) { // 비밀번호 비교
-			if (${boardDto.mno} == ${sessionScope.member.mno}) { // 작성자 번호 비교
+		if (pwdInputObj.value == boardPwd) { // 비밀번호 비교
+			if (mno == loginMno) { // 작성자 번호 비교
 				location.href = "./update?updateBoardBno=" + bno;
 			}else{
 				alert("해당 게시판의 작성자가 아닙니다.");
 			}
 		}else{
-			alert("비밀 번호가 다릅니다.");
+			var wrongErrorObj 
+			= document.getElementById("wrongError");
+				wrongErrorObj.setAttribute("style", " display: block;");
+
 		}
+		
+	}
+	function disappearButtonFnc(buttonObj) {
+		buttonObj.setAttribute("style", "display:none");
+		
+		
 	}
 </script>
 </head>
@@ -96,7 +110,11 @@
 					<td class="subjectClass">비밀번호</td>
 					<td class="textClass">
 						<input id="pwdInput" type="password" maxlength="4"
-						style="width: 100px;">
+						style="width: 100px; float:left">
+						<button id="wrongError" 
+							style="display: none;"
+							onclick="disappearButtonFnc(this);"
+						 >비밀번호가 틀립니다.</button>
 					</td>
 				</tr>
 				<tr>
@@ -104,7 +122,9 @@
 					<input type="button" 
 						onclick="location ='./add'"  value="글쓰기">
 					<input type="button" 
-						onclick="updateBoardFnc(${boardDto.bno});"
+						onclick="updateBoardFnc(${boardDto.bno}
+							, ${boardDto.mno}, ${sessionScope.member.mno}
+							, ${boardDto.mod_pwd});"
 						value="다시작성">
 					<input type="button"
 						onclick="location ='./list'" value="목록보기">
