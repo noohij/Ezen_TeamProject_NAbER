@@ -6,84 +6,29 @@
 	<meta charset="UTF-8">
 	<title>네이버 : 회원가입</title>
 	
-	
-	
    	<script type="text/javascript">
-<<<<<<< HEAD
    	
-// 	   	window.onload = function() {
-=======
-   		function fnc(x) {
-			x.setAttribute("style", "border: 1px sikud bkack;")
-		}
-	   	window.onload = function() {
->>>>>>> branch 'main' of https://github.com/imchanu96/Middle_TeamProject.git
-	   		
-// 			var agreeCheckObj = document.getElementById("agreeAll");
-// 			var nextButtonObj = document.getElementById("button");
-
-// 			agreeCheckObj.addEventListener('change', function() {
-// 				if (agreeCheckObj.checked) {
-// 					nextButtonObj.disabled = false;
-// 	         	} else {
-// 					nextButtonObj.disabled = true;
-// 				}
-// 	   		});
-// 	   	}
-		function submitCheckFnc() {
-// 			var idInputObj = document.getElementById("idBlank");
-// 	   		var noIdErrorObj = document.getElementById("noIdError");
-// 	   		var idDivObj = document.getElementById("idInput");
-// 	   		var invalidIdErrorObj = document.getElementById("invalidIdError");
-// 	   		var idPattern = /^[a-z0-9_-]{5,20}$/;
-	   		
-// 	   		var pwdInputObj = document.getElementById("pwdBlank");
-// 	   		var pwdDivObj = document.getElementById("pwdInput");
-	   		
-// 	   		var emailInputObj = document.getElementById("emailBlank");
-// 	   		var invalidEmailErrorObj = document.getElementById("invalidEmailError");
-// 	   		var emailDivObj = document.getElementById("emailInput");
-	   		
-// 	   		var nameInputObj = document.getElementById("nameBlank");
-// 	   		var noNameErrorObj = document.getElementById("noNameError");
-// 	   		var nameDivObj = document.getElementById("nameInput");
+		function submitCheckFnc(event) {
 			
-// 	   		var birthdayInputObj = document.getElementById("birthdayBlank");
-// 			var noBirthdayErrorObj = document.getElementById("noBirthdayError");
-// 			var birthdayDivObj = document.getElementById("birthdayInput");
-// 			var invalidBirthdayErrorObj = document.getElementById("invalidBirthdayError");
-// 			var under14BirthdayErrorObj = document.getElementById("under14BirthdayError");
+			var errorDivList = document.getElementsByClassName("error"); // 에러 메시지 div들
 			
-// 			var nameDivObj = document.getElementById("nameInput");
-			
-// 			var date = new Date();
-// 		    var year = date.getFullYear();
-// 		    var month = ("0" + (1 + date.getMonth())).slice(-2);
-// 		    var day = ("0" + date.getDate()).slice(-2);
-// 		    var today = (year + month + day);
-		    
-// 		    var phoneNumInputObj = document.getElementById("phoneNumBlank");
-// 			var noPhoneNumErrorObj = document.getElementById("noPhoneNumError");
-// 			var invalidPhoneNumErrorObj = document.getElementById("invalidPhoneNumError");
-// 			var phoneNumDivObj = document.getElementById("phoneNumInput");
-			
-// 			var phoneNumPattern = /^(01[016789]{1})[0-9]{3,4}[0-9]{4}$/;
-			
-			var errorDivList = document.getElementsByClassName("error");
-			
+			// 오류 있으면 빨간 테두리 그리고, 오류 메시지 띄우는(display: block) 함수들
 			idCheckFnc();
 			pwdCheckFnc();
 			emailCheckFnc();
 			nameCheckFnc();
 			birthdayCheckFnc();
+			telecomCheckFnc();
+			genderCheckFnc();
 			phoneNumCheckFnc();
+			agreeCheckFnc();
 			
 			for (var i = 0; i < errorDivList.length; i++) {
-				errorDivList[i].getAttribute("style");
-			}
-			
-			if () {
-				Event.preventDefault();
+				var displayStyleCheck = errorDivList[i].getAttribute("style");
+				
+				if (displayStyleCheck == "display: block") {
+					event.preventDefault();
+				}
 			}
 		}
 	   	
@@ -274,6 +219,36 @@
 			}
 		}
 		
+		function telecomCheckFnc() {
+			
+			var noTelecomErrorDiv = document.getElementById("noTelecomError");
+			var telecomSelectObj = document.getElementById("telecomBlank");
+			var telecomDivObj = document.getElementById("telecomInput");
+		    var selectedValue = telecomSelectObj.options[telecomSelectObj.selectedIndex].value;
+			
+			if (selectedValue == "선택 안함") {
+				noTelecomErrorDiv.setAttribute("style", "display: block");
+				telecomDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			} else {
+				noTelecomErrorDiv.setAttribute("style", "display: none");
+				telecomDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
+			}
+		}
+		
+		function genderCheckFnc() {
+			var radioList = document.getElementsByClassName("radioBtn");
+			var genderDivObj = document.getElementById("genderNationalitySelect");
+			var noGenderErrorDiv = document.getElementById("noGenderError");
+			
+			if (radioList[0].checked == false && radioList[1].checked == false) {
+				noGenderErrorDiv.setAttribute("style", "display: block");
+				genderDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			} else {
+				noGenderErrorDiv.setAttribute("style", "display: none");
+				genderDivObj.setAttribute("style", "border: 2px solid #d6d6d6");
+			}
+		}
+		
 		function phoneNumFocusFnc() {
 	   		
 	   		var phoneNumInputObj = document.getElementById("phoneNumBlank");
@@ -308,6 +283,21 @@
 				phoneNumDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
 			}
 		}
+		
+		function agreeCheckFnc() {
+			
+			var agreeCheckObj = document.getElementById("agreeAll");
+			var noAgreeErrorDiv = document.getElementById("noAgreeError");
+			var agreementDivObj= document.getElementById("agreementDiv");
+			
+			if (agreeCheckObj.checked == false) {
+				noAgreeErrorDiv.setAttribute("style", "display: block");
+				agreementDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			} else {
+				noAgreeErrorDiv.setAttribute("style", "display: none");
+				agreementDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
+			}
+		}
    	
 	</script>	
 	<link rel="stylesheet" type="text/css" href="../css/JoinMyInfo.css">
@@ -328,14 +318,14 @@
 				<div id="idInput" class="infoRow">
 					<img src="../images/joinIcon_id.JPG">
 					<input type="text" placeholder="아이디" name="id" id="idBlank" class="input"
-							onblur="idCheckFnc();" onfocus="idFocusFnc();" required>
+							onblur="idCheckFnc();" onfocus="idFocusFnc();">
 					<div id="naverDomain">@naver.com</div>
 				</div>
 				
 				<div id="pwdInput" class="infoRow">
 					<img src="../images/joinIcon_pwd.JPG">
 					<input type="password" placeholder="비밀번호" name="pwd" id="pwdBlank" class="input"
-							onblur="pwdCheckFnc();" onfocus="pwdFocusFnc();" required>
+							onblur="pwdCheckFnc();" onfocus="pwdFocusFnc();">
 				</div>
 				
 				<div id="emailInput" class="infoRow">
@@ -365,21 +355,22 @@
 			<div id="personalInfo" class="boxList">
 				<div id="nameInput" class="infoRow">
 					<img src="../images/joinIcon_id.JPG">
-					<input type="text" placeholder="이름" name="name" id="nameBlank" class="input"
-						 onblur="nameCheckFnc();" onfocus="nameFocusFnc();" required>
+					<input type="text" placeholder="이름" name="name"
+						id="nameBlank" class="input"
+						onblur="nameCheckFnc();" onfocus="nameFocusFnc();">
 				</div>
 				
 				<div id="birthdayInput" class="infoRow">
 					<img src="../images/joinIcon_birthday.JPG">
-					<input type="number" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" class="input"
-						 onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();" required>
+					<input type="number" placeholder="생년월일 8자리" name="birthday"
+						id="birthdayBlank" class="input"
+						onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();">
 				</div>
 				
 				<div id="telecomInput" class="infoRow">
 					<img src="../images/joinIcon_telecom.JPG">
-					<select name="telecom" id="telecomBlank"
-							onfocus="telecomFocusFnc();" required>
-						<option value="" selected disabled hidden>통신사 선택</option>
+					<select name="telecom" id="telecomBlank">
+						<option value="선택 안함" selected disabled hidden>통신사 선택</option>
 						<option>SKT</option>
 						<option>KT</option>
 						<option>LG U+</option>
@@ -393,14 +384,14 @@
 					<div id="genderSelect">
 						<div id="maleDiv" class="radioDiv">
 							<input type="radio" id="male" class="radioBtn" 
-								name="gender" value='남성' required>
+								name="gender" value='남성'>
 							<label for="male" class="radioLabel">
 								남자
 							</label>
 						</div>
 						<div id="femaleDiv" class="radioDiv">
 							<input type="radio" id="female" class="radioBtn" 
-								name="gender" value='여성' required>
+								name="gender" value='여성'>
 							<label for="female" class="radioLabel">
 								여자
 							</label>
@@ -410,7 +401,7 @@
 					<div id="nationalitySelect">
 						<div id="koreanDiv" class="radioDiv">
 							<input type="radio" id="korean" class="radioBtn" 
-								name="nationality" value="내국인">
+								name="nationality" value="내국인" checked="checked">
 							<label for="korean" class="radioLabel">
 								내국인
 							</label>
@@ -428,7 +419,7 @@
 				<div id="phoneNumInput" class="infoRow">
 					<img src="../images/joinIcon_phoneNum.JPG">
 					<input type="number" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" class="input"
-							onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();" required>
+							onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();">
 				</div>
 			</div>
 			
@@ -444,6 +435,14 @@
 			<div id="under14BirthdayError" class="error" id="under14ErrorMsg">
 				생년월일: 만 14세 미만의 어린이는 보호자의 동의가 필요합니다.
 			</div>
+			
+			<div id="noTelecomError" class="error">
+				· 통신사: 이용하는 통신사를 선택해 주세요.
+			</div>
+			<div id="noGenderError" class="error">
+				· 성별: 성별을 선택해 주세요.
+			</div>
+			
 			<div id="noPhoneNumError" class="error">
 				· 휴대전화번호: 필수 정보입니다.
 			</div>
@@ -452,15 +451,19 @@
 			</div>
 			
 			<div id="agreementDiv" class="boxList">
-				<input type="checkbox" id="agreeAll" required>
+				<input type="checkbox" id="agreeAll">
 				<label for="agreeAll" id="agreeLabel">
 					<span class="required">[필수]</span>
 					 인증 약관 전체동의
 				</label>
 			</div>
 			
+			<div id="noAgreeError" class="error">
+				필수 약관에 모두 동의해 주세요.
+			</div>
+			
 			<div>
-				<input type="submit" value="인증요청" id="button" onclick="submitCheckFnc()">
+				<input type="submit" value="인증요청" id="submitButton" onclick="submitCheckFnc(event)">
 			</div>
 		</form>
 		
