@@ -33,9 +33,6 @@
 		border:0px solid;
 		background-color: #e1ffff;
 	}
-	input{
-		
-	}
 	textarea{
 		 width: 750px;
 		 height: 600px;
@@ -111,7 +108,7 @@
 					<td class="subjectClass">비밀번호</td>
 					<td class="textClass">
 						<input id="pwdInput" type="password" maxlength="4"
-						style="width: 100px; float:left">
+						style="width:100px; float:left;">
 						<button id="wrongError" 
 							style="display: none;"
 							onclick="disappearButtonFnc(this);"

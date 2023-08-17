@@ -134,14 +134,14 @@
 					<td class="textClass">
 						<input id="password" type="password" maxlength="4" 
 							style="width: 100px;" name="mod_pwd"
-								onclick="writeFnc(event);">
+							onclick="writeFnc(event);">
 					</td>
 				</tr>
 				<tr>
 				<td colspan="2" style="padding-left: 350px;">
 					<input type='submit' onclick="checkFnc(event);"
 						value='등록'>
-					<input type='reset' value='다시작성'>
+					<input type='reset' value='초기화'>
 					<input type="button"
 						onclick="location ='./list'" value="목록보기">
 				</td>

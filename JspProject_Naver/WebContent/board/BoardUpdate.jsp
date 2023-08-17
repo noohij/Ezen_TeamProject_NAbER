@@ -27,8 +27,11 @@
 	#boardListViewLink{
 		text-align: right;
 	}
-	input{
-		
+	#wrongError{
+		color:red;
+		border:0px solid;
+		background-color: #e1ffff;
+		width: 150px;
 	}
 	textarea{
 		 width: 750px;
@@ -42,10 +45,56 @@
 <script type="text/javascript">
 	function checkPwdFnc(password) {
 // 		alert(password);
-		var wrongError_TdObj 
-			= document.getElementById("wrongError_Td");
-		wrongError_TdObj.setAttribute("style", "display: block");
-		event.stopPropagation();
+		
+	}
+	
+function checkFnc(event, mod_pwd) {
+		
+		var titleObj 
+		 = document.getElementsByClassName("textClass")[1].children[0];
+		var contentsObj
+		 = document.getElementsByClassName("textClass")[3].children[0];
+		var passwordObj
+		 = document.getElementsByClassName("textClass")[4].children[0];
+		
+		if (titleObj.value == "") {
+			alert("제목을 입력해주세요");
+			titleObj.setAttribute("style"
+					, "background-color: #f05650; width: 700px;");
+			event.preventDefault();
+		}
+		if (contentsObj.value == "") {
+			alert("내용을 입력해주세요");
+			contentsObj.setAttribute("style"
+					, "background-color: #f05650;");
+			event.preventDefault();
+		}
+		if (passwordObj.value != mod_pwd) {
+			var wrongErrorObj 
+			= document.getElementById("wrongError");
+			wrongErrorObj.setAttribute("style", "display: inline");
+			passwordObj.setAttribute("style"
+					, "background-color: #f05650; width: 100px;");
+			event.preventDefault();
+		}
+	}
+	function writeFnc(event) {
+		if (event.target.id == "title") {
+			event.target.setAttribute("style"
+					, "background: white; width: 700px;");
+		}
+		if (event.target.id == "contents") {
+			event.target.setAttribute("style"
+					, "background: white;");
+		}
+		if (event.target.id == "password") {
+// 			alert(event.target.id);
+			event.target.setAttribute("style"
+					, "background: white; width: 100px; float: left;");
+		}
+	}
+	function disappearButtonFnc(buttonObj) {
+		buttonObj.setAttribute("style", "display:none");
 	}
 </script>
 </head>
@@ -69,8 +118,9 @@
 					<tr>
 						<td class="subjectClass">제목</td>
 						<td class="textClass">
-							<input style="width: 700px;" name="title"
-								  value="${boardDto.title}">
+							<input style="width: 700px;" id="title" 
+								name="title" onclick="writeFnc(event);"
+								value="${boardDto.title}">
 						</td>
 					</tr>
 					<tr>
@@ -83,23 +133,27 @@
 					<tr style="height: 600px;">
 						<td class="subjectClass">내용</td>
 						<td class="textClass">
-							<textarea name="contents">${boardDto.contents}</textarea>
+							<textarea id="contents" name="contents"
+							onclick="writeFnc(event);">${boardDto.contents}</textarea>
 						</td>
 					</tr>
 					<tr>
 						<td class="subjectClass">비밀번호</td>
 						<td class="textClass">
-							<input type="password" 
-								maxlength="4" style="width: 100px;">
-						</td>
-						<td id="wrongError_Td" style="display: none;">
-							비밀번호가 틀립니다.</td>
+						<input id="password" type="password" maxlength="4" 
+							style="width:100px;"
+							onclick="writeFnc(event);">
+						<input type="button" id="wrongError" style="display: none; height:10px;"
+							onclick="disappearButtonFnc(this);" value="비밀번호가 틀립니다.">
+						</td>	
 					</tr>
 					<tr>
 						<td colspan="2" style="padding-left: 350px;">
 						<input type="submit" 
-							onclick="checkPwdFnc('${boardDto.mod_pwd}');" value="완료">
-						<input type="reset" value="되돌리기">
+							onclick="checkFnc(event
+							, ${boardDto.mod_pwd});"
+							 value="완료">
+						<input type="reset" value="초기화">
 						<input type="button"
 							onclick="location ='./list'" value="목록보기">
 						</td>
