@@ -9,23 +9,9 @@
 		
 	<style>
 		
-		.container{
-			width: 465px;
-			height: 300px;
-			margin-top: 100px;
-			margin-left: 700px;
-			border-radius: 5px;
-		}
 		header{
 			width: 1365px;
 			height: 180px;
-			padding-bottom: none;
-		}
-		.inheader{
-			width: 743px;
-		}
-		.container{
-			margin-top: 3px; 
 		}
 		.language{
 			float: right;
@@ -34,79 +20,64 @@
 		}
 		.logo{
  			margin-top:100px; 
-  			margin-left: 850px;
+  			margin-left: 725px;
+		}
+		.container{
+			width: 743px;
+			height: 529px;
+			margin: 0px auto;
+		}
+		#pannel{
+			width: 460px;
+			height: 350px;
+			border-top: none; border-left: 1px solid gray; border-right: 1px solid gray;
+			border-bottom: 1px solid gray;
+			border-radius: 5px;
+			
 		}
 		input:focus{
-			border-color: rgb(3, 199, 90);			
+			border-color: #03c75a;		
 			outline: none;
 		}
-		
 		#password input:focus{
-			border-color: #2DB400;			
+			border-color: #03c75a;			
 			outline: none;
 		}
-		.menuwrapper{
-			width: 550px;
-			height: 41px;
+		.idput{ width: 380px; height: 48px;
+			padding-left: 30px; margin-left:25px;
+			margin-right:10px;
+			border: 1px solid gray; border-radius: 4px;
 		}
-		.menuwrap{
-			list-style-type: none;
-			padding-left: 0; 
-			margin-left: 20px;
-		}
-		.menuwrap>li{
-			float: left;
-			width: 140px;
-			height: 31px;
-			text-align:center;
-			border: 1px solid gray;
-			border-right: none;
-		}
-		.panel{
-			width: 460;
-			height: 257;
-			float: left;
-		}
-		.idput{
-			padding-left: 30px;
-			width: 350px;
-			height: 24px;
-			margin-left: 40px;
-			border: 1px solid gray;
+		.pwdput{ width: 380px; height: 48px;
+			padding-left: 30px; margin-left:25px; margin-bottom: 10px;
+			border-top: none; border-bottom: 1px solid gray;
+			border-left: 1px solid gray; border-right: 1px solid gray;
 			border-radius: 4px;
 		}
-		.pwdput{
-			padding-left: 30px;
-			width: 350px;
-			height: 24px;
-			margin-left: 40px;
-			border-top: none;
-			border-bottom: 1px solid gray;
-			border-left: 1px solid gray;
-			border-right: 1px solid gray;
-			border-radius: 4px;
+		#loginButton{
+			margin-top: 40px;
+			margin-left: 28px;
+			width: 402px; height: 52px;
+			background-color: #03c75a;;
+			border: none; border-radius: 7px;
+			font-size: 20px; color: white;
 		}
-	
-		img{
+		img{ float: left;
 			margin-top: 6px;
-			float: left;
-			margin-right: none;
+			margin-right: 2px;
 			margin-left: 20px;
 		}
- 		.loginmenutxt{ 
- 			margin-top: 4px; 
- 			margin-right: 18px;
- 		} 
- 		.keepcheck{
- 			margin-left: 16px;
- 			margin-right: 204px;
+ 		.keepcheck{ margin-left: 16px; margin-right: 204px;
  		}
- 		footer>ul>li{
- 			float:left;
- 			list-style-type: none;
- 			margin-right: 5px;
+ 		#link{
+ 			margin-left: -40px;
+ 		}
+ 		.link2{
+ 			float: left; margin-left: 5px;
+ 		
  		}
  		.copyright{
+ 			margin-left:40px;
  			clear: both;
  		}
  		.findpwd{
@@ -116,10 +87,35 @@
  			margin: auto;
  		}
  		.overBanner{
+ 			margin-bottom:30px;
  			margin-left: 95px;
  		}
  		body {
-			height: 1000px;
+			height: 2000px;
+		}
+		#form{
+		}
+		.loginmenutxt{ 
+			padding-top:15px;
+ 			width:153.33px;
+ 			height:40px;
+ 			margin-right: 18px;
+ 			margin-bottom: 20px;
+ 		} 
+		#idLogin{
+			border-bottom: none; border-top: 1px solid gray;
+			border-radius: 5px; float: left;
+			margin-right: -1px;
+		}
+		#tempNum{ border: 1px solid gray;border-radius: 5px; float: left; margin-right: -1px;
+		}
+		#QRCode{ border-bottom:1px solid gray; border-bottom:1px solid gray; border-top:1px solid gray;		
+		border-radius: 5px; float: left; margin-right: -1px;
+		}
+		#tab{
+			height: 70px;
+			width: 1300px;
+			margin-bottom: 20px;
 		}
 	</style>	
 	<script type="text/javascript">
@@ -134,21 +130,24 @@
 			pwdPutObj.value = "";
 		}	
 		
-// 		function fnc() {
-// 			var obj = document.getElementById("p");
-// 			obj.innerHTML = ${error}
-// 		}
-
-	 document.getElementById("loginButton").addEventListener("click", function(event) {
-        var id = document.getElementById("id").value;
-        var pwd = document.getElementById("pwd").value;
-
-        if (id === "" || pwd === "") {
-            document.getElementById("errorDiv").style.display = "none";
-            event.preventDefault();
-        }
-    });
-	
+	function idCheckFnc() {
+	   		
+	   		var idInputObj = document.getElementById("id");
+	   		var pwdInputObj = document.getElementById("pwd");	   		
+	   		var noIdErrorObj = document.getElementById("noIdError");
+	   		var noPwdErrorObj = document.getElementById("noPwdError");
+			
+			if (idInputObj.value == "") {
+				noIdErrorObj.setAttribute("style", "display: block");
+				noPwdErrorObj.setAttribute("style", "display: none");
+			} else if (pwdInputObj.value == "") {
+				noIdErrorObj.setAttribute("style", "display: none");
+				noPwdErrorObj.setAttribute("style", "display: block");
+			} else {
+				noIdErrorObj.setAttribute("style", "display: none");
+				noPwdErrorObj.setAttribute("style", "display: none");
+			}
+		} 
 	
 	</script>
 
@@ -169,56 +168,54 @@
 </head>
 <body>
 
-<div class="container" style="border: 1px solid black;">
-
-	
-	<div class="menuwrapper">
-		<ul class="menuwrap">
-			<li>
-				<img src="../images/loginById.PNG" width="20">
-				<div class="loginmenutxt">ID 로그인</div>
-			</li>
-			<li>
-				<img src="../images/loginByTempCode.PNG" width="20">
-				<div class="loginmenutxt">일회용번호</div>
-			</li>
-			<li>
-				<img src="../images/loginByQrCode.PNG" width="20">
-				<div class="loginmenutxt">QR코드</div>
-			</li>
-		</ul>
-	</div>
-<br>
-	<div class="panel">
-		<div>
-			<form action="./loginForm" method="post">
-				<input type="text" class="idput" id="id" placeholder="아이디" name="id"
-				style="background-image:url('../images/id.PNG'); background-repeat: no-repeat;"
-				maxlength="41">
-		<div>
-				<input type="text" class="pwdput" id="pwd" placeholder="비밀번호" name="pwd"
-				style="background-image:url('../images/lock.PNG');
-				background-repeat: no-repeat;" maxlength="16">
+<div class="container">
+	<div id="pannel">
+	<div id="tab">
+		<div class="loginmenutxt" id="idLogin">ID 로그인
+			<img src="../images/loginById.PNG" width="20">
 		</div>
-			<label class="keepcheck">
-				<input type="checkbox" id="keeping" name="keep" value="off">
-					로그인 상태 유지
-			</label>
-				<label class="keepcheck2"> IP보안
-					<input type="checkbox" id="switch">
-				 	<span class="onf_btn"></span>
-			 	</label>
-			 	<br>
-			 	<br>
-			 	<br>
-			 	<br>
-			 	<input type="submit" value="로그인" id="loginButton">
-			</form>
-			<div id="errorDiv" class="error-message" style="display: block;">
-           		 로그인 실패 시 아이디 또는 비밀번호를 확인해주세요.
-        	</div>
-			
-			
+		<div class="loginmenutxt" id="tempNum">일회용번호
+			<img src="../images/loginByTempCode.PNG" width="20">
+		</div>
+		<div class="loginmenutxt" id="QRCode">QR코드
+			<img src="../images/loginByQrCode.PNG" width="20" style="margin-top: 4px;">
+		</div>
+	</div>
+	<div>
+		<form action="./loginForm" method="post">
+		<div id="loginwrapper">
+			<input type="text" class="idput" id="id" placeholder="아이디" name="id"
+			style="background-image:url('../images/id.PNG'); background-repeat: no-repeat;"
+			maxlength="41" onblur="idCheckFnc();">
+		<br>	
+			<input type="password" class="pwdput" id="pwd" placeholder="비밀번호" name="pwd"
+			style="background-image:url('../images/lock.PNG');
+			background-repeat: no-repeat;" maxlength="16" onblur="idCheckFnc();">
+		<br>
+		</div>
+		<label class="keepcheck">
+			<input type="checkbox" id="keeping" name="keep" value="off">
+				로그인 상태 유지
+		</label>
+			<label class="keepcheck2"> IP보안
+				<input type="checkbox" id="switch">
+			 	<span class="onf_btn"></span>
+		 </label>
+		 <br>	
+		 <input type="submit" value="로그인" id="loginButton" onclick="idCheckFnc()">
+	
+	</div>
+
+		<div id="error" class="error-message" style="display: none;">
+          		 로그인 실패 시 아이디 또는 비밀번호를 확인해주세요.
+       	</div>
+		<div id="noIdError" class="error-message" style="display: none;">
+			 아이디를 입력해 주세요.
+		</div>
+		<div id="noPwdError" class="error-message" style="display: none;">
+			 비밀번호를 입력해 주세요.
+		</div>
+	</form>
 <%-- 			  <p>${sessionScope.message}</p> --%>
 			
 <%-- 				<%=request.getAttribute("error") %> --%>
@@ -229,50 +226,35 @@
 <%-- 			    ${error} --%>
 <!-- 			</div> -->
 <%-- 			<% } %> --%>
-			
-		</div>
-	</div>
-	
  	<br>
  	<br>
  	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
- 	<br>
+ 	
  	<div class="overBanner">
 	 	<a id="findpwd" onclick="location.href='./findPwd.jsp'" style="color: gray;">비밀번호 찾기 |</a>
 	 	<a type="button" id="findId" onclick="location.href='./findId.jsp'" style="color: gray;">아이디 찾기 |</a>
 	 	<a type="button" class="joinBtn" onclick="location.href='../join/agree'" style="color: gray;">회원가입</a>
 	</div>
-	<br>
-	<br>
-	<br>
 	<img alt="배너" src="../images/loginBanner.PNG" class="banner">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<footer>
-		<ul>
-			<li >이용약관</li>
-			<li>|</li>
-			<li>개인정보처리방침</li>
-			<li>|</li>
-			<li>책임의 한계와 법적고지</li>
-			<li>|</li>
-			<li>회원정보 고객센터</li>
-			<li>|</li>
-		</ul>
+		<div id="link" class="link2">이용약관 | </div>
+		<div class="link2">개인정보처리방침 | </div>
+		<div class="link2">책임의 한계와 법적고지 | </div>
+		<div class="link2">회원정보 고객센터</div>
 		<div class="copyright">
 			NAVER Copyright &copy; NAVER Corp. All Rights Reserved.
 		</div>	
@@ -284,7 +266,6 @@
 		
 		
 			
-</div>
 </body>
 
 </html>

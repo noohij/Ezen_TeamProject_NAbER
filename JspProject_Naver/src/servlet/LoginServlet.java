@@ -37,9 +37,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		Connection conn = null; // db연결
-		
 		try {
 			// jsp(화면단)에서 받을 정보 객체 생성
 			String id = req.getParameter("id"); 
@@ -57,7 +55,6 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = req.getSession();
 			
 			String error = "왜 안됨";
-			
 		//회원이 존재한다면 세션에 담고 게시판 페이지로 이동
 		if (memberDto != null) {
 
@@ -66,7 +63,6 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("member", memberDto);
 			res.sendRedirect("../board/list");
 		}
-			
 			//회원이 없다면 로그인 페이지로 이동해서 메세지 띄우기
 		else{
 			

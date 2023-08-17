@@ -9,6 +9,10 @@
 		Insert title here
 	</title>
 	<style type="text/css">
+		#pannel_header{
+			width: 700px;
+			margin-left: 600px;
+		}
 		.objects{
 			float: right;
 			margin-left: none;
@@ -39,41 +43,43 @@
 			margin-right: 60px;
 		}
 		
+		#firstPannel{
+			margin-left: 600px;
+		}
+		#secondPannel{
+			margin-left: 600px;
+		}
+		
 	</style>
 	
 	<script type="text/javascript">
 	
 		
-	</script>
-		<div id="header">
-			<div id="header_findid">아이디 찾기</div>
-			<div id="header_findpwd">비밀번호 찾기</div>
-		</div>
-	<br>	
-	<br>	
+	</script>	
 	
 </head>
 <body>
 	<div id="pannel_header">
-		<div>아이디 찾기</div>
+		<div style="font-weight: bold;">아이디 찾기</div>
 		<div style="border: 1px solid black;"></div>
 		<div>아이디 찾는 방법을 선택해 주세요.</div>
 	</div>
+	<br>
+	<br>
+	<br>
 	<br>
 	<div id="firstPannel">
 		<input type="radio">회원정보에 등록한 휴대전화로 인증
 		<div>회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받을 수 있습니다.</div>
 		<br>
-<!-- 		<div id="nameWrapper"> -->
-			
-<!-- 		</div> -->
 		<div id="phonNumWrapper">
 			<form method="post" action="../FindNaverId">
-			이름<input type="text" id="inputName" name="user_name">
-			휴대전화<select name="identifyPhoneNuM">
-			<option value="">+82 대한민국</option>
+			이름<input type="text" id="inputName" name="user_name" style="margin-left: 70px;">
+			<br>
+			휴대전화<select name="identifyPhoneNuM" style="margin-left: 38px">
+			<option value="">+82</option>
 			</select>
-			<input placeholder="휴대전화번호" id="phoneNum" name="phoneNum">
+			<input placeholder="휴대전화번호" id="phoneNum" name="phoneNum" style="width: 116px;">
 			<input type="submit" id="authSub" value="인증번호 받기" name="id">
 <%-- 			<%=request.getAttribute("id")%> --%>
 				${id}
@@ -99,11 +105,12 @@
 		<div>아이핀 인증</div>
 		<br>
 	</div>
-	<button type="button" style="background-color: white; border: 1px solid gray;">다음</button>
+	<button type="button" style="background-color: white; border: 1px solid gray;
+	margin-left: 900px">다음</button>
 	<br>
 	<br>
 	<br>
-	<div id="footer">
+	<div id="footer" style="margin-left: 600px;">
 		<div>아이디 찾기에 어려움이 있으신가요? 도움말 펼치기</div>
 		<div>아이디 찾기 시 문제가 있나요? 바로가기</div>
 	</div>
