@@ -9,7 +9,8 @@
 	<style type="text/css">
 	
 		.radioDiv:has(.radioBtn:checked){
-   			background-color: #47C83E;
+/*    			background-color: #47C83E; */
+				border: 2px solid red;
 		}	
 	
 		input {
@@ -49,12 +50,17 @@
 			width: 1px;
 			height: 1px;
 		}
+		input[type="number"]::-webkit-outer-spin-button,
+		input[type="number"]::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
 		
 /* 		input[type="radio"]:checked + label { */
 /* 			border: 2px solid #09aa5c; */
 /* 		} */
 		
-		textarea:focus, input:focus{
+		textarea:focus, input:focus, select:focus {
 		    outline: none;
 		}
 		
@@ -451,7 +457,7 @@
 				
 				<div id="birthdayInput" class="infoRow">
 					<img src="../images/joinIcon_birthday.JPG">
-					<input type="text" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();">
+					<input type="number" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();">
 				</div>
 				
 				<div id="telecomInput" class="infoRow">
@@ -506,7 +512,7 @@
 				
 				<div id="phoneNumInput" class="infoRow">
 					<img src="../images/joinIcon_phoneNum.JPG">
-					<input type="text" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();">
+					<input type="number" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();">
 				</div>
 			</div>
 			

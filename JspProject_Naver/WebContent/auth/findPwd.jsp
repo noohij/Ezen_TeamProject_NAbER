@@ -58,9 +58,11 @@
 	<br>
 	<br>
 	<div class="panel">
+	<form method="post" action="/FindPwd">
 		<input placeholder="네이버 아이디 또는 단체 아이디" id="naverId" name="naverId">
+	</form>
 	<div>
-			<input type="button" value="다음" id="next" name="next">
+		<a onclick="location.href='./findNaverPwd.jsp'" id="next" name="next">다음</a>
 			
 		</div>
 		<div id="atag">
