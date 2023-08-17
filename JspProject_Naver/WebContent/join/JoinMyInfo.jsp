@@ -22,6 +22,7 @@
 			genderCheckFnc();
 			phoneNumCheckFnc();
 			agreeCheckFnc();
+			authNumCheckFnc();
 			
 			for (var i = 0; i < errorDivList.length; i++) {
 				var displayStyleCheck = errorDivList[i].getAttribute("style");
@@ -56,7 +57,6 @@
 // 	   		{5,20}: 이전 패턴 [a-z0-9_-]가 최소 5번부터 최대 20번까지 연속으로 나타나야 합니다.
 // 				즉, 문자열의 길이는 5에서 20 사이여야 합니다.
 // 	   		$: 문자열의 끝을 나타냅니다.
-	
 			
 			if (idInputObj.value == "") {
 				noIdErrorObj.setAttribute("style", "display: block");
@@ -298,6 +298,32 @@
 				agreementDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
 			}
 		}
+		
+		var authNum = "";
+		
+		function authorizationFnc() {
+			
+			authNum = (parseInt(Math.random()*999999) + 1);
+			alert(authNum);
+		}
+		
+		function authNumCheckFnc() {
+			
+			var authNumInputObj = document.getElementById("authNumInput").value;
+			var authDivObj = document.getElementById("authorizationDiv");
+			
+			if (authNumInputObj != authNum) {
+				wrongAuthNumErrorDiv.setAttribute("style", "display: block");
+				authDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			} else if (authNumInputObj == "") {
+				wrongAuthNumErrorDiv.setAttribute("style", "display: block");
+				authDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			} else {
+				wrongAuthNumErrorDiv.setAttribute("style", "display: none");
+				authDivObj.setAttribute("style", "border: 1px solid #d6d6d6");
+			}
+		}
+		
    	
 	</script>	
 	<link rel="stylesheet" type="text/css" href="../css/JoinMyInfo.css">
@@ -313,7 +339,7 @@
 				</a>
 		</div><!-- header 종료 -->
 		
-		<form method="post">
+<!-- 		<form method="post"> -->
 			<div id="accountInfo" class="boxList">
 				<div id="idInput" class="infoRow">
 					<img src="../images/joinIcon_id.JPG">
@@ -462,10 +488,21 @@
 				필수 약관에 모두 동의해 주세요.
 			</div>
 			
+			<div id="authorizationDiv" class="boxList">
+				<input type="number" id="authNumInput" class="input" placeholder="인증번호"
+					onblur="authNumCheckFnc();">
+				<input type="button" value="인증번호확인" id="authButton"
+					onclick="authorizationFnc()">
+			</div>
+			
+			<div id="wrongAuthNumErrorDiv" class="error">
+				인증번호가 일치하지 않습니다.
+			</div>
+			
 			<div>
 				<input type="submit" value="인증요청" id="submitButton" onclick="submitCheckFnc(event)">
 			</div>
-		</form>
+<!-- 		</form> -->
 		
 	</div><!-- inner 종료 -->
 	

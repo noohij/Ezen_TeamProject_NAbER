@@ -174,8 +174,20 @@
 		    color: #222;
 		    vertical-align: middle;
 		}
-		#agreementDiv {
+		#agreementDiv, #authorizationDiv {
 			height: 50px;
+		}
+		#authNumInput {
+			margin-left: 40px;
+		}
+		#authButton {
+			width: 95px;
+			height: 33px;
+			font-weight: bold;
+			background-color: #ffffff;
+			color: #09AA5C;
+			border: 2px solid #09AA5C;
+			border-radius: 4px;
 		}
 		
 	</style>
