@@ -70,7 +70,7 @@
 </head>
 
 	<div id="parent_div">
-		<h3 style="text-align: center;">글 쓰기</h3>
+		<h3 style="text-align: center;">상세 게시글</h3>
 		<div id="table_div">
 			<table>
 				<tr>

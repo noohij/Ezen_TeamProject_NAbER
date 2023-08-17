@@ -98,7 +98,7 @@
 					<tr>
 						<td colspan="2" style="padding-left: 350px;">
 						<input type="submit" 
-							onclick="checkPwdFnc("${boardDto.mod_pwd}");" value="완료">
+							onclick="checkPwdFnc('${boardDto.mod_pwd}');" value="완료">
 						<input type="reset" value="되돌리기">
 						<input type="button"
 							onclick="location ='./list'" value="목록보기">

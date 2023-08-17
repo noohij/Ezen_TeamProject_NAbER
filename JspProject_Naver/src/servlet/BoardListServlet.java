@@ -45,22 +45,23 @@ public class BoardListServlet extends HttpServlet{
 			
 			int pages = 1;
 			if (req.getParameter("pages") == null) {
-				pages = 5;
-				int pagesSet = 5;
-				
+				pages = 1;
+				int pagesSet = 10;
+				req.setAttribute("currentPage", 1);
 				req.setAttribute("pagesSet", pagesSet);
 			}else {
 				pages = Integer.parseInt(req.getParameter("pages"));
-				int pagesSet = 5 * pages;
+				int pagesSet = 10 * pages;
 				
+				req.setAttribute("currentPage", pages);
 				req.setAttribute("pagesSet", pagesSet);
 				
 			}
 			
 			
 			// 페이지 수 저장하기
-			// 소수점으로 나눠지기 때문에 + 1
-			int totalPages = (boardList.size() / 5) + 1;
+			// 페이지수 올림처리 함
+			double totalPages = Math.ceil((double)boardList.size() / 10);
 			req.setAttribute("totalPages", totalPages);
 			
 			res.setContentType("text/html");

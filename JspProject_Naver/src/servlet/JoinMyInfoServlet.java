@@ -1,10 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -79,7 +78,12 @@ public class JoinMyInfoServlet extends HttpServlet {
 			
 			resultNum = memberDao.memberInsert(memberDto);
 			
-			res.sendRedirect("../auth/loginForm");
+//			res.sendRedirect("../auth/loginForm");
+			
+			res.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = res.getWriter();
+            out.println("<script>alert('회원가입이 완료되었습니다! 로그인 후 이용해주세요.'); location.href='../auth/loginForm';</script>");
+            out.flush();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -36,6 +36,11 @@
 		margin-left: 490px;
 		margin-right: 490px;
 	}
+	#pageDiv{
+/* 		margin-top: 100px; */
+		 position: fixed;
+		 bottom: 350px;
+	}
 	#title_td{
 		overflow: hidden;
         text-overflow: ellipsis;
@@ -58,8 +63,6 @@
  		width: 480px; 
 		text-decoration: none;
 		color: black;
-		
-       
 	}
 	
 </style>
@@ -67,9 +70,27 @@
 	function pagingFnc(x) {
 		var num = x.innerHTML; 
 		location.href = "./list?pages="+ num;
-// 							
+						
 
+	}
+	function pagingNextFnc(crrentNum, maxNum) {
+// 		alert(crrentNum);
+		if (crrentNum < maxNum) {
+			location.href = "./list?pages="+ (crrentNum+1);
+		}else{
+			alert("마지막 페이지 입니다.");
 		}
+		
+	}
+	function pagingPrevFnc(crrentNum) {
+// 		alert(crrentNum);
+		if (1 < crrentNum) {
+			location.href = "./list?pages="+ (crrentNum-1);
+		}else{
+			alert("초기 페이지 입니다.");
+		}
+		
+	}
 </script>
 </head>
 
@@ -105,7 +126,7 @@
 				
 				<c:forEach var="boardDto"
 					items="${boardList}" 
-						begin="${pagesSet-4}" end="${pagesSet}">
+						begin="${pagesSet-10}" end="${pagesSet - 1}">
 					<tr>
 						<td style="width: 50px;">${boardDto.bno}</td>
 						<td id="title_td"
@@ -119,16 +140,16 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<div style="margin-left: 400px;">
-				<form action=".list" method="post">
-				<a onclick="pagingFnc(this);"><</a>
-					<c:forEach var="pagesNum" begin="1" end="${totalPages}">
+			<div id="pageDiv" style="margin-left: 400px;">
+				<a onclick="pagingPrevFnc(${currentPage});"><</a>
+					<c:forEach 
+						var="pagesNum" begin="1" end="${totalPages}">
 					
 					<a onclick="pagingFnc(this);">${pagesNum}</a>
 					
 					</c:forEach>
-					<a onclick="pagingFnc(this);">></a>
-				</form>
+					<a onclick="pagingNextFnc(${currentPage}
+						, ${totalPages});">></a>
 			</div>
 		</div>
 		<div>

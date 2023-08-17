@@ -6,167 +6,7 @@
 	<meta charset="UTF-8">
 	<title>네이버 : 회원가입</title>
 	
-	<style type="text/css">
 	
-		.radioDiv:has(.radioBtn:checked){
-/*    			background-color: #47C83E; */
-				border: 2px solid red;
-		}	
-	
-		input {
-			width: 400px;
-			height: 40px;
-			margin: 5px 0px 5px 0px;
-			border: none;
-		}
-		form {
-			margin-top: 50px;
-		}
-		label {
-			font-size: 13px;
-		    line-height: 18px;
-		    color: #929294;
-		    text-align: center;
-		}
-		#agreeAll {
-			width: 30px;
-			height: 30px;
-			margin: 10px;
-		}
-		#idBlank {
-			width: 300px;
-		}
-		#naverDomain {
-			margin: 15px 0px;
-		}
-		#telecomBlank {
-			width: 400px;
-			height: 30px;
-			margin: 11px 0px 11px 0px;
-			border: none;
-		}
-		input[type=radio] {
-			margin-left: 0px;
-			width: 1px;
-			height: 1px;
-		}
-		input[type="number"]::-webkit-outer-spin-button,
-		input[type="number"]::-webkit-inner-spin-button {
-			-webkit-appearance: none;
-			margin: 0;
-		}
-		
-/* 		input[type="radio"]:checked + label { */
-/* 			border: 2px solid #09aa5c; */
-/* 		} */
-		
-		textarea:focus, input:focus, select:focus {
-		    outline: none;
-		}
-		
-		.genderNationalitySelect label {
-			width: 100px;
-		}
-		
-		.boxList {
-			width: 460px;
-			margin: 10px;
-			border-radius: 6px;
-	    	border: 1px solid #d6d6d6;
-		}
-		.infoRow {
-			height: 50px;
-			border: 1px solid #d6d6d6;
-			margin: -1px;
-		}
-		
- 		#idInput, #nameInput {
- 			border-top-left-radius: 6px;
-   			border-top-right-radius: 6px;
- 		}
-
-		#emailInput, #phoneNumInput {
-			border-bottom-left-radius: 6px;
-   			border-bottom-right-radius: 6px;
-		}
-		
-		.radioBtn {
-			opacity: 0;
-		}
-		.error {
-			margin-left: 20px;
-			font-size: 13px;
-		    line-height: 18px;
-		    color: #ff3f3f;
-		}
-		#under14ErrorMsg {
-			margin-left: 20px;
-			font-size: 13px;
-		    line-height: 18px;
-			color: #09AA5C;
-		}
-		#smallLabel{
-			width: 100px;
-			height: 20px;
-		}
-		#naverDomain {
-			float: right;
-			padding: 0px 10px;
-			color: #767678;
-		}
-		#accountInfo {
-			
-		}
-		#personalInfo {
-			
-		}
-		#agreement {
-			
-		}
-		#genderSelect, #nationalitySelect {
-			width: 100px;
-			border-radius: 6px;
-		}
-		#genderSelect {
-			width: 180px;
-			float: left;
-		}
-		#nationalitySelect {
-			width: 180px;
-			float: right;
-		}
-		#button {
-			margin: 0px 0px 20px 10px;
-			position: fixed; bottom: 0;
-			width: 460px; height: 52px;
-			background-color: #09AA5C; color: #FFFFFF;
-		    border: 1px solid rgba(0,0,0,.05);
-		    border-radius: 6px;
-		    font-size: 18px;
-		    font-weight: 500;
-		    line-height: 22px;
-		}
-		#agreeLabel {
-			font-size: 15px;
-		    font-weight: 600;
-		    line-height: 22px;
-		    letter-spacing: -.8px;
-		    color: #222;
-		    vertical-align: middle;
-		}
-		label>span {
-			color: #09AA5C;
-		}
-		img {
-			margin-left: 10px;
-			margin-top: 6px;
-		}
-		
-		#agreement {
-			height: 200px;
-		}
-		
-	</style>
 	
    	<script type="text/javascript">
    		function fnc(x) {
@@ -412,15 +252,16 @@
 		}
    	
 	</script>	
+	<link rel="stylesheet" type="text/css" href="../css/JoinMyInfo.css">
 </head>
 
 <body>
 
-	<div class="inner" style="width: 500px; margin: 0px auto">
+	<div class="inner">
 	
 		<div class="header">
 				<a href="http://www.naver.com">
-					<img src="../images/naverLogo.PNG" style="width: 20%; height: 20%;">
+					<img src="../images/naverLogo.PNG">
 				</a>
 		</div><!-- header 종료 -->
 		
@@ -428,41 +269,58 @@
 			<div id="accountInfo" class="boxList">
 				<div id="idInput" class="infoRow">
 					<img src="../images/joinIcon_id.JPG">
-					<input type="text" placeholder="아이디" name="id" id="idBlank" onblur="idCheckFnc();" onfocus="idFocusFnc();">
+					<input type="text" placeholder="아이디" name="id" id="idBlank" class="input"
+							onblur="idCheckFnc();" onfocus="idFocusFnc();" required>
 					<div id="naverDomain">@naver.com</div>
 				</div>
 				
 				<div id="pwdInput" class="infoRow">
 					<img src="../images/joinIcon_pwd.JPG">
-					<input type="password" placeholder="비밀번호" name="pwd" id="pwdBlank" onblur="pwdCheckFnc();" onfocus="pwdFocusFnc();">
+					<input type="password" placeholder="비밀번호" name="pwd" id="pwdBlank" class="input"
+							onblur="pwdCheckFnc();" onfocus="pwdFocusFnc();" required>
 				</div>
 				
 				<div id="emailInput" class="infoRow">
 					<img src="../images/joinIcon_email.JPG">
-					<input type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일" name="email" id="emailBlank" onblur="emailCheckFnc();" onfocus="emailFocusFnc();">
+					<input type="text" placeholder="[선택] 비밀번호 분실 시 확인용 이메일"
+							name="email" id="emailBlank" class="input"
+							onblur="emailCheckFnc();" onfocus="emailFocusFnc();">
 				</div>
 			</div>
 			
-			<div id="noIdError" class="error" style="display:none">· 아이디: 필수 정보입니다.</div>
-			<div id="invalidIdError" class="error" style="display:none">· 아이디: 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</div>
-			<div id="noPwdError" class="error" style="display:none">· 비밀번호: 필수 정보입니다.</div>
-			<div id="invalidPwdError" class="error" style="display:none">· 비밀번호: 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.</div>
-			<div id="invalidEmailError" class="error" style="display:none">· 이메일: 이메일 주소가 정확한지 확인해 주세요.</div>
+			<div id="noIdError" class="error">
+				· 아이디: 필수 정보입니다.
+			</div>
+			<div id="invalidIdError" class="error">
+				· 아이디: 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.
+			</div>
+			<div id="noPwdError" class="error">
+				· 비밀번호: 필수 정보입니다.
+			</div>
+			<div id="invalidPwdError" class="error">
+				· 비밀번호: 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.
+			</div>
+			<div id="invalidEmailError" class="error">
+				· 이메일: 이메일 주소가 정확한지 확인해 주세요.
+			</div>
 			
 			<div id="personalInfo" class="boxList">
 				<div id="nameInput" class="infoRow">
 					<img src="../images/joinIcon_id.JPG">
-					<input type="text" placeholder="이름" name="name" id="nameBlank" onblur="nameCheckFnc();" onfocus="nameFocusFnc();">
+					<input type="text" placeholder="이름" name="name" id="nameBlank" class="input"
+						 onblur="nameCheckFnc();" onfocus="nameFocusFnc();" required>
 				</div>
 				
 				<div id="birthdayInput" class="infoRow">
 					<img src="../images/joinIcon_birthday.JPG">
-					<input type="number" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();">
+					<input type="number" placeholder="생년월일 8자리" name="birthday" id="birthdayBlank" class="input"
+						 onblur="birthdayCheckFnc();" onfocus="birthdayFocusFnc();" required>
 				</div>
 				
 				<div id="telecomInput" class="infoRow">
 					<img src="../images/joinIcon_telecom.JPG">
-					<select name="telecom" id="telecomBlank" onfocus="telecomFocusFnc();">
+					<select name="telecom" id="telecomBlank"
+							onfocus="telecomFocusFnc();" required>
 						<option value="" selected disabled hidden>통신사 선택</option>
 						<option>SKT</option>
 						<option>KT</option>
@@ -474,36 +332,35 @@
 				</div>
 				
 				<div id="genderNationalitySelect" class="infoRow">
-					<div id="genderSelect" style="width: 200px; height: 30px; border: 1px solid #c6c6c6; margin-top: 10px; margin-left: 10px;">
-						<div id="maleDiv" class="radioDiv" style="width: 49%; height: 99%; float: left; border-right: 1px solid #c6c6c6;">
-							<input type="radio" id="male" class="radioBtn"  onclick="fnc(this);"
-								name="gender" value='남성'>
-							<label for="male" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
+					<div id="genderSelect">
+						<div id="maleDiv" class="radioDiv">
+							<input type="radio" id="male" class="radioBtn" 
+								name="gender" value='남성' required>
+							<label for="male" class="radioLabel">
 								남자
 							</label>
 						</div>
-						
-						<div id="femaleDiv" class="radioDiv" style="width: 49%; height: 99%; float: right;">
+						<div id="femaleDiv" class="radioDiv">
 							<input type="radio" id="female" class="radioBtn" 
-								name="gender" value='여성'>
-							<label for="female" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
+								name="gender" value='여성' required>
+							<label for="female" class="radioLabel">
 								여자
 							</label>
 						</div>	
 					</div>
 					
-					<div id="nationalitySelect" style="width: 200px; height: 60%; border: 1px solid #c6c6c6; margin-top: 10px; margin-right: 10px;">
-						<div id="koreanDiv" class="radioDiv" style="width: 49%; height: 99%; float: left; border-right: 1px solid #c6c6c6;">
+					<div id="nationalitySelect">
+						<div id="koreanDiv" class="radioDiv">
 							<input type="radio" id="korean" class="radioBtn" 
 								name="nationality" value="내국인">
-							<label for="korean" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
+							<label for="korean" class="radioLabel">
 								내국인
 							</label>
 						</div>	
-						<div id="foreignerDiv" class="radioDiv" style="width: 49%; height: 99%; float: right;">
+						<div id="foreignerDiv" class="radioDiv">
 							<input type="radio" id="foreigner" class="radioBtn" 
 								name="nationality" value="외국인">
-							<label for="foreigner" style="display:inline-block; width: 87px; height: 80%; text-align: center; margin-top: 3px;">
+							<label for="foreigner" class="radioLabel">
 								외국인
 							</label>
 						</div>
@@ -512,33 +369,46 @@
 				
 				<div id="phoneNumInput" class="infoRow">
 					<img src="../images/joinIcon_phoneNum.JPG">
-					<input type="number" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();">
+					<input type="number" placeholder="휴대전화번호" name="phoneNum" id="phoneNumBlank" class="input"
+							onblur="phoneNumCheckFnc();" onfocus="phoneNumFocusFnc();" required>
 				</div>
 			</div>
 			
-			<div id="noNameError" class="error" style="display:none">· 이름: 필수 정보입니다.</div>
-			<div id="noBirthdayError" class="error" style="display:none">· 생년월일: 필수 정보입니다.</div>
-			<div id="invalidBirthdayError" class="error" style="display:none">· 생년월일: 생년월일이 정확한지 확인해 주세요.</div>
-			<div id="under14BirthdayError" class="error" id="under14ErrorMsg" style="display:none;">생년월일: 만 14세 미만의 어린이는 보호자의 동의가 필요합니다.</div>
-			<div id="noPhoneNumError" class="error" style="display:none">· 휴대전화번호: 필수 정보입니다.</div>
-			<div id="invalidPhoneNumError" class="error" style="display:none">· 휴대전화번호: 휴대전화번호가 정확한지 확인해 주세요.</div>
+			<div id="noNameError" class="error">
+				· 이름: 필수 정보입니다.
+			</div>
+			<div id="noBirthdayError" class="error">
+				· 생년월일: 필수 정보입니다.
+			</div>
+			<div id="invalidBirthdayError" class="error">
+				· 생년월일: 생년월일이 정확한지 확인해 주세요.
+			</div>
+			<div id="under14BirthdayError" class="error" id="under14ErrorMsg">
+				생년월일: 만 14세 미만의 어린이는 보호자의 동의가 필요합니다.
+			</div>
+			<div id="noPhoneNumError" class="error">
+				· 휴대전화번호: 필수 정보입니다.
+			</div>
+			<div id="invalidPhoneNumError" class="error">
+				· 휴대전화번호: 휴대전화번호가 정확한지 확인해 주세요.
+			</div>
 			
-			<div id="agreement" class="boxList" style="height: 50px;">
-				<input type="checkbox" id="agreeAll">
-				<label for="agreeAll" id="agreeLabel"><span class="required">[필수]</span> 인증 약관 전체동의</label>
+			<div id="agreementDiv" class="boxList">
+				<input type="checkbox" id="agreeAll" required>
+				<label for="agreeAll" id="agreeLabel">
+					<span class="required">[필수]</span>
+					 인증 약관 전체동의
+				</label>
 			</div>
 			
 			<div>
-				<input type="submit" value="인증요청"
-					id="button">
+				<input type="submit" value="인증요청" id="button">
 			</div>
 		</form>
 		
 	</div><!-- inner 종료 -->
 	
-	
 
 </body>
-
 
 </html>
