@@ -11,21 +11,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.BoardDao;
 import dto.BoardDto;
 
+@WebServlet("/board/search")
+public class SearchServlet extends HttpServlet{
 
-@WebServlet("/board/list")
-public class BoardListServlet extends HttpServlet{
-
-	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//conn 객체 생성
 		Connection conn = null;
 		
 		try {
@@ -33,13 +29,19 @@ public class BoardListServlet extends HttpServlet{
 			
 			conn = (Connection)sc.getAttribute("conn");
 			
+			String searchType = req.getParameter("searchType");
+			String contents = req.getParameter("contents");
+			
+			req.setAttribute("contents", contents);
 			
 			BoardDao boardDao = new BoardDao();
 			boardDao.setConnection(conn);
 			
 			ArrayList<BoardDto> boardList = null;
 			
-			boardList = (ArrayList<BoardDto>)boardDao.selectList();
+			boardList 
+				= (ArrayList<BoardDto>)boardDao.searchList(searchType
+						, contents);
 			
 			req.setAttribute("boardList", boardList);
 			
@@ -68,7 +70,8 @@ public class BoardListServlet extends HttpServlet{
 			res.setCharacterEncoding("UTF-8");
 			
 			RequestDispatcher dispatcher = 
-					req.getRequestDispatcher("/board/BoardList.jsp");
+					req.getRequestDispatcher("/board/BoardSearchList.jsp");
+			
 			dispatcher.include(req, res);
 
 		} catch (Exception e) {
@@ -81,4 +84,6 @@ public class BoardListServlet extends HttpServlet{
 			dispatcher.forward(req, res);
 		} 
 	}
+	
+	
 }

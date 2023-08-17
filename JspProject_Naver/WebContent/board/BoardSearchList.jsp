@@ -107,7 +107,7 @@
 				<option value="title">제목</option>
 				<option value="contents">내용</option>
 				<option value="writer">글쓴이</option>
-			</select> <input type="text" name="contents"> 
+			</select> <input type="text" value="${contents}" name="contents"> 
 			<input class="ButtonClass" type="submit" value="검색">
 			</form>
 		</div>

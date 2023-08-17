@@ -311,4 +311,88 @@ public class BoardDao {
 		
 		return result;
 	}
+	
+	public List<BoardDto> searchList(String searchType
+			, String boardContents) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		System.out.println(searchType);
+		System.out.println(boardContents);
+		try {
+			String sql = "";
+			if (searchType.equals("title")) {
+				sql = "SELECT BNO, TITLE, BOARD_CONTENTS"
+						+ " , USER_NAME, MOD_DATE, CRE_DATE";
+				sql += " FROM BOARD";
+				sql += " WHERE TITLE LIKE ?";
+			}else if (searchType.equals("contents")) {
+				sql = "SELECT BNO, TITLE, BOARD_CONTENTS"
+						+ " , USER_NAME, MOD_DATE, CRE_DATE";
+				sql += " FROM BOARD";
+				sql += " WHERE BOARD_CONTENTS LIKE ?";
+			}else if (searchType.equals("writer")) {
+				sql = "SELECT BNO, TITLE, BOARD_CONTENTS"
+						+ " , USER_NAME, MOD_DATE, CRE_DATE";
+				sql += " FROM BOARD";
+				sql += " WHERE USER_NAME LIKE ?";
+			}
+			
+			
+			
+			boardContents = "%" + boardContents + "%";
+			pstmt = connection.prepareStatement(sql);
+			System.out.println(boardContents);
+			pstmt.setString(1, boardContents);
+			
+			rs = pstmt.executeQuery();
+			
+			ArrayList<BoardDto> boardList = new ArrayList<BoardDto>();
+			
+			int no = 0;
+			String title = "";
+			String contents = "";
+			String name = "";
+			Date modDate = null;
+			Date creDate = null;
+
+			while (rs.next()) {
+				no = rs.getInt("BNO");
+				title = rs.getString("TITLE");
+				contents = rs.getString("BOARD_CONTENTS");
+				name = rs.getString("USER_NAME");
+				modDate = rs.getDate("MOD_DATE");
+				creDate = rs.getDate("CRE_DATE");
+
+				BoardDto boardDto 
+					= new BoardDto(no, title, contents
+							, name, modDate, creDate);
+
+				boardList.add(boardDto);
+				
+			}
+			
+			return boardList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+
+	} // 검색 결과 끝
 }
