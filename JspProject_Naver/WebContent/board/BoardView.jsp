@@ -16,6 +16,7 @@
 	}
 	.subjectClass{
 		text-align: center;
+		width: 100px;"
 	}
 	.textClass{
 		background-color: #e1ffff;
@@ -79,7 +80,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="subjectClass" style="width: 100px;">이름</td>
+					<td class="subjectClass" >이름</td>
 					<td class="textClass" style="width: 870px;">
 						<input  readonly="readonly" 
 							value="${boardDto.user_name}">

@@ -53,10 +53,10 @@
 		if (titleObj.value == "") {
 			alert("제목을 입력해주세요");
 			titleObj.setAttribute("style"
-					, "background-color: #f05650;");
+					, "background-color: #f05650; width: 700px;");
 			event.preventDefault();
 		}
-		if (contentsObj.textContent == "") {
+		if (contentsObj.value == "") {
 			alert("내용을 입력해주세요");
 			contentsObj.setAttribute("style"
 					, "background-color: #f05650;");
@@ -65,12 +65,23 @@
 		if (passwordObj.value == "") {
 			alert("비밀번호를 설정해주세요");
 			passwordObj.setAttribute("style"
-					, "background-color: #f05650;");
+					, "background-color: #f05650; width: 100px;");
 			event.preventDefault();
 		}
 	}
-	function writeFnc(obj) {
-		obj.setAttribute("style", "background: white;");
+	function writeFnc(event) {
+		if (event.target.id == "title") {
+			event.target.setAttribute("style"
+					, "background: white; width: 700px;");
+		}
+		if (event.target.id == "contents") {
+			event.target.setAttribute("style"
+					, "background: white;");
+		}
+		if (event.target.id == "password") {
+			event.target.setAttribute("style"
+					, "background: white; width: 100px;");
+		}
 	}
 </script>
 </head>
@@ -99,8 +110,8 @@
 				<tr>
 					<td class="subjectClass">제목</td>
 					<td class="textClass">
-						<input style="width: 700px;" name="title"
-							onclick="writeFnc(this);" >
+						<input id="title" style="width: 700px;" name="title"
+							onclick="writeFnc(event);" >
 					</td>
 				</tr>
 				<tr>
@@ -114,15 +125,16 @@
 				<tr  style="height: 600px;">
 					<td class="subjectClass">내용</td>
 					<td class="textClass">
-					<textarea name="contents" 
-						onclick="writeFnc(this);"></textarea>
+					<textarea id="contents" name="contents" 
+						onclick="writeFnc(event);"></textarea>
+					</td>
 				</tr>
 				<tr>
 					<td class="subjectClass">비밀번호</td>
 					<td class="textClass">
-						<input type="password" maxlength="4" 
+						<input id="password" type="password" maxlength="4" 
 							style="width: 100px;" name="mod_pwd"
-								onclick="writeFnc(this);">
+								onclick="writeFnc(event);">
 					</td>
 				</tr>
 				<tr>
