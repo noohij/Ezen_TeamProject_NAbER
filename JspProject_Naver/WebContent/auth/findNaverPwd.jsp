@@ -15,18 +15,6 @@
 			margin-left: none;
 			margin-right: 270px;
 		}
-		#btn1{
-			padding:none;
-			width: 600px;
-		}
-		#btn2{
-			padding:none;
-			width: 600px;
-		}
-		#btn3{
-			padding:none;
-			width: 600px;
-		}
 		.naveridimg{
 			margin: none;
 		}
@@ -42,6 +30,9 @@
 		#order{
 			margin-left: 500px;
 		}
+		#pannel_header{
+			margin-top: 100px;
+		}
 		
 	</style>
 	
@@ -49,47 +40,30 @@
 	
 		
 	</script>
-		<div id="header">
-			<div id="header_findid">아이디 찾기</div>
-			<div id="header_findpwd">비밀번호 찾기</div>
-		</div>
-	<br>	
-	<br>	
-	
 </head>
-<body>
+<body style="margin-left: 550px;">
 	<div id="pannel_header">
 		<div style="float: left;">비밀번호 찾기</div>
 		<div id="order">01. 아이디 입력>02. 본인 확인>03. 비밀번호 재설정</div>
-		<div style="border: 1px solid black;"></div>
-		<div>비밀번호를 찾을 방법을 선택해 주세요!!!</div>
+		<div style="border: 1px solid black; width: 880px;"></div>
+		<div style="margin-top: 10px;">비밀번호를 찾을 방법을 선택해 주세요!!!</div>
 	</div>
 	<br>
-	<div id="firstPannel">
+	<div id="firstPannel" style="border: 1px solid gray; width: 550px; height: 100px;">
 		<input type="radio">회원정보에 등록한 휴대전화로 인증(***-****-****)
-		<div>회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받을 수 있습니다.</div>
 		<br>
 <!-- 		<div id="nameWrapper"> -->
 			
 <!-- 		</div> -->
 		<div id="phonNumWrapper">
 			<form method="post" action="../FindPwd">
-				이름<input type="text" id="inputName" name="user_name">
-				<br>
-				휴대전화<select name="identifyPhoneNuM">
-				<option value="">+82 대한민국</option>
-				</select>
 				
-				<input placeholder="휴대전화번호" id="phoneNum" name="phoneNum">
-				<input type="submit" id="authSub" value="인증번호 받기" name="id">
 <%-- 			<%=request.getAttribute("id")%> --%>
 				${pwd}
 			</form>
 		</div>
 		<div>
-			<input value="인증번호 6자리 숫자 입력">
 		</div>
-		<div>인증번호가 오지 않나요?</div>
 	</div>
 	<br>
 	<br>

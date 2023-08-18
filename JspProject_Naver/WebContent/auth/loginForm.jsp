@@ -12,6 +12,7 @@
 		header{
 			width: 1365px;
 			height: 180px;
+			margin-left: 100px;
 		}
 		.language{
 			float: right;
@@ -25,7 +26,7 @@
 		.container{
 			width: 743px;
 			height: 529px;
-			margin: 0px auto;
+			margin-left: 700px;
 		}
 		#pannel{
 			width: 460px;
@@ -251,10 +252,10 @@
 <br>
 <br>
 	<footer>
-		<div id="link" class="link2">이용약관 | </div>
-		<div class="link2">개인정보처리방침 | </div>
-		<div class="link2">책임의 한계와 법적고지 | </div>
-		<div class="link2">회원정보 고객센터</div>
+		<div id="link" class="link2" style="color: gray;">이용약관 | </div>
+		<div class="link2" style="color: gray; font-weight: bold;">개인정보처리방침 | </div>
+		<div class="link2" style="color: gray;">책임의 한계와 법적고지 | </div>
+		<div class="link2" style="color: gray;">회원정보 고객센터</div>
 		<div class="copyright">
 			NAVER Copyright &copy; NAVER Corp. All Rights Reserved.
 		</div>	
