@@ -20,7 +20,7 @@ naver notice board
 
 <table>
    <tr>
-    <td align="center"><b><a href="https://github.com/imchanu96">임찬우</a></b></td>
+    <td align="center"><b><a href="https://github.com/imchanu96">팀장 임찬우</a></b></td>
     <td align="center"><b><a href="https://github.com/noohij">박지훈</a></b></td>
     <td align="center"><b><a href="https://github.com/Dlgustn">이현수</a></b></td>
   </tr>
