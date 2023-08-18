@@ -339,7 +339,7 @@
 				</a>
 		</div><!-- header 종료 -->
 		
-<!-- 		<form method="post"> -->
+		<form method="post">
 			<div id="accountInfo" class="boxList">
 				<div id="idInput" class="infoRow">
 					<img src="../images/joinIcon_id.JPG">
@@ -395,7 +395,7 @@
 				
 				<div id="telecomInput" class="infoRow">
 					<img src="../images/joinIcon_telecom.JPG">
-					<select name="telecom" id="telecomBlank">
+					<select name="telecom" id="telecomBlank" onblur="telecomCheckFnc();">
 						<option value="선택 안함" selected disabled hidden>통신사 선택</option>
 						<option>SKT</option>
 						<option>KT</option>
@@ -410,14 +410,14 @@
 					<div id="genderSelect">
 						<div id="maleDiv" class="radioDiv">
 							<input type="radio" id="male" class="radioBtn" 
-								name="gender" value='남성'>
+								name="gender" value='남성' onblur="genderCheckFnc();">
 							<label for="male" class="radioLabel">
 								남자
 							</label>
 						</div>
 						<div id="femaleDiv" class="radioDiv">
 							<input type="radio" id="female" class="radioBtn" 
-								name="gender" value='여성'>
+								name="gender" value='여성' onblur="genderCheckFnc();">
 							<label for="female" class="radioLabel">
 								여자
 							</label>
@@ -477,7 +477,7 @@
 			</div>
 			
 			<div id="agreementDiv" class="boxList">
-				<input type="checkbox" id="agreeAll">
+				<input type="checkbox" id="agreeAll" onblur="agreeCheckFnc();">
 				<label for="agreeAll" id="agreeLabel">
 					<span class="required">[필수]</span>
 					 인증 약관 전체동의
@@ -502,7 +502,7 @@
 			<div>
 				<input type="submit" value="인증요청" id="submitButton" onclick="submitCheckFnc(event)">
 			</div>
-<!-- 		</form> -->
+		</form>
 		
 	</div><!-- inner 종료 -->
 	

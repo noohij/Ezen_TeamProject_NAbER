@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>
-		Insert title here
+		네이버 : 아이디 찾기 
 	</title>
 	<style type="text/css">
 	.pannel div button{
