@@ -28,7 +28,7 @@ public class BoardDao {
 			String sql = "SELECT BNO, TITLE, BOARD_CONTENTS"
 					+ " , USER_NAME, MOD_DATE, CRE_DATE";
 			sql += " FROM BOARD";
-			sql += " ORDER BY BNO";
+			sql += " ORDER BY MOD_DATE DESC, BNO DESC";
 			
 			pstmt = connection.prepareStatement(sql);
 			

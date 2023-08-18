@@ -69,14 +69,14 @@
 <script type="text/javascript">
 	function pagingFnc(x) {
 		var num = x.innerHTML; 
-		location.href = "./list?pages="+ num;
-						
+		location.href = "./search?=" + num + "";
+		
 
 	}
 	function pagingNextFnc(crrentNum, maxNum) {
 // 		alert(crrentNum);
 		if (crrentNum < maxNum) {
-			location.href = "./list?pages="+ (crrentNum+1);
+			location.href = "./search?pages="+ (crrentNum+1);
 		}else{
 			alert("마지막 페이지 입니다.");
 		}
@@ -85,7 +85,7 @@
 	function pagingPrevFnc(crrentNum) {
 // 		alert(crrentNum);
 		if (1 < crrentNum) {
-			location.href = "./list?pages="+ (crrentNum-1);
+			location.href = "./search?pages="+ (crrentNum-1);
 		}else{
 			alert("초기 페이지 입니다.");
 		}
@@ -103,6 +103,7 @@
 		<hr>
 		<div id="form_div" style="float: right; padding-bottom: 10px;">
 			<form action="./search" method="get" style="text-align: right">
+			<span style="margin-right: 570px;">최신순</span>
 			<select name="searchType">
 				<option value="title">제목</option>
 				<option value="contents">내용</option>

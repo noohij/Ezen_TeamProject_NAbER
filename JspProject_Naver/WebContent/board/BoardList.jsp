@@ -109,6 +109,7 @@
 		<hr>
 		<div id="form_div" style="float: right; padding-bottom: 10px;">
 			<form action="./search" method="get" style="text-align: right">
+			<span style="margin-right: 570px;">최신순</span>
 			<select name="searchType">
 				<option value="title">제목</option>
 				<option value="contents">내용</option>
