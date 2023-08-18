@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 상세</title>
+<title>네이버 : 게시판 상세</title>
 <style type="text/css">
 	body{
 		background-color: #e1ffff;
