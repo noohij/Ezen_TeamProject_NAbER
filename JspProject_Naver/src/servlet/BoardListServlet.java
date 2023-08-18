@@ -44,14 +44,15 @@ public class BoardListServlet extends HttpServlet{
 			req.setAttribute("boardList", boardList);
 			
 			int pages = 1;
+			int pagesSet = 0;
 			if (req.getParameter("pages") == null) {
 				pages = 1;
-				int pagesSet = 10;
-				req.setAttribute("currentPage", 1);
+				pagesSet = 10;
+				req.setAttribute("currentPage", pages);
 				req.setAttribute("pagesSet", pagesSet);
 			}else {
 				pages = Integer.parseInt(req.getParameter("pages"));
-				int pagesSet = 10 * pages;
+				pagesSet = 10 * pages;
 				
 				req.setAttribute("currentPage", pages);
 				req.setAttribute("pagesSet", pagesSet);

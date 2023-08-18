@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록</title>
+<title>네이버 : 게시판 쓰기</title>
 <style type="text/css">
 	table{
 		border: 1px solid gray;
@@ -53,6 +53,12 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         max-width: 400px;
+	}
+	#writer_td{
+		overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 50px;
 	}
 	.ButtonClass{
 		background-image: linear-gradient(#dae6ec , #c2d0db);
@@ -133,7 +139,8 @@
 						<td id="contents_td">
 							<a href="./view?bno=${boardDto.bno}">
 						${boardDto.contents}</a></td>
-						<td style="width: 50px;">${boardDto.user_name}</td>
+						<td id="writer_td"
+							style="width: 50px;">${boardDto.user_name}</td>
 						<td style="width: 90px;">${boardDto.mod_date}</td>
 						<td style="width: 90px;">${boardDto.cre_date}</td>
 					</tr>

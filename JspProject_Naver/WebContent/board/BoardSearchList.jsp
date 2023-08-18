@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록</title>
+<title>게시판 검색리스트</title>
 <style type="text/css">
 	table{
 		border: 1px solid gray;
