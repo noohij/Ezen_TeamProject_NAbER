@@ -24,7 +24,7 @@
                 }
 	        });
 	        
-	     // 다른 체크박스 중 하나라도 해제되면 전체 선택 체크박스도 해제
+	    	// 다른 체크박스 중 하나라도 해제되면 전체 선택 체크박스도 해제
 	        for (var i = 1; i < termList.length; i++) {
 				termList[i].addEventListener('change', function() {
 					if (!this.checked) {
@@ -43,7 +43,7 @@
 				});
 			}
 	        
-	     	// 전체 동의 체크 시, 다음 버튼 활성화(2->1 순 체크)
+	     	// 다음 버튼 활성화 조건 1. 전체 동의 체크 시
 	        termList[0].addEventListener('change', function() {
 				if (termList[1].checked && termList[2].checked) {
 					nextButtonObj.disabled = false;
@@ -54,7 +54,7 @@
 				}
 			});
 			
-			// 약관 1, 2 동의 시, 다음 버튼 활성화
+			// 다음 버튼 활성화 조건 2. 약관 1 -> 2 동의 시
 			termList[1].addEventListener('change', function() {
 				if (termList[1].checked && termList[2].checked) {
 					nextButtonObj.disabled = false;
@@ -65,7 +65,7 @@
 				}
 			});
 			
-			// 약관 2, 1 동의 시, 다음 버튼 활성화
+			// 다음 버튼 활성화 조건 3. 약관 2 -> 1 동의 시
 			termList[2].addEventListener('change', function() {
 				if (termList[1].checked && termList[2].checked) {
 					nextButtonObj.disabled = false;

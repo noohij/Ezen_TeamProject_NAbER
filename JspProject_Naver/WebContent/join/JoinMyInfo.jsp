@@ -10,9 +10,11 @@
    	
 		function submitCheckFnc(event) {
 			
-			var errorDivList = document.getElementsByClassName("error"); // 에러 메시지 div들
+			// 에러 메시지 div들
+			var errorDivList = document.getElementsByClassName("error");
 			
-			// 오류 있으면 빨간 테두리 그리고, 오류 메시지 띄우는(display: block) 함수들
+			// 유효성 검사를 통과하지 못하면,
+			// 빨간 테두리 및 오류 메시지 표시하는(display: block) 함수들
 			idCheckFnc();
 			pwdCheckFnc();
 			emailCheckFnc();
@@ -58,10 +60,12 @@
 // 				즉, 문자열의 길이는 5에서 20 사이여야 합니다.
 // 	   		$: 문자열의 끝을 나타냅니다.
 			
+			// 공백 검사
 			if (idInputObj.value == "") {
 				noIdErrorObj.setAttribute("style", "display: block");
 				invalidIdErrorObj.setAttribute("style", "display: none");
 				idDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			// 패턴 검사
 			} else if (!idPattern.test(idInputObj.value)) {
 				noIdErrorObj.setAttribute("style", "display: none");
 				invalidIdErrorObj.setAttribute("style", "display: block");
@@ -95,14 +99,17 @@
 	     	var checkUpperEng = pwdInputObj.value.search(/[A-Z]/g);
 	     	var checkLowerEng = pwdInputObj.value.search(/[a-z]/g);
 	   		
+	     	// 공백 검사
 	   		if (pwdInputObj.value == "") {
 				noPwdErrorObj.setAttribute("style", "display: block");
 				invalidPwdErrorObj.setAttribute("style", "display: none");
 				pwdDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			// 길이 검사
 			} else if (pwdInputObj.value.length < 8 || pwdInputObj.value.length > 20) {
 	   			noPwdErrorObj.setAttribute("style", "display: none");
 				invalidPwdErrorObj.setAttribute("style", "display: block");
 				pwdDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			// 패턴 검사
 	   		} else if ((checkNum < 0 && checkUpperEng < 0) ||
 	   			(checkUpperEng < 0 && checkLowerEng < 0) ||
 	   			(checkLowerEng < 0 && checkNum < 0)) {
@@ -124,6 +131,7 @@
 	   		
 	   		var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣.-]+\.[a-zA-Z]{2,}$/;
 	   		
+	   		// 패턴 검사
 	   		if (!emailPattern.test(emailInputObj.value) && emailInputObj.value != "") {
 				invalidEmailErrorObj.setAttribute("style", "display: block");
 				emailDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
@@ -150,6 +158,7 @@
 	   		var noNameErrorObj = document.getElementById("noNameError");
 	   		var nameDivObj = document.getElementById("nameInput");
 	   		
+	   		// 공백 검사
 	   		if (nameInputObj.value == "") {
 				noNameErrorObj.setAttribute("style", "display: block");
 				nameDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
@@ -186,11 +195,13 @@
 		    var day = ("0" + date.getDate()).slice(-2);
 		    var today = (year + month + day);
 			
+		    // 공백 검사
 			if (birthdayInputObj.value == "") {
 				noBirthdayErrorObj.setAttribute("style", "display: block");
 				invalidBirthdayErrorObj.setAttribute("style", "display: none");
 				under14BirthdayErrorObj.setAttribute("style", "display: none");
 				birthdayDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			// 연, 월, 일 검사
 			} else if (
 				parseInt(birthdayInputObj.value) < 19000101 ||
 				parseInt(birthdayInputObj.value) > today ||
@@ -203,6 +214,7 @@
 				invalidBirthdayErrorObj.setAttribute("style", "display: block");
 				under14BirthdayErrorObj.setAttribute("style", "display: none");
 				birthdayDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			// 만 나이 검사
 			} else if (
 				today-(140000) < parseInt(birthdayInputObj.value) &&
 				parseInt(birthdayInputObj.value) <= today
@@ -226,6 +238,7 @@
 			var telecomDivObj = document.getElementById("telecomInput");
 		    var selectedValue = telecomSelectObj.options[telecomSelectObj.selectedIndex].value;
 			
+		    // 공백(미선택) 검사
 			if (selectedValue == "선택 안함") {
 				noTelecomErrorDiv.setAttribute("style", "display: block");
 				telecomDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
@@ -240,6 +253,7 @@
 			var genderDivObj = document.getElementById("genderNationalitySelect");
 			var noGenderErrorDiv = document.getElementById("noGenderError");
 			
+			// 공백(미선택) 검사
 			if (radioList[0].checked == false && radioList[1].checked == false) {
 				noGenderErrorDiv.setAttribute("style", "display: block");
 				genderDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
@@ -254,6 +268,7 @@
 	   		var phoneNumInputObj = document.getElementById("phoneNumBlank");
 	   		var phoneNumDivObj = document.getElementById("phoneNumInput");
 	   		
+	   		// 공백 검사
 	   		if (phoneNumDivObj.value != "" &&
 	   			phoneNumDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			phoneNumDivObj.setAttribute("style", "border: 2px solid #09aa5c");
@@ -266,13 +281,15 @@
 			var noPhoneNumErrorObj = document.getElementById("noPhoneNumError");
 			var invalidPhoneNumErrorObj = document.getElementById("invalidPhoneNumError");
 			var phoneNumDivObj = document.getElementById("phoneNumInput");
-			
+			//			전화번호 패턴:		010~019		3~4글자		4글자
 			var phoneNumPattern = /^(01[016789]{1})[0-9]{3,4}[0-9]{4}$/;
 			
+			// 공백 검사
 			if (phoneNumInputObj.value == "") {
 				noPhoneNumErrorObj.setAttribute("style", "display: block");
 				invalidPhoneNumErrorObj.setAttribute("style", "display: none");
 				phoneNumDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			// 패턴 검사
 			} else if (!phoneNumPattern.test(phoneNumInputObj.value)) {
 				noPhoneNumErrorObj.setAttribute("style", "display: none");
 				invalidPhoneNumErrorObj.setAttribute("style", "display: block");
@@ -290,6 +307,7 @@
 			var noAgreeErrorDiv = document.getElementById("noAgreeError");
 			var agreementDivObj= document.getElementById("agreementDiv");
 			
+			// 공백(약관 체크) 검사
 			if (agreeCheckObj.checked == false) {
 				noAgreeErrorDiv.setAttribute("style", "display: block");
 				agreementDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
@@ -312,9 +330,11 @@
 			var authNumInputObj = document.getElementById("authNumInput").value;
 			var authDivObj = document.getElementById("authorizationDiv");
 			
+			// 인증번호 불일치 검사
 			if (authNumInputObj != authNum) {
 				wrongAuthNumErrorDiv.setAttribute("style", "display: block");
 				authDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			// 공백 검사
 			} else if (authNumInputObj == "") {
 				wrongAuthNumErrorDiv.setAttribute("style", "display: block");
 				authDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
@@ -500,7 +520,7 @@
 			</div>
 			
 			<div>
-				<input type="submit" value="인증요청" id="submitButton" onclick="submitCheckFnc(event)">
+				<input type="submit" value="회원가입" id="submitButton" onclick="submitCheckFnc(event)">
 			</div>
 		</form>
 		
