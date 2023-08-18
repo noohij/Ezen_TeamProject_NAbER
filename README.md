@@ -25,9 +25,9 @@ naver notice board
     <td align="center"><b><a href="https://github.com/Dlgustn">이현수</a></b></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://github.com/imchanu96/Middle_TeamProject/assets/54897384/502a26be-7bbf-4f3f-bb0a-a6df1818f26b" alt="developerImg" width="100px" /></td>
-    <td align="center"><img src="https://github.com/imchanu96/Middle_TeamProject/assets/54897384/502a26be-7bbf-4f3f-bb0a-a6df1818f26b" alt="developerImg" width="100px" /></td>
-    <td align="center"><img src="https://github.com/imchanu96/Middle_TeamProject/assets/54897384/502a26be-7bbf-4f3f-bb0a-a6df1818f26b" alt="developerImg" width="100px" /></td>
+    <td align="center"><img src="https://github.com/imchanu96/Middle_TeamProject/assets/54897384/502a26be-7bbf-4f3f-bb0a-a6df1818f26b" alt="developerImg" width="200px" /></td>
+    <td align="center"><img src="https://github.com/imchanu96/Middle_TeamProject/assets/54897384/502a26be-7bbf-4f3f-bb0a-a6df1818f26b" alt="developerImg" width="200px" /></td>
+    <td align="center"><img src="https://github.com/imchanu96/Middle_TeamProject/assets/54897384/502a26be-7bbf-4f3f-bb0a-a6df1818f26b" alt="developerImg" width="200px" /></td>
   </tr>
   <tr>
     <td align="center"><b>Backend</b></td>
