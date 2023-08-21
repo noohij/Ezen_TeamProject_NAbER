@@ -7,7 +7,7 @@
 	<title>네이버 : 회원가입</title>
 	
    	<script type="text/javascript">
-   	
+   		
 		function submitCheckFnc(event) {
 			
 			// 에러 메시지 div들
@@ -40,6 +40,7 @@
 	   		var idInputObj = document.getElementById("idBlank");
 	   		var idDivObj = document.getElementById("idInput");
 	   		
+	   		// 공백 검사
 	   		if (idDivObj.value != "" &&			// 문제가 생긴 후 수정할 땐 초록으로 바뀌지 않음
 	   			idDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			idDivObj.setAttribute("style", "border: 2px solid #09aa5c");
@@ -82,6 +83,7 @@
 	   		var pwdInputObj = document.getElementById("pwdBlank");
 	   		var pwdDivObj = document.getElementById("pwdInput");
 	   		
+	   		// 공백 검사
 	   		if (pwdDivObj.value != "" &&
 	   			pwdDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			pwdDivObj.setAttribute("style", "border: 2px solid #09aa5c");
@@ -146,6 +148,7 @@
 	   		var nameInputObj = document.getElementById("nameBlank");
 	   		var nameDivObj = document.getElementById("nameInput");
 	   		
+	   		// 공백 검사
 	   		if (nameDivObj.value != "" &&
 	   			nameDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			nameDivObj.setAttribute("style", "border: 2px solid #09aa5c");
@@ -173,6 +176,7 @@
 	   		var birthdayInputObj = document.getElementById("birthdayBlank");
 	   		var birthdayDivObj = document.getElementById("birthdayInput");
 	   		
+	   		// 공백 검사
 	   		if (birthdayDivObj.value != "" &&
 	   			birthdayDivObj.getAttribute("style") != "border: 2px solid #ff3f3f") {
 	   			birthdayDivObj.setAttribute("style", "border: 2px solid #09aa5c");
@@ -186,7 +190,6 @@
 			var birthdayDivObj = document.getElementById("birthdayInput");
 			var invalidBirthdayErrorObj = document.getElementById("invalidBirthdayError");
 			var under14BirthdayErrorObj = document.getElementById("under14BirthdayError");
-			
 			var nameDivObj = document.getElementById("nameInput");
 			
 			var date = new Date();
@@ -330,12 +333,12 @@
 			var authNumInputObj = document.getElementById("authNumInput").value;
 			var authDivObj = document.getElementById("authorizationDiv");
 			
-			// 인증번호 불일치 검사
-			if (authNumInputObj != authNum) {
-				wrongAuthNumErrorDiv.setAttribute("style", "display: block");
-				authDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			// 공백 검사
-			} else if (authNumInputObj == "") {
+			if (authNumInputObj == "") {
+			wrongAuthNumErrorDiv.setAttribute("style", "display: block");
+			authDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
+			// 인증번호 불일치 검사
+			} else if (authNumInputObj != authNum) {
 				wrongAuthNumErrorDiv.setAttribute("style", "display: block");
 				authDivObj.setAttribute("style", "border: 2px solid #ff3f3f");
 			} else {
