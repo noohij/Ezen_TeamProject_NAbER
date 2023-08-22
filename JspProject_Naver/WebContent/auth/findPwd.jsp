@@ -66,7 +66,7 @@
 	<div>
 		<button onclick="location.href='./findNaverPwd.jsp'" 
 			id="next" name="next">다음</button>
-			
+			 
 		</div>
 		<div id="atag">
 			<div style="float: left; margin-left: 60px;" id="remember">아이디가 기억나지 않는다면?
