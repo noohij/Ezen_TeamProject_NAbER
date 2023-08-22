@@ -22,6 +22,7 @@
 			background-size: 20px;
 			background-position: left;
 			border-style: 1px solid;
+			border-radius: 5px;
 			border-color: gray;		
 			}
 		#next{
@@ -30,9 +31,10 @@
 			text-align:center;
 			margin-top: 4px; 
  			margin-right: 18px;
-			width: 400px;
+			width: 455px;
 			height: 50px;
 			border:none;
+			border-radius: 5px;
 			background-color: rgb(3, 199, 90);		
 		}
 		#remember{
@@ -44,35 +46,36 @@
 	<script type="text/javascript">
 	
 	</script>
-	<a class="inheader">
-		<img src="../images/naverLogo.PNG"
+	<a href="./loginForm" style="margin-left: 850px;" class="inheader">
+		<img style="margin-top: 100px;" src="../images/naverLogo.PNG"
 	 	width="168" height="50" alt="로고" class="logo">
 	 </a>
 	 <br>
 	 <br>
 	 <br>
-	 <div>비밀번호를 찾고자하는 아이디를 입력해주세요.</div>
+	 <div style="margin-left: 750px;">비밀번호를 찾고자하는 아이디를 입력해주세요.</div>
 </head>
 <body>
 	<br>
 	<br>
 	<br>
-	<div class="panel">
+	<div style="margin-left: 700px;" class="panel">
 	<form method="post" action="/FindPwd">
 		<input placeholder="네이버 아이디 또는 단체 아이디" id="naverId" name="naverId">
 	</form>
 	<div>
-		<a onclick="location.href='./findNaverPwd.jsp'" id="next" name="next">다음</a>
+		<button onclick="location.href='./findNaverPwd.jsp'" 
+			id="next" name="next">다음</button>
 			
 		</div>
 		<div id="atag">
-			<div style="float: left;" id="remember">아이디가 기억나지 않는다면?
+			<div style="float: left; margin-left: 60px;" id="remember">아이디가 기억나지 않는다면?
 			</div>
 			<a>아이디 찾기</a>
 		</div>
 	</div>
 	
-	<div>NAVER | 회원정보 고객센터</div>
+	<div style="margin-left: 830px; margin-top: 50px;">NAVER | 회원정보 고객센터</div>
 </body>
 
 </html>
