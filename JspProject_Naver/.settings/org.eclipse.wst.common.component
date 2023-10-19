@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="JspProject_Naver">
+        
+    <wb-module deploy-name="NAbER">
+                
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="JspProject_Naver"/>
-        <property name="java-output-path" value="/JspProject_Naver/build/classes"/>
+                
+        <property name="java-output-path" value="/NAbER/build/classes"/>
+        <property name="context-root" value="NAbER"/>
+            
     </wb-module>
+    
 </project-modules>

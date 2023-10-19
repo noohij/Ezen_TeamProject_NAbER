@@ -12,7 +12,6 @@
 </head>
 
 <body>
-	<%=(String)request.getAttribute("msg") %>
 	<p>
 		요청을 처리하는 중에 문제가 발생하였습니다.
 		입력된 주소가 정확하지 않거나
